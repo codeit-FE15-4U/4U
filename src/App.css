@@ -1,0 +1,44 @@
+@import "tailwindcss";
+
+@layer base {
+  html {
+    font-family: "Pretendard", sans-serif;
+  }
+}
+
+@theme {
+  --color-grayscale-10: #ffffff;
+  --color-grayscale-20: #f9f9f9;
+  --color-grayscale-30: #cfcfcf;
+  --color-grayscale-40: #818181;
+  --color-grayscale-50: #515151;
+  --color-grayscale-60: #000000;
+  --color-brown-10: #f5f1ee;
+  --color-brown-20: #e4d5c9;
+  --color-brown-30: #c7bbb5;
+  --color-brown-40: #542f1a;
+  --color-brown-50: #341909;
+  --color-blue-50: #1877f2;
+  --color-yellow-50: #fee500;
+  --color-red-50: #b93333;
+  --shadow-1px: 0px 4px 4px 0px rgba(140, 140, 140, 0.25);
+  --shadow-2px: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  --shadow-3px: 0px 16px 20px 0px rgba(48, 48, 48, 0.62);
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-bold: 700;
+  --text-h1: 2.5rem;
+  --text-h1--line-height: 100%;
+  --text-h2: 2rem;
+  --text-h2--line-height: 2.5rem;
+  --text-h3: 1.5rem;
+  --text-h3--line-height: 1.875rem;
+  --text-body1: 1.25rem;
+  --text-body1--line-height: 1.5625rem;
+  --text-body2: 1.125rem;
+  --text-body2--line-height: 1.5rem;
+  --text-body3: 1rem;
+  --text-body3--line-height: 1.375rem;
+  --text-caption1: 0.875rem;
+  --text-caption1--line-height: 1.125rem;
+}
