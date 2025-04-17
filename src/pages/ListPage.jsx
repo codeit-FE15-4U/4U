@@ -1,5 +1,5 @@
 // import { Link } from "react-router";
-import logo from "../assets/images/logo.svg";
+import logo from "../assets/images/logo.png";
 import Button from "../components/Button";
 import UserCard from "../components/UserCard";
 
@@ -14,7 +14,7 @@ function ListPage() {
         {/* Button 클릭 시 질문 받기로 생성한 id가 로컬 스토리지에 없으면 “/” 페이지로 이동 -> ok */}
         {/* Button 클릭 시 질문 받기로 생성한 id가 로컬 스토리지에 있으면 “/post/{id}/answer” 페이지로 이동 -> 확인필요 */}
         {/* <Link to={path}> */}
-        <Button content="답변하러 가기" type="empty" />
+        <Button type="empty">답변하러 가기</Button>
         {/* </Link> */}
       </div>
       <div className="tablet:flex-col tablet:gap-4 flex items-center justify-between px-24">
@@ -25,7 +25,7 @@ function ListPage() {
         {/* Dropdown 클릭 시 이름순, 최신순 정렬기능 추가 예정 */}
         <p className="text-caption1 font-medium">이름순</p>
       </div>
-      <div className="tablet:gap-[20px] flex flex-wrap items-center justify-center gap-16">
+      <div className="tablet:gap-20 flex flex-wrap items-center justify-center gap-16">
         {/* UserCard 컴포넌트 내에서 데이터 불러오도록 수정 예정 */}
         <UserCard />
         <UserCard />

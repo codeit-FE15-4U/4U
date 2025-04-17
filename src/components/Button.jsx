@@ -1,5 +1,5 @@
 import arrowRight from "../assets/icons/arrow-right.svg";
-function Button({ content, type = "default", onclick }) {
+function Button({ children, type = "default", onclick }) {
   // content: 버튼 안에 입력할 문구
   // onclick: 버튼 클릭 시 실행할 함수
   // type: 버튼 모양
@@ -20,7 +20,7 @@ function Button({ content, type = "default", onclick }) {
 
   return (
     <button className={getButtonStyle()} onClick={onclick}>
-      {content}
+      {children}
       {type === "empty" && <img src={arrowRight} />}
     </button>
   );

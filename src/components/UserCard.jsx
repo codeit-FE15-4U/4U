@@ -1,4 +1,4 @@
-import profile from "../assets/images/profile.svg";
+import profile from "../assets/images/profile.png";
 import messages from "../assets/icons/messages.svg";
 function UserCard() {
   return (
