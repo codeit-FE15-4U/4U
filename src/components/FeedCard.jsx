@@ -11,16 +11,16 @@ export default function FeedCard({
   answer,
 }) {
   return (
-    <div className="flex flex-col gap-[1.5rem] rounded-2xl p-[1.5rem] shadow-[var(--shadow-1px)] md:gap-[2rem] md:p-[2rem]">
-      <div className="flex h-[calc(26rem/16)] justify-between">
+    <div className="tablet:gap-32 tablet:p-32 shadow-1px flex flex-col gap-24 rounded-2xl p-24">
+      <div className="flex h-26 justify-between">
         <Badge />
-        {isAnswerPage && <img className="h-[calc(26rem/16)]" src={iconMore} />}
+        {isAnswerPage && <img className="h-26" src={iconMore} />}
       </div>
       <FeedCardQuestion content={content} createdAt={createdAt} />
       {(isAnswerPage || answer) && (
         <FeedCardAnswer isAnswerPage={isAnswerPage} {...answer} />
       )}
-      <div className="h-[calc(43rem/16)] border-t border-solid border-(--color-grayscale-30)">
+      <div className="border-grayscale-30 h-43 border-t border-solid">
         <Reaction like={like} dislike={dislike} />
       </div>
     </div>
