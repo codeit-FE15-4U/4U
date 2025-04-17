@@ -1,7 +1,7 @@
-function Button({ children, type = "empty", onclick }) {
-  // content: 버튼 안에 입력할 문구
-  // onclick: 버튼 클릭 시 실행할 함수
+function Button({ children, type = "empty", className, onclick }) {
   // type: 버튼 모양
+  // className: 별도로 지정할 class 속성
+  // onclick: 버튼 클릭 시 실행할 함수
 
   const buttonStyles = {
     // empty: 질문하러 가기, 답변하러 가기
@@ -16,7 +16,7 @@ function Button({ children, type = "empty", onclick }) {
 
   return (
     <button
-      className={buttonStyles[type] ?? buttonStyles["empty"]}
+      className={`${buttonStyles[type] ?? buttonStyles["empty"]} ${className}`}
       onClick={onclick}
     >
       {children}
