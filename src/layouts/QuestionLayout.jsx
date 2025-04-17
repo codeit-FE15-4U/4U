@@ -5,7 +5,7 @@ import EmptyBox from "../assets/images/empty-box.svg";
 const QuestionLayout = () => {
   return (
     <div className="bg-grayscale-20 relative min-h-screen pb-126">
-      <div className="tablet:block none absolute z-0 h-234 w-full bg-white" />
+      <div className="pc:block none absolute z-0 h-234 w-full bg-white" />
       <div className="tablet:bg-size-[1200px_234px] relative flex flex-col items-center gap-12 bg-[url(/src/assets/images/openmind-bg.png)] bg-size-[1200px_177px] bg-top bg-no-repeat px-24">
         <img
           className="tablet:h-67 tablet:w-170 mt-40 h-49 w-124"
