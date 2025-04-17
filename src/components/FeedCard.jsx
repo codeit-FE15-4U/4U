@@ -11,7 +11,7 @@ export default function FeedCard({
   answer,
 }) {
   return (
-    <div className="tablet:gap-32 tablet:p-32 shadow-1px flex flex-col gap-24 rounded-2xl p-24">
+    <div className="tablet:gap-32 tablet:p-32 shadow-1px font-regular text-grayscale-60 bg-grayscale-10 flex flex-col gap-24 rounded-2xl p-24">
       <div className="flex h-26 justify-between">
         <Badge />
         {isAnswerPage && <img className="h-26" src={iconMore} />}
