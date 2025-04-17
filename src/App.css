@@ -43,4 +43,5 @@
   --text-caption1--line-height: 1.125rem;
   --breakpoint-tablet: 48rem;
   --breakpoint-pc: 75rem;
+  --spacing: 0.0625rem;
 }
