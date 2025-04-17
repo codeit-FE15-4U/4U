@@ -1,15 +1,16 @@
 import logo from "../assets/images/logo.svg";
+import Button from "../components/Button";
 import UserCard from "../components/UserCard";
 
 function ListPage() {
   return (
     <div className="bg-grayscale-20">
-      <div className="tablet:flex-row tablet:justify-between flex flex-col items-center justify-center gap-[24px] px-[50px] py-[40px]">
-        <img className="h-[57px] w-[146px]" src={logo}></img>
+      <div className="tablet:flex-row tablet:justify-between flex flex-col items-center justify-center gap-24 px-50 py-40">
+        <img className="h-57 w-146" src={logo}></img>
         {/* Button 클릭 시 메인 or 답변 페이지로 이동 예정 */}
-        <button>답변하러 가기</button>
+        <Button content="답변하러 가기" path="/b" />
       </div>
-      <div className="tablet:flex-col tablet:gap-[4px] flex items-center justify-between px-[24px]">
+      <div className="tablet:flex-col tablet:gap-4 flex items-center justify-between px-24">
         <p className="tablet:text-h1 text-h3 font-regular">
           누구에게 질문할까요?
         </p>
@@ -17,7 +18,7 @@ function ListPage() {
         {/* Dropdown 클릭 시 이름순, 최신순 정렬기능 추가 예정 */}
         <p className="text-caption1 font-medium">이름순</p>
       </div>
-      <div className="tablet:gap-[20px] flex flex-wrap items-center justify-center gap-[16px]">
+      <div className="tablet:gap-[20px] flex flex-wrap items-center justify-center gap-16">
         {/* UserCard 컴포넌트 내에서 데이터 불러오도록 수정 예정 */}
         <UserCard />
         <UserCard />
