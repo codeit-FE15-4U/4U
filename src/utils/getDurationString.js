@@ -18,5 +18,5 @@ export default function getDurationString(createdTime) {
             return (Math.ceil(duration / time[i]) + timeString[i]);
         }
     }
-    return "방금전";
+    return "방금";
 }
