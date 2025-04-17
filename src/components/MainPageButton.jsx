@@ -4,10 +4,16 @@ const MainPageButton = () => {
   return (
     <Link
       to="/list"
-      className="border-brown-40 bg-brown-10 text-brown-40 text-caption1 font-regular flex items-center justify-center gap-[4px] rounded-lg border px-[12px] py-[8px]"
+      className="border-brown-40 bg-brown-10 text-brown-40 text-caption1 font-regular flex items-center justify-center gap-4 rounded-lg border px-12 py-8"
     >
       질문하러 가기
-      <svg width="19" height="18" viewBox="0 0 19 18" fill="none">
+      <svg
+        width="19"
+        height="18"
+        viewBox="0 0 19 18"
+        fill="none"
+        className="color-brown-40"
+      >
         <path
           fill-rule="evenodd"
           clip-rule="evenodd"
