@@ -1,6 +1,7 @@
 import Badge from "./Badge.jsx";
 import Reaction from "./Reaction.jsx";
 import FeedCardQuestion from "./FeedCardQuestion.jsx";
+import FeedCardAnswer from "./FeedCardAnswer.jsx";
 import iconMore from "../assets/icons/more.svg";
 
 export default function FeedCard({
@@ -26,8 +27,4 @@ export default function FeedCard({
       </div>
     </div>
   );
-}
-
-function FeedCardAnswer() {
-  return;
 }
