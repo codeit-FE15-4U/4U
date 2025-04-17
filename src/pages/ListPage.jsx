@@ -1,5 +1,6 @@
 // import { Link } from "react-router";
 import logo from "../assets/images/logo.png";
+import arrow from "../assets/icons/arrow.svg";
 import Button from "../components/Button";
 import UserCard from "../components/UserCard";
 
@@ -14,7 +15,10 @@ function ListPage() {
         {/* Button 클릭 시 질문 받기로 생성한 id가 로컬 스토리지에 없으면 “/” 페이지로 이동 -> ok */}
         {/* Button 클릭 시 질문 받기로 생성한 id가 로컬 스토리지에 있으면 “/post/{id}/answer” 페이지로 이동 -> 확인필요 */}
         {/* <Link to={path}> */}
-        <Button type="empty">답변하러 가기</Button>
+        <Button type="empty">
+          답변하러 가기
+          <img src={arrow} />
+        </Button>
         {/* </Link> */}
       </div>
       <div className="tablet:flex-col tablet:gap-4 flex items-center justify-between px-24">
