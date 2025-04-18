@@ -1,4 +1,6 @@
 import { useRef, useState } from "react";
+import arrowDown from "../assets/icons/arrow-down.svg";
+import arrowUp from "../assets/icons/arrow-up.svg";
 
 function Dropdown() {
   const [isOpen, setIsOpen] = useState(false);
@@ -19,8 +21,13 @@ function Dropdown() {
   };
 
   return (
-    <div className="border-grayscale-40 border">
-      <button onClick={toggleDown}>{selected}</button>
+    <div className="border-grayscale-40 border-1px bg-grayscale-10 rounded-lg border px-12 py-8">
+      <div className="flex items-center justify-center">
+        <button className="text-grayscale-40" onClick={toggleDown}>
+          {selected}
+        </button>
+        <img className="h-14 w-14" src={isOpen ? arrowUp : arrowDown} />
+      </div>
       {isOpen && (
         <ul>
           {options.map((option) => {
