@@ -1,7 +1,29 @@
-import profile from "../assets/images/profile.png";
 import messages from "../assets/icons/messages.svg";
 import { getUserList } from "../api/subjects";
 import { useEffect, useState } from "react";
+
+function UserList({ user }) {
+  return (
+    <>
+      <div className="flex flex-col gap-12">
+        <img className="h-48 w-48 rounded-full" src={user.imageSource} />
+        <p className="text-body2 font-regular">{user.name}</p>
+      </div>
+      <div className="flex items-center justify-between">
+        <div className="flex items-center justify-center gap-4">
+          {/* messages icon 색상 변경 필요 */}
+          <img className="h-16 w-16" src={messages}></img>
+          <span className="text-caption1 font-regular text-grayscale-40">
+            받은 질문
+          </span>
+        </div>
+        <p className="text-caption1 font-regular text-grayscale-40">
+          {user.questionCount}개
+        </p>
+      </div>
+    </>
+  );
+}
 
 function UserCard() {
   const [users, setUsers] = useState([]);
@@ -15,28 +37,19 @@ function UserCard() {
     getUser();
   }, []);
   return (
-    <div>
+    <ul className="flex flex-wrap justify-center gap-16">
       {users.map((user) => {
         return (
-          <div key={user.id}>
-            <img />
-            <p>{user.name}</p>
-            <p>{user.questionCount}</p>
-          </div>
+          // 카드 너비 반응형 구현 필요
+          <li
+            className="tablet:h-187 border-grayscale-40 bg-grayscale-10 flex h-168 w-155 flex-col justify-between rounded-xl border p-16"
+            key={user.id}
+          >
+            <UserList user={user} />
+          </li>
         );
       })}
-      {/* <div className="border-grayscale-40 flex h-[168px] w-[154px] flex-col gap-[32px] rounded-[16px] border p-[16px]">
-        <div className="flex flex-col gap-[12px]">
-          <img className="h-[48px] w-[48px]" src={profile}></img>
-          <div className="text-[18px] font-normal">이름</div>
-        </div>
-        <div className="flex">
-          <img className="h-[16px] w-[16px]" src={messages}></img>
-          <span className="flex-1 text-[14px] font-normal">받은 질문</span>
-          <span className="text-[14px] font-normal">9개</span>
-        </div>
-      </div> */}
-    </div>
+    </ul>
   );
 }
 

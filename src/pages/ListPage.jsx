@@ -25,17 +25,21 @@ function ListPage() {
           <img className="stroke" src={arrow} />
         </Button>
       </div>
-      <div className="tablet:flex-col tablet:gap-4 flex items-center justify-between px-24">
-        <p className="tablet:text-h1 text-h3 font-regular">
-          누구에게 질문할까요?
-        </p>
-        {/* Dropdown 컴포넌트로 수정 예정 */}
-        {/* Dropdown 클릭 시 이름순, 최신순 정렬기능 추가 예정 */}
-        <p className="text-caption1 font-medium">이름순</p>
-      </div>
-      <div className="tablet:gap-20 flex flex-wrap items-center justify-center gap-16">
-        {/* UserCard 컴포넌트 내에서 데이터 불러오도록 수정 예정 */}
-        <UserCard />
+      <div className="tablet:gap-32 flex flex-col gap-20 px-24">
+        <div className="tablet:flex-col tablet:gap-20 flex items-center justify-between">
+          <p className="tablet:text-h1 text-h3 font-regular">
+            누구에게 질문할까요?
+          </p>
+          {/* Dropdown 컴포넌트로 수정 예정 */}
+          {/* Dropdown 클릭 시 이름순, 최신순 정렬기능 추가 예정 */}
+          <p className="text-caption1 rounded-lg border px-12 py-8 font-medium">
+            이름순
+          </p>
+        </div>
+        <div className="tablet:gap-20 flex flex-wrap items-center justify-center gap-16">
+          {/* UserCard 컴포넌트 내에서 데이터 불러오도록 수정 예정 */}
+          <UserCard />
+        </div>
       </div>
       {/* Pagenation 컴포넌트로 수정 예정*/}
       <div className="itmes-center flex justify-center">1 2 3 4 5</div>
