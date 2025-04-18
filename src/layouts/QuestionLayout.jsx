@@ -1,6 +1,6 @@
 import LogoImg from "../assets/images/logo.png";
 import EmptyBox from "../assets/images/empty-box.svg";
-import { Outlet, useLocation, useParams } from "react-router";
+import { Link, Outlet, useLocation, useParams } from "react-router";
 import { useEffect, useState } from "react";
 import { getQuestionList, getSubject } from "./../api/subjects";
 
@@ -34,11 +34,13 @@ const QuestionLayout = () => {
     <div className="bg-grayscale-20 relative min-h-screen pb-126">
       <div className="pc:block none absolute z-0 h-234 w-full bg-white" />
       <div className="tablet:bg-size-[1200px_234px] relative flex flex-col items-center gap-12 bg-[url(/src/assets/images/openmind-bg.png)] bg-size-[1200px_177px] bg-top bg-no-repeat px-24">
-        <img
-          className="tablet:h-67 tablet:w-170 mt-40 h-49 w-124"
-          src={LogoImg}
-          alt="로고 이미지"
-        />
+        <Link to="/list">
+          <img
+            className="tablet:h-67 tablet:w-170 mt-40 h-49 w-124"
+            src={LogoImg}
+            alt="로고 이미지"
+          />
+        </Link>
         <img
           className="tablet:size-136 size-104 rounded-full"
           src={imageSource}
