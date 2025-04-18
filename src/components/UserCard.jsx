@@ -1,6 +1,4 @@
 import messages from "../assets/icons/messages.svg";
-import { getUserList } from "../api/subjects";
-import { useEffect, useState } from "react";
 
 function UserList({ user }) {
   return (
@@ -25,17 +23,7 @@ function UserList({ user }) {
   );
 }
 
-function UserCard() {
-  const [users, setUsers] = useState([]);
-
-  const getUser = async () => {
-    const user = await getUserList({ limit: 6, offset: 0 });
-    setUsers(user.data.results);
-  };
-
-  useEffect(() => {
-    getUser();
-  }, []);
+function UserCard({ users }) {
   return (
     <ul className="flex flex-wrap justify-center gap-16">
       {users.map((user) => {

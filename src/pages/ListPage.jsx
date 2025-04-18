@@ -1,11 +1,12 @@
+import { useEffect, useState } from "react";
+import { getUserList } from "../api/subjects";
 import logo from "../assets/images/logo.png";
 import arrow from "../assets/icons/arrow.svg";
 import Button from "../components/Button";
 import UserCard from "../components/UserCard";
 
 function ListPage() {
-  const id = localStorage.getItem("userId");
-  const path = id ? `/post/${id}/answer` : "/";
+  const [users, setUsers] = useState([]);
 
   const handleButtonClick = () => {
     const id = localStorage.getItem("userId");
@@ -13,15 +14,24 @@ function ListPage() {
       ? (window.location.href = "/")
       : (window.location.href = `/post/${id}/answer`);
   };
+  const getUser = async () => {
+    const user = await getUserList({ limit: 6, offset: 0 });
+    setUsers(user.data.results);
+  };
+
+  useEffect(() => {
+    getUser();
+  }, []);
 
   return (
     <div className="bg-grayscale-20">
-      <div className="tablet:flex-row tablet:justify-between flex flex-col items-center justify-center gap-24 px-50 py-40">
+      <div className="tablet:flex-row tablet:justify-between flex flex-col items-center justify-center gap-24 px-50 pt-40 pb-60">
         <img className="h-57 w-146" src={logo}></img>
         {/* Button 클릭 시 질문 받기로 생성한 id가 로컬 스토리지에 없으면 “/” 페이지로 이동 -> ok */}
         {/* Button 클릭 시 질문 받기로 생성한 id가 로컬 스토리지에 있으면 “/post/{id}/answer” 페이지로 이동 -> 확인필요 */}
         <Button type="empty" onclick={handleButtonClick}>
           답변하러 가기
+          {/* arrow icon 색상 변경 필요 */}
           <img className="stroke" src={arrow} />
         </Button>
       </div>
@@ -37,8 +47,7 @@ function ListPage() {
           </p>
         </div>
         <div className="tablet:gap-20 flex flex-wrap items-center justify-center gap-16">
-          {/* UserCard 컴포넌트 내에서 데이터 불러오도록 수정 예정 */}
-          <UserCard />
+          <UserCard users={users} />
         </div>
       </div>
       {/* Pagenation 컴포넌트로 수정 예정*/}
