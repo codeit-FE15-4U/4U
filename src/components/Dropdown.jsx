@@ -11,11 +11,11 @@ function Dropdown() {
 
   const toggleDown = () => {
     setIsOpen(!isOpen);
+    console.log(isOpen);
   };
   const handleOptionClick = (option) => {
     setSelected(option.label);
     setIsOpen(false);
-    onChange(option.value);
   };
 
   return (
@@ -24,7 +24,11 @@ function Dropdown() {
       {isOpen && (
         <ul>
           {options.map((option) => {
-            return <li>{option.label}</li>;
+            return (
+              <li key={option.value} onClick={() => handleOptionClick(option)}>
+                {option.label}
+              </li>
+            );
           })}
         </ul>
       )}
