@@ -1,6 +1,17 @@
 import profile from "../assets/images/profile.png";
 import messages from "../assets/icons/messages.svg";
+import { getUserList } from "../api/subjects";
+import { useEffect } from "react";
+
 function UserCard() {
+  const getUser = async () => {
+    const user = await getUserList({ limit: 6, offset: 0 });
+    console.log(user.data.results);
+  };
+
+  useEffect(() => {
+    getUser();
+  }, []);
   return (
     <>
       <div className="border-grayscale-40 flex h-[168px] w-[154px] flex-col gap-[32px] rounded-[16px] border p-[16px]">
