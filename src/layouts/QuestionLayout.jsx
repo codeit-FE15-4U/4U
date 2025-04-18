@@ -40,7 +40,7 @@ const QuestionLayout = () => {
           alt="로고 이미지"
         />
         <img
-          className="tablet:size-136 size-104"
+          className="tablet:size-136 size-104 rounded-full"
           src={imageSource}
           alt="프로필 이미지"
         />
