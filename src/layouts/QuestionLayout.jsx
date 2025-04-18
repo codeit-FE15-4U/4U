@@ -24,12 +24,14 @@ const QuestionLayout = () => {
       };
       getSubjectData();
     }
+  }, [name, id]);
+  useEffect(() => {
     const getData = async () => {
       const { results } = await getQuestionList({ subjectId: id });
       setQuestionList((prev) => [...prev, ...results]);
     };
     getData();
-  }, [id, name]);
+  }, [id]);
   return (
     <div className="bg-grayscale-20 relative min-h-screen pb-126">
       <div className="pc:block none absolute z-0 h-234 w-full bg-white" />
