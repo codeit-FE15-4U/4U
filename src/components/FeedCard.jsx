@@ -27,7 +27,7 @@ export default function FeedCard({ isAnswerPage, subject, question }) {
           content={question.content}
           createdAt={question.createdAt}
         />
-        {state === "none" && (
+        {state === "none" || (
           <FeedCardAnswer
             state={state}
             setState={setState}
