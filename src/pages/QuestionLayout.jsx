@@ -43,10 +43,9 @@ const QuestionLayout = () => {
             alt="로고 이미지"
           />
         </Link>
-        <img
-          className="tablet:size-136 size-104 rounded-full"
-          src={imageSource}
-          alt="프로필 이미지"
+        <div
+          className="tablet:size-136 size-104 rounded-full bg-cover bg-center"
+          style={{ backgroundImage: `url(${imageSource})` }}
         />
         <p className="tablet:text-h2 text-h3 font-regular">{name}</p>
         <ul className="flex gap-12">
