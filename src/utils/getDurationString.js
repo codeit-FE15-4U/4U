@@ -1,5 +1,6 @@
-export default function getDurationString(createdTime) {
+export default function getDurationString(createdAt) {
     const currentTime = new Date();
+    const createdTime = new Date(createdAt);
     const duration = currentTime - createdTime;
 
     const second = 1000;
