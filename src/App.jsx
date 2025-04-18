@@ -2,7 +2,7 @@ import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router";
 import MainPage from "./pages/MainPage";
 import ListPage from "./pages/ListPage";
-import QuestionLayout from "./layouts/QuestionLayout";
+import QuestionLayout from "./pages/QuestionLayout";
 
 function App() {
   return (
