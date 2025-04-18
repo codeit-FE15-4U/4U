@@ -1,3 +1,4 @@
+import { useState } from "react";
 import Badge from "./Badge";
 import Reaction from "./Reaction";
 import FeedCardQuestion from "./FeedCardQuestion";
@@ -5,6 +6,16 @@ import FeedCardAnswer from "./FeedCardAnswer";
 import iconMore from "../assets/icons/more.svg";
 
 export default function FeedCard({ isAnswerPage, subject, question }) {
+  const [state, setState] = useState(
+    (function getState() {
+      if (question.answer) {
+        return question.answer.isRejected ? "rejected" : "sent";
+      } else {
+        return isAnswerPage ? "empty" : "none";
+      }
+    })(),
+  );
+
   try {
     return (
       <div className="tablet:gap-32 tablet:p-32 shadow-1px font-regular text-grayscale-60 bg-grayscale-10 flex flex-col gap-24 rounded-2xl p-24">
@@ -16,9 +27,10 @@ export default function FeedCard({ isAnswerPage, subject, question }) {
           content={question.content}
           createdAt={question.createdAt}
         />
-        {(isAnswerPage || question.answer) && (
+        {state === "none" && (
           <FeedCardAnswer
-            isAnswerPage={isAnswerPage}
+            state={state}
+            setState={setState}
             subject={subject}
             answer={question.answer}
           />
