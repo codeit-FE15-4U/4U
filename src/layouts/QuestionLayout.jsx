@@ -1,8 +1,21 @@
-import LogoImg from "../assets/images/logo-img.svg";
-import ProfileImg from "../assets/images/profile-img.svg";
+import LogoImg from "../assets/images/logo.png";
+import ProfileImg from "../assets/images/profile.png";
 import EmptyBox from "../assets/images/empty-box.svg";
+import { Outlet, useParams } from "react-router";
+import { useEffect, useState } from "react";
+import { getQuestionList } from "./../api/subjects";
 
 const QuestionLayout = () => {
+  const [questionList, setQuestionList] = useState([]);
+  const { id } = useParams();
+
+  useEffect(() => {
+    const getData = async () => {
+      const { results } = await getQuestionList({ subjectId: id });
+      setQuestionList((prev) => [...prev, ...results]);
+    };
+    getData();
+  }, [id]);
   return (
     <div className="bg-grayscale-20 relative min-h-screen pb-126">
       <div className="pc:block none absolute z-0 h-234 w-full bg-white" />
@@ -31,6 +44,7 @@ const QuestionLayout = () => {
           </div>
           <img className="mt-66 w-114" src={EmptyBox} alt="빈 박스 이미지" />
         </div>
+        <Outlet context={questionList} />
       </div>
     </div>
   );
