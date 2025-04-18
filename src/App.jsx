@@ -2,7 +2,11 @@ import "./App.css";
 import ListPage from "./pages/ListPage";
 
 function App() {
-  return <></>;
+  return (
+    <>
+      <ListPage />
+    </>
+  );
 }
 
 export default App;

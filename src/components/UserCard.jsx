@@ -1,5 +1,5 @@
 import profile from "../assets/images/profile-img.svg";
-import messages from "../assets/icons/messages-icon.svg";
+import messages from "../assets/icons/messages.svg";
 function UserCard() {
   return (
     <>
