@@ -1,21 +1,35 @@
 import LogoImg from "../assets/images/logo.png";
-import ProfileImg from "../assets/images/profile.png";
 import EmptyBox from "../assets/images/empty-box.svg";
-import { Outlet, useParams } from "react-router";
+import { Outlet, useLocation, useParams } from "react-router";
 import { useEffect, useState } from "react";
-import { getQuestionList } from "./../api/subjects";
+import { getQuestionList, getSubject } from "./../api/subjects";
 
 const QuestionLayout = () => {
   const [questionList, setQuestionList] = useState([]);
   const { id } = useParams();
+  const location = useLocation();
+  const [name, setName] = useState(location.state?.name);
+  const [imageSource, setImageSource] = useState(location.state?.name);
+  const [questionCount, setQuestionCount] = useState(location.state?.name);
 
   useEffect(() => {
+    if (!name) {
+      const getSubjectData = async () => {
+        const { name, imageSource, questionCount } = await getSubject({
+          subjectId: id,
+        });
+        setName(name);
+        setImageSource(imageSource);
+        setQuestionCount(questionCount);
+      };
+      getSubjectData();
+    }
     const getData = async () => {
       const { results } = await getQuestionList({ subjectId: id });
       setQuestionList((prev) => [...prev, ...results]);
     };
     getData();
-  }, [id]);
+  }, [id, name]);
   return (
     <div className="bg-grayscale-20 relative min-h-screen pb-126">
       <div className="pc:block none absolute z-0 h-234 w-full bg-white" />
@@ -27,10 +41,10 @@ const QuestionLayout = () => {
         />
         <img
           className="tablet:size-136 size-104"
-          src={ProfileImg}
+          src={imageSource}
           alt="프로필 이미지"
         />
-        <p className="tablet:text-h2 text-h3 font-regular">아초는고양이</p>
+        <p className="tablet:text-h2 text-h3 font-regular">{name}</p>
         <ul className="flex gap-12">
           <li className="bg-brown-40 size-40 rounded-full"></li>
           <li className="size-40 rounded-full bg-yellow-50"></li>
@@ -44,7 +58,7 @@ const QuestionLayout = () => {
           </div>
           <img className="mt-66 w-114" src={EmptyBox} alt="빈 박스 이미지" />
         </div>
-        <Outlet context={questionList} />
+        <Outlet context={{ questionList, questionCount }} />
       </div>
     </div>
   );
