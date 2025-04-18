@@ -1,52 +1,50 @@
-import React, { useState, useCallback } from "react";
-import { useNavigate } from "react-router";
 import Button from "../components/Button";
 import MainInput from "../components/MainInput";
+import ArrowIcon from "../components/arrow-right-type2";
 import Logo from "../assets/images/logo.png";
-import { ArrowRightType2 } from "../components/arrow-right-type2";
+import { useNavigate } from "react-router";
+import { useState } from "react";
+import axios from "axios";
 
 const MainPage = () => {
-  const [inputValue, setInputValue] = useState("");
-  const [createSubject, setCreateSubject] = useState(null);
+  const [name, setName] = useState("");
   const navigate = useNavigate();
 
   const handleListClick = () => {
     navigate("/list");
   };
+  const baseApi = "https://openmind-api.vercel.app/15-4/subjects/";
 
-  const handleInputChange = useCallback((value) => {
-    setInputValue(value);
-  }, []);
-
-  const handleSubjectCreated = useCallback((createFn) => {
-    setCreateSubject(() => createFn);
-  }, []);
-
-  const handleSubmit = async () => {
-    if (createSubject) {
-      const subjectId = await createSubject();
-      if (subjectId) {
-        navigate(`/subjects/${subjectId}/questions`);
-      }
+  const handleQuestionClick = async () => {
+    if (name.length === 0) return;
+    try {
+      const response = await axios.post(baseApi, {
+        name: name,
+        team: "15-4",
+      });
+      const subjectId = response.data.id;
+      navigate(`/question/${subjectId}`);
+    } catch (error) {
+      console.error("API 요청 실패:", error);
+      alert("1~15자 이내로 작성해주세요.");
     }
   };
 
-  // 버튼 활성화 여부
-  const isButtonDisabled = inputValue.trim().length === 0;
-
+  console.log(name); //확인용
   return (
     <div className="bg-grayscale-20 flex h-screen flex-col items-center justify-center gap-24 bg-[url('./assets/images/main-bg.png')] bg-[length:100%_auto] bg-bottom bg-no-repeat">
       <img src={Logo} alt="Logo" className="w-248" />
       <Button type="" onClick={handleListClick}>
         질문하러 가기
-        <ArrowRightType2 className="text-brown-40" />
+        <ArrowIcon fill="#542F1A" />
       </Button>
       <div className="bg-grayscale-10 border-grayscale-10 flex flex-col items-center justify-center gap-16 rounded-2xl border p-16">
-        <MainInput
-          onInputChange={handleInputChange}
-          onSubjectCreated={handleSubjectCreated}
-        />
-        <Button type="fill" onClick={handleSubmit} disabled={isButtonDisabled}>
+        <MainInput name={name} setName={setName} />
+        <Button
+          type="fill"
+          disabled={name.length === 0}
+          onClick={handleQuestionClick}
+        >
           질문 받기
         </Button>
       </div>
