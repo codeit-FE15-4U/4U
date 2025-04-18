@@ -1,31 +1,41 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useCallback, useState, useEffect } from "react";
 import axios from "axios";
 
-const MainInput = () => {
+const MainInput = ({ onInputChange, onSubjectCreated }) => {
   const [name, setName] = useState("");
-  const navigate = useNavigate();
+
   const apiUrl = "https://openmind-api.vercel.app/15-4/subjects/";
 
   const handleInputChange = (e) => {
-    setName(e.target.value);
+    const value = e.target.value;
+    setName(value);
+    onInputChange(value);
   };
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      const response = 
 
+  const createSubject = useCallback(async () => {
+    if (!name.trim()) return null;
+    try {
+      const response = await axios.post(apiUrl, { name });
+      return response.data.id;
+    } catch (err) {
+      console.error(err);
+      return null;
+    }
+  }, [name]);
+
+  useEffect(() => {
+    onSubjectCreated(createSubject);
+  }, [createSubject, onSubjectCreated]);
 
   return (
-    <div className="bg-grayscale-10 border-grayscale-10 flex flex-col items-center justify-center gap-16 rounded-2xl border p-16">
+    <div>
       <input
         type="text"
         placeholder="이름을 입력하세요"
-        className="border-grayscale-40 bg-grayscale-10 h-46 w-257 gap-4 rounded-lg border bg-left bg-no-repeat px-16 py-12 pl-30"
+        value={name}
+        onChange={handleInputChange}
+        className={`border-grayscale-40 bg-grayscale-10 font-weight-regular rounded-lg border bg-[url('/src/assets/icons/person.svg')] bg-[position:16px_13px] bg-no-repeat py-13 pl-40`}
       />
-      <button className="bg-brown-40 h-46 w-257 rounded-lg text-white">
-        질문 받기
-      </button>
     </div>
   );
 };
