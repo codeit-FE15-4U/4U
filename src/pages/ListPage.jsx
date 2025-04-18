@@ -36,11 +36,6 @@ function ListPage() {
       <div className="tablet:gap-20 flex flex-wrap items-center justify-center gap-16">
         {/* UserCard 컴포넌트 내에서 데이터 불러오도록 수정 예정 */}
         <UserCard />
-        <UserCard />
-        <UserCard />
-        <UserCard />
-        <UserCard />
-        <UserCard />
       </div>
       {/* Pagenation 컴포넌트로 수정 예정*/}
       <div className="itmes-center flex justify-center">1 2 3 4 5</div>
