@@ -5,8 +5,9 @@ export const getQuestionList = async ({ subjectId, limit = 8, offset = 0 }) => {
     const response = await axios.get(
       `subjects/${subjectId}/questions/?limit=${limit}&offset=${offset}`,
     );
-    return response;
+    return response.data;
   } catch (error) {
-    console.log(error.message);
+    console.error(error.message);
+    throw error;
   }
 };
