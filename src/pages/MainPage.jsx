@@ -16,7 +16,7 @@ const MainPage = () => {
   const baseApi = "https://openmind-api.vercel.app/15-4/subjects/";
 
   const handleQuestionClick = async () => {
-    if (name.length === 0) return;
+    if (name.length === 0 || name.length > 15) return;
     try {
       const response = await axios.post(baseApi, {
         name: name,
@@ -26,7 +26,7 @@ const MainPage = () => {
       navigate(`/question/${subjectId}`);
     } catch (error) {
       console.error("API 요청 실패:", error);
-      alert("1~15자 이내로 작성해주세요.");
+      alert("이름은 1~15자 이내로 작성해주세요.");
     }
   };
 

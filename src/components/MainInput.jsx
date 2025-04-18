@@ -1,3 +1,4 @@
+import React from "react";
 import PersonIcon from "./person-type2";
 
 const MainInput = ({ name, setName }) => {
@@ -7,7 +8,8 @@ const MainInput = ({ name, setName }) => {
         type="text"
         placeholder="이름을 입력하세요"
         value={name}
-        onChange={(e) => setName(e.target.value)} //새로운이름을 인식하기
+        onChange={(e) => setName(e.target.value)}
+        maxLength={15}
         className="border-grayscale-40 bg-grayscale-10 font-weight-regular w-full rounded-lg border py-13 pl-40"
       />
       <PersonIcon
