@@ -23,7 +23,7 @@ const MainPage = () => {
         team: "15-4",
       });
       const subjectId = response.data.id;
-      navigate(`/question/${subjectId}`);
+      navigate(`/post/${subjectId}/answer`);
     } catch (error) {
       console.error("API 요청 실패:", error);
       alert("이름은 1~15자 이내로 작성해주세요.");
