@@ -4,15 +4,15 @@ import logo from "../assets/images/logo.png";
 import arrow from "../assets/icons/arrow.svg";
 import Button from "../components/Button";
 import UserCard from "../components/UserCard";
+import { useNavigate } from "react-router";
 
 function ListPage() {
   const [users, setUsers] = useState([]);
+  const navigate = useNavigate();
 
   const handleButtonClick = () => {
     const id = localStorage.getItem("userId");
-    !id
-      ? (window.location.href = "/")
-      : (window.location.href = `/post/${id}/answer`);
+    id ? navigate(`/post/${id}/answer`) : navigate("/");
   };
   const getUser = async () => {
     const user = await getUserList({ limit: 6, offset: 0 });
