@@ -16,24 +16,24 @@ function ListPage() {
 
   return (
     <div className="bg-grayscale-20">
-      <div className="tablet:flex-row tablet:justify-between flex flex-col items-center justify-center gap-24 px-50 py-40">
+      <div className="flex flex-col items-center justify-center gap-24 py-40 tablet:flex-row tablet:justify-between px-50">
         <img className="h-57 w-146" src={logo}></img>
         {/* Button 클릭 시 질문 받기로 생성한 id가 로컬 스토리지에 없으면 “/” 페이지로 이동 -> ok */}
         {/* Button 클릭 시 질문 받기로 생성한 id가 로컬 스토리지에 있으면 “/post/{id}/answer” 페이지로 이동 -> 확인필요 */}
-        <Button type="empty" onclick={handleButtonClick}>
+        <Button type="empty" onClick={handleButtonClick} disabled>
           답변하러 가기
           <img className="stroke" src={arrow} />
         </Button>
       </div>
-      <div className="tablet:flex-col tablet:gap-4 flex items-center justify-between px-24">
+      <div className="flex items-center justify-between px-24 tablet:flex-col tablet:gap-4">
         <p className="tablet:text-h1 text-h3 font-regular">
           누구에게 질문할까요?
         </p>
         {/* Dropdown 컴포넌트로 수정 예정 */}
         {/* Dropdown 클릭 시 이름순, 최신순 정렬기능 추가 예정 */}
-        <p className="text-caption1 font-medium">이름순</p>
+        <p className="font-medium text-caption1">이름순</p>
       </div>
-      <div className="tablet:gap-20 flex flex-wrap items-center justify-center gap-16">
+      <div className="flex flex-wrap items-center justify-center gap-16 tablet:gap-20">
         {/* UserCard 컴포넌트 내에서 데이터 불러오도록 수정 예정 */}
         <UserCard />
         <UserCard />
@@ -43,7 +43,7 @@ function ListPage() {
         <UserCard />
       </div>
       {/* Pagenation 컴포넌트로 수정 예정*/}
-      <div className="itmes-center flex justify-center">1 2 3 4 5</div>
+      <div className="flex justify-center itmes-center">1 2 3 4 5</div>
     </div>
   );
 }
