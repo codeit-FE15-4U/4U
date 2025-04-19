@@ -3,7 +3,7 @@ import { getUserList } from "../api/subjects";
 import logo from "../assets/images/logo.png";
 import arrow from "../assets/icons/arrow.svg";
 import Button from "../components/Button";
-import UserCard from "../components/UserCard";
+import UserCardList from "../components/UserCardList";
 import { useNavigate } from "react-router";
 
 function ListPage() {
@@ -47,7 +47,7 @@ function ListPage() {
           </p>
         </div>
         <div className="tablet:gap-20 flex flex-wrap items-center justify-center gap-16">
-          <UserCard users={users} />
+          <UserCardList users={users} />
         </div>
       </div>
       {/* Pagenation 컴포넌트로 수정 예정*/}

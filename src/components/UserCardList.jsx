@@ -1,6 +1,6 @@
 import messages from "../assets/icons/messages.svg";
 
-function UserList({ user }) {
+function UserCard({ user }) {
   return (
     <>
       <div className="flex flex-col gap-12">
@@ -10,7 +10,7 @@ function UserList({ user }) {
       <div className="text-caption1 font-regular text-grayscale-40 flex items-center justify-between">
         <div className="flex items-center justify-center gap-4">
           {/* messages icon 색상 변경 필요 */}
-          <img className="h-16 w-16" src={messages} />
+          <img className="size-16" src={messages} />
           <span>받은 질문</span>
         </div>
         <p>{user.questionCount}개</p>
@@ -19,7 +19,7 @@ function UserList({ user }) {
   );
 }
 
-function UserCard({ users }) {
+function UserCardList({ users }) {
   return (
     <ul className="flex flex-wrap justify-center gap-16">
       {users.map((user) => {
@@ -29,7 +29,7 @@ function UserCard({ users }) {
             className="tablet:h-187 border-grayscale-40 bg-grayscale-10 flex h-168 w-155 flex-col justify-between rounded-xl border p-16"
             key={user.id}
           >
-            <UserList user={user} />
+            <UserCard user={user} />
           </li>
         );
       })}
@@ -37,4 +37,4 @@ function UserCard({ users }) {
   );
 }
 
-export default UserCard;
+export default UserCardList;
