@@ -1,14 +1,16 @@
-const MainInput = () => {
+import React from "react";
+
+const MainInput = ({ name, setName }) => {
   return (
-    <div className="bg-grayscale-10 border-grayscale-10 flex flex-col items-center justify-center gap-16 rounded-2xl border p-16">
+    <div className="relative">
       <input
         type="text"
         placeholder="이름을 입력하세요"
-        className="border-grayscale-40 bg-grayscale-10 h-46 w-257 gap-4 rounded-lg border bg-left bg-no-repeat px-16 py-12 pl-30"
+        value={name}
+        onChange={(e) => setName(e.target.value)}
+        maxLength={15}
+        className="border-grayscale-40 bg-grayscale-10 font-weight-regular w-full rounded-lg border py-13 pl-40"
       />
-      <button className="bg-brown-40 h-46 w-257 rounded-lg text-white">
-        질문 받기
-      </button>
     </div>
   );
 };
