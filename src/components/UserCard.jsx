@@ -2,7 +2,7 @@ import messages from "../assets/icons/messages.svg";
 
 function UserCard({ imageSource, name, questionCount }) {
   return (
-    <>
+    <div className="flex flex-col justify-between p-16 border tablet:h-187 border-grayscale-40 bg-grayscale-10 h-168 w-155 rounded-xl">
       <div className="flex flex-col gap-12">
         <img className="w-48 h-48 rounded-full" src={imageSource} />
         <p className="text-body2 font-regular">{name}</p>
@@ -15,7 +15,7 @@ function UserCard({ imageSource, name, questionCount }) {
         </div>
         <p>{questionCount}개</p>
       </div>
-    </>
+    </div>
   );
 }
 
