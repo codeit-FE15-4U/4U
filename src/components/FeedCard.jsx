@@ -17,6 +17,10 @@ function FeedCard({ isAnswerPage, subject, question }) {
   );
 
   try {
+    if (!question) {
+      throw Error("Question does not exist");
+    }
+
     return (
       <div className="tablet:gap-32 tablet:p-32 shadow-1px font-regular text-grayscale-60 bg-grayscale-10 flex flex-col gap-24 rounded-2xl p-24">
         <div className="flex h-26 justify-between">
@@ -41,6 +45,7 @@ function FeedCard({ isAnswerPage, subject, question }) {
       </div>
     );
   } catch (e) {
+    console.error(e);
     return;
   }
 }
