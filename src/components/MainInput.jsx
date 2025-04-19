@@ -1,5 +1,4 @@
 import React from "react";
-import PersonIcon from "./person-type2";
 
 const MainInput = ({ name, setName }) => {
   return (
@@ -11,11 +10,6 @@ const MainInput = ({ name, setName }) => {
         onChange={(e) => setName(e.target.value)}
         maxLength={15}
         className="border-grayscale-40 bg-grayscale-10 font-weight-regular w-full rounded-lg border py-13 pl-40"
-      />
-      <PersonIcon
-        className="absolute top-1/2 left-16 -translate-y-1/2 transform"
-        size="16"
-        fill="#818181"
       />
     </div>
   );
