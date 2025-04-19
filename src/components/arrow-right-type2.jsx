@@ -2,8 +2,8 @@ import React from "react";
 
 const ArrowIcon = ({
   className = "#ffffff fill-current",
-  width = 19,
-  height = 18,
+  width = 20,
+  height = 20,
   fill = "#ffffff",
 }) => (
   <svg
