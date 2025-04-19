@@ -7,17 +7,13 @@ function UserList({ user }) {
         <img className="h-48 w-48 rounded-full" src={user.imageSource} />
         <p className="text-body2 font-regular">{user.name}</p>
       </div>
-      <div className="flex items-center justify-between">
+      <div className="text-caption1 font-regular text-grayscale-40 flex items-center justify-between">
         <div className="flex items-center justify-center gap-4">
           {/* messages icon 색상 변경 필요 */}
-          <img className="h-16 w-16" src={messages}></img>
-          <span className="text-caption1 font-regular text-grayscale-40">
-            받은 질문
-          </span>
+          <img className="h-16 w-16" src={messages} />
+          <span>받은 질문</span>
         </div>
-        <p className="text-caption1 font-regular text-grayscale-40">
-          {user.questionCount}개
-        </p>
+        <p>{user.questionCount}개</p>
       </div>
     </>
   );
