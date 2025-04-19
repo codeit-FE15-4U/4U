@@ -9,8 +9,10 @@ const QuestionLayout = () => {
   const { id } = useParams();
   const location = useLocation();
   const [name, setName] = useState(location.state?.name);
-  const [imageSource, setImageSource] = useState(location.state?.name);
-  const [questionCount, setQuestionCount] = useState(location.state?.name);
+  const [imageSource, setImageSource] = useState(location.state?.imageSource);
+  const [questionCount, setQuestionCount] = useState(
+    location.state?.questionCount,
+  );
 
   useEffect(() => {
     if (!name) {
