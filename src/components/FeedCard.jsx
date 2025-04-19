@@ -21,7 +21,7 @@ function FeedCard({ isAnswerPage, subject, question }) {
     if (!subject) throw Error("Subject does not exist");
 
     return (
-      <div className="tablet:gap-32 tablet:p-32 shadow-1px font-regular text-grayscale-60 bg-grayscale-10 flex flex-col gap-24 rounded-2xl p-24">
+      <div className="tablet:gap-32 tablet:p-32 shadow-1pt font-regular text-grayscale-60 bg-grayscale-10 flex flex-col gap-24 rounded-2xl p-24">
         <div className="flex justify-between">
           {/* <Badge /> */}
           {isAnswerPage && <IconMore className="size-26" />}
