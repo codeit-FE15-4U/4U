@@ -4,6 +4,8 @@ function UserCard({ imageSource, name, questionCount }) {
   return (
     <div className="flex flex-col justify-between p-16 border tablet:h-187 border-grayscale-40 bg-grayscale-10 h-168 w-155 rounded-xl">
       <div className="flex flex-col gap-12">
+        {/* <div className="tablet:min-w-[186px] w-full max-w-[220px] min-w-[155px]"> */}
+
         <img className="w-48 h-48 rounded-full" src={imageSource} />
         <p className="text-body2 font-regular">{name}</p>
       </div>
