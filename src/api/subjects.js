@@ -21,3 +21,14 @@ export const getSubject = async ({ subjectId }) => {
     throw error;
   }
 };
+
+export const getUserList = async ({ limit = 6, offset = 0 }) => {
+  try {
+    const response = await axios.get(
+      `subjects/?limit=${limit}&offset=${offset}`,
+    );
+    return response;
+  } catch (error) {
+    console.log(error.message);
+  }
+};
