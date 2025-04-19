@@ -3,7 +3,7 @@ import { useState } from "react";
 // import Reaction from "./Reaction";
 import FeedCardQuestion from "./FeedCardQuestion";
 import FeedCardAnswer from "./FeedCardAnswer";
-import iconMore from "../assets/icons/more.svg";
+import IconMore from "../assets/icons/more.svg?react";
 
 function FeedCard({ isAnswerPage, subject, question }) {
   const [state, setState] = useState(
@@ -23,9 +23,9 @@ function FeedCard({ isAnswerPage, subject, question }) {
 
     return (
       <div className="tablet:gap-32 tablet:p-32 shadow-1px font-regular text-grayscale-60 bg-grayscale-10 flex flex-col gap-24 rounded-2xl p-24">
-        <div className="flex h-26 justify-between">
+        <div className="flex justify-between">
           {/* <Badge /> */}
-          {isAnswerPage && <img className="h-26" src={iconMore} />}
+          {isAnswerPage && <IconMore className="size-26" />}
         </div>
         <FeedCardQuestion
           content={question.content}
