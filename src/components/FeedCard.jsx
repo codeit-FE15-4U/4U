@@ -8,7 +8,7 @@ import iconMore from "../assets/icons/more.svg";
 function FeedCard({ isAnswerPage, subject, question }) {
   const [state, setState] = useState(
     (function getState() {
-      if (question.answer) {
+      if (question?.answer) {
         return question.answer.isRejected ? "rejected" : "sent";
       } else {
         return isAnswerPage ? "empty" : "none";
