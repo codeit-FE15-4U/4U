@@ -1,6 +1,6 @@
 import { useState } from "react";
-import Badge from "./Badge";
-import Reaction from "./Reaction";
+// import Badge from "./Badge";
+// import Reaction from "./Reaction";
 import FeedCardQuestion from "./FeedCardQuestion";
 import FeedCardAnswer from "./FeedCardAnswer";
 import iconMore from "../assets/icons/more.svg";
@@ -20,7 +20,7 @@ export default function FeedCard({ isAnswerPage, subject, question }) {
     return (
       <div className="tablet:gap-32 tablet:p-32 shadow-1px font-regular text-grayscale-60 bg-grayscale-10 flex flex-col gap-24 rounded-2xl p-24">
         <div className="flex h-26 justify-between">
-          <Badge />
+          {/* <Badge /> */}
           {isAnswerPage && <img className="h-26" src={iconMore} />}
         </div>
         <FeedCardQuestion
@@ -36,7 +36,7 @@ export default function FeedCard({ isAnswerPage, subject, question }) {
           />
         )}
         <div className="border-grayscale-30 h-43 border-t border-solid">
-          <Reaction like={question.like} dislike={question.dislike} />
+          {/* <Reaction like={question.like} dislike={question.dislike} /> */}
         </div>
       </div>
     );

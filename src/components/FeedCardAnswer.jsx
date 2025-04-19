@@ -1,4 +1,4 @@
-import FeedCardAnswerInput from "./FeedCardAnswerInput";
+// import FeedCardAnswerInput from "./FeedCardAnswerInput";
 import getDurationString from "../utils/getDurationString";
 
 export default function FeedCardAnswer({ state, setState, subject, answer }) {
@@ -22,12 +22,7 @@ export default function FeedCardAnswer({ state, setState, subject, answer }) {
             case "rejected":
               return <div className="text-body3 text-red-50">답변 거절</div>;
             case "empty":
-              return (
-                <FeedCardAnswerInput
-                  setState={setState}
-                  content={answer?.content}
-                />
-              );
+            // return <FeedCardAnswerInput setState={setState} content={answer?.content} />;
             default:
               return;
           }
