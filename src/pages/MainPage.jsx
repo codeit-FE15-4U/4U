@@ -38,7 +38,7 @@ const MainPage = () => {
   return (
     <div className="bg-grayscale-20 flex h-screen flex-col items-center justify-center gap-24 bg-[url('./assets/images/main-bg.png')] bg-[length:100%_auto] bg-bottom bg-no-repeat">
       <img src={Logo} alt="Logo" className="w-248" />
-      <Button type="" onclick={handleListClick}>
+      <Button type="" onClick={handleListClick}>
         질문하러 가기
       </Button>
       <div className="bg-grayscale-10 border-grayscale-10 flex flex-col items-center justify-center gap-16 rounded-2xl p-16">
@@ -46,7 +46,7 @@ const MainPage = () => {
         <Button
           type="fill"
           disabled={name.length === 0 || name.length > 15}
-          onclick={handleQuestionClick}
+          onClick={handleQuestionClick}
         >
           질문 받기
         </Button>
