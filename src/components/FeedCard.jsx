@@ -5,7 +5,7 @@ import FeedCardQuestion from "./FeedCardQuestion";
 import FeedCardAnswer from "./FeedCardAnswer";
 import iconMore from "../assets/icons/more.svg";
 
-export default function FeedCard({ isAnswerPage, subject, question }) {
+function FeedCard({ isAnswerPage, subject, question }) {
   const [state, setState] = useState(
     (function getState() {
       if (question.answer) {
@@ -44,3 +44,5 @@ export default function FeedCard({ isAnswerPage, subject, question }) {
     return;
   }
 }
+
+export default FeedCard;

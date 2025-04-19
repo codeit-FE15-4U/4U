@@ -1,6 +1,6 @@
 import getDurationString from "../utils/getDurationString";
 
-export default function FeedCardQuestion({ content, createdAt }) {
+function FeedCardQuestion({ content, createdAt }) {
   return (
     <div>
       <div className="text-caption1 text-grayscale-40 mb-4 font-medium">{`질문 · ${getDurationString(createdAt)}전`}</div>
@@ -8,3 +8,5 @@ export default function FeedCardQuestion({ content, createdAt }) {
     </div>
   );
 }
+
+export default FeedCardQuestion;

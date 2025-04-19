@@ -1,7 +1,7 @@
 // import FeedCardAnswerInput from "./FeedCardAnswerInput";
 import getDurationString from "../utils/getDurationString";
 
-export default function FeedCardAnswer({ state, setState, subject, answer }) {
+function FeedCardAnswer({ state, setState, subject, answer }) {
   return (
     <div className="flex flex-row gap-12">
       <div
@@ -31,3 +31,5 @@ export default function FeedCardAnswer({ state, setState, subject, answer }) {
     </div>
   );
 }
+
+export default FeedCardAnswer;
