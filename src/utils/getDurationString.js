@@ -16,7 +16,7 @@ export default function getDurationString(createdAt) {
 
     for (let i=0; i < time.length; i++) {
         if (duration / time[i] > 1) {
-            return (Math.ceil(duration / time[i]) + timeString[i]);
+            return (Math.floor(duration / time[i]) + timeString[i]);
         }
     }
     return "방금";
