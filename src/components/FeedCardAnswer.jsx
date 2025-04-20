@@ -15,23 +15,15 @@ function FeedCardAnswer({ state, setState, subject, answer }) {
             {state === "empty" || getDurationString(answer?.createdAt) + "전"}
           </div>
         </div>
-        {(function (state) {
-          switch (state) {
-            case "sent":
-              return <div className="text-body3">{answer?.content}</div>;
-            case "rejected":
-              return <div className="text-body3 text-red-50">답변 거절</div>;
-            case "empty":
-              return (
-                <FeedCardAnswerInput
-                  setState={setState}
-                  content={answer?.content}
-                />
-              );
-            default:
-              return;
-          }
-        })(state)}
+        {state === "sent" && (
+          <div className="text-body3">{answer?.content}</div>
+        )}
+        {state === "rejected" && (
+          <div className="text-body3 text-red-50">답변 거절</div>
+        )}
+        {state === "empty" && (
+          <FeedCardAnswerInput setState={setState} content={answer?.content} />
+        )}
       </section>
     </div>
   );
