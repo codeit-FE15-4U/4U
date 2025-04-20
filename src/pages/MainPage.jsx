@@ -1,6 +1,7 @@
 import Button from "../components/Button";
 import MainInput from "../components/MainInput";
 import Logo from "../assets/images/logo.png";
+import Arrow from "../assets/icons/arrow.svg?react";
 import { useState } from "react";
 import { useNavigate } from "react-router";
 import { createSubject } from "../api/subjects";
@@ -40,6 +41,7 @@ const MainPage = () => {
       <img src={Logo} alt="Logo" className="w-248" />
       <Button type="" onClick={handleListClick}>
         질문하러 가기
+        <Arrow className="text-brown-40 size-20" />
       </Button>
       <div className="bg-grayscale-10 border-grayscale-10 flex flex-col items-center justify-center gap-16 rounded-2xl p-16">
         <MainInput name={name} setName={setName} />
