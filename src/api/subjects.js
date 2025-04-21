@@ -32,5 +32,13 @@ export const createSubject = async ({ name }) => {
   } catch (error) {
     console.error(error.message);
     throw error;
+export const getUserList = async ({ limit = 6, offset = 0 }) => {
+  try {
+    const response = await axios.get(
+      `subjects/?limit=${limit}&offset=${offset}`,
+    );
+    return response;
+  } catch (error) {
+    console.log(error.message);
   }
 };
