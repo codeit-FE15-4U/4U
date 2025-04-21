@@ -2,7 +2,8 @@ import Person from "../assets/icons/person.svg?react";
 
 const InputField = ({ name, setName, placeholder }) => {
   return (
-    <div className="bg-grayscale-10 border-grayscale-10 flex flex-col items-center justify-center gap-16 rounded-2xl border p-16">
+    <div className="relative">
+      <Person className="text-grayscale-40 absolute top-1/2 left-16 size-20 -translate-y-1/2" />
       <input
         type="text"
         placeholder={placeholder}
@@ -11,9 +12,6 @@ const InputField = ({ name, setName, placeholder }) => {
         maxLength={15}
         className="border-grayscale-40 bg-grayscale-10 focus:border-brown-40 w-full rounded-lg border-1 py-13 pr-13 pl-40 focus:outline-none"
       />
-      <button className="bg-brown-40 h-46 w-257 rounded-lg text-white">
-        질문 받기
-      </button>
     </div>
   );
 };
