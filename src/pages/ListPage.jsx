@@ -29,7 +29,7 @@ function ListPage() {
         <img className="h-57 w-146" src={logo}></img>
         {/* Button 클릭 시 질문 받기로 생성한 id가 로컬 스토리지에 없으면 “/” 페이지로 이동 -> ok */}
         {/* Button 클릭 시 질문 받기로 생성한 id가 로컬 스토리지에 있으면 “/post/{id}/answer” 페이지로 이동 -> 확인필요 */}
-        <Button type="empty" onClick={handleButtonClick} disabled>
+        <Button type="empty" onClick={handleButtonClick}>
           답변하러 가기
           {/* arrow icon 색상 변경 필요 */}
           <img className="stroke" src={arrow} />

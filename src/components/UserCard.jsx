@@ -2,14 +2,14 @@ import messages from "../assets/icons/messages.svg";
 
 function UserCard({ imageSource, name, questionCount }) {
   return (
-    <div className="flex flex-col justify-between p-16 border tablet:h-187 border-grayscale-40 bg-grayscale-10 h-168 w-155 rounded-xl">
+    <div className="tablet:h-187 border-grayscale-40 bg-grayscale-10 pc:w-220 tablet:min-w-186 tablet:max-w-220 flex h-168 max-w-186 min-w-155 flex-col justify-between rounded-xl border p-16">
       <div className="flex flex-col gap-12">
         {/* <div className="tablet:min-w-[186px] w-full max-w-[220px] min-w-[155px]"> */}
 
-        <img className="w-48 h-48 rounded-full" src={imageSource} />
+        <img className="h-48 w-48 rounded-full" src={imageSource} />
         <p className="text-body2 font-regular">{name}</p>
       </div>
-      <div className="flex items-center justify-between text-caption1 font-regular text-grayscale-40">
+      <div className="text-caption1 font-regular text-grayscale-40 flex items-center justify-between">
         <div className="flex items-center justify-center gap-4">
           {/* messages icon 색상 변경 필요 */}
           <img className="size-16" src={messages} />

@@ -2,7 +2,7 @@ import UserCard from "./UserCard";
 
 function UserList({ users }) {
   return (
-    <ul className="grid justify-center grid-cols-2 gap-16 tablet:grid-cols-3 pc:grid-cols-4">
+    <ul className="tablet:grid-cols-[repeat(auto-fit,_minmax(186px,_1fr))] pc:grid-cols-4 grid w-full max-w-940 grid-cols-2 justify-center gap-16">
       {users.map((user) => {
         const { imageSource, name, questionCount } = user;
 
@@ -12,6 +12,7 @@ function UserList({ users }) {
             <UserCard
               imageSource={imageSource}
               name={name}
+              ㄴㄴ
               questionCount={questionCount}
             />
           </li>
