@@ -2,7 +2,7 @@ import messages from "../assets/icons/messages.svg";
 
 function UserCard({ imageSource, name, questionCount }) {
   return (
-    <div className="tablet:h-187 border-grayscale-40 bg-grayscale-10 pc:w-220 tablet:min-w-186 tablet:max-w-220 flex h-168 max-w-186 min-w-155 flex-col justify-between rounded-xl border p-16">
+    <div className="tablet:h-187 border-grayscale-40 bg-grayscale-10 flex h-168 flex-col justify-between rounded-xl border p-16">
       <div className="flex flex-col gap-12">
         {/* <div className="tablet:min-w-[186px] w-full max-w-[220px] min-w-[155px]"> */}
 
