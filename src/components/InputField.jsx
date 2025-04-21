@@ -1,12 +1,12 @@
 import Person from "../assets/icons/person.svg?react";
 
-const MainInput = ({ name, setName }) => {
+const InputField = ({ name, setName, placeholder }) => {
   return (
     <div className="relative">
       <Person className="text-grayscale-40 absolute top-1/2 left-16 size-20 -translate-y-1/2" />
       <input
         type="text"
-        placeholder="이름을 입력하세요"
+        placeholder={placeholder}
         value={name}
         onChange={(e) => setName(e.target.value)}
         maxLength={15}
@@ -16,4 +16,4 @@ const MainInput = ({ name, setName }) => {
   );
 };
 
-export default MainInput;
+export default InputField;
