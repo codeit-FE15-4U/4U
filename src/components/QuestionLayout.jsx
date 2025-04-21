@@ -36,8 +36,8 @@ const QuestionLayout = () => {
   }, [id]);
   return (
     <div className="bg-grayscale-20 relative min-h-screen pb-126">
-      <div className="pc:block absolute z-0 hidden h-234 w-full bg-white" />
-      <div className="tablet:bg-size-[1200px_234px] relative flex flex-col gap-12 bg-[url(/src/assets/images/openmind-bg.png)] bg-size-[1200px_177px] bg-top bg-no-repeat px-24">
+      <div className="tablet:bg-size-[1200px_234px] tablet:h-234 absolute h-177 w-full bg-white bg-[url(/src/assets/images/openmind-bg.png)] bg-size-[906px_177px] bg-center bg-no-repeat" />
+      <div className="relative px-24">
         <header className="flex flex-col items-center gap-12">
           <Link to="/list">
             <img
@@ -58,7 +58,7 @@ const QuestionLayout = () => {
           </ul>
         </header>
 
-        <main className="flex justify-center">
+        <main className="mt-12 flex justify-center">
           <Outlet
             context={{
               questionList,
