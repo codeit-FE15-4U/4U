@@ -10,6 +10,10 @@ import { useNavigate } from "react-router";
 function ListPage() {
   const [users, setUsers] = useState([]);
   const navigate = useNavigate();
+  const options = [
+    { label: "최신순", value: "latest" },
+    { label: "이름순", value: "name" },
+  ];
 
   const handleButtonClick = () => {
     const id = localStorage.getItem("userId");
@@ -43,7 +47,7 @@ function ListPage() {
           </p>
           {/* Dropdown 컴포넌트로 수정 예정 */}
           {/* Dropdown 클릭 시 이름순, 최신순 정렬기능 추가 예정 */}
-          <Dropdown />
+          <Dropdown options={options} />
         </div>
         <div className="tablet:gap-20 flex flex-wrap items-center justify-center gap-16">
           <UserList users={users} />

@@ -2,14 +2,15 @@ import { useEffect, useState, useRef } from "react";
 import arrowDown from "../assets/icons/arrow-down.svg";
 import arrowUp from "../assets/icons/arrow-up.svg";
 
-function Dropdown() {
+function Dropdown({ options }) {
+  // options: label, value 값을 가진 객체로 받아오기
+  // const options = [
+  //   { label: "최신순", value: "latest" },
+  //   { label: "이름순", value: "name" },
+  // ];
   const [isOpen, setIsOpen] = useState(false);
   const [selected, setSelected] = useState("최신순");
   const dropdownRef = useRef();
-  const options = [
-    { label: "최신순", value: "latest" },
-    { label: "이름순", value: "name" },
-  ];
 
   const handleDropdown = () => {
     setIsOpen(!isOpen);
