@@ -11,7 +11,7 @@ const QuestionPage = () => {
         <ul className="tablet:gap-20 mt-16 flex w-full flex-col gap-16">
           {questionList.map((question) => {
             return (
-              <li id={question.id} className="">
+              <li key={question.id} className="">
                 <FeedCard
                   isAnswerPage={false}
                   subject={subject}
