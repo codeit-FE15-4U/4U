@@ -63,7 +63,13 @@ const QuestionLayout = () => {
           </div>
           <img className="mt-66 w-114" src={EmptyBox} alt="빈 박스 이미지" />
         </div>
-        <Outlet context={{ questionList, questionCount }} />
+        <Outlet
+          context={{
+            questionList,
+            questionCount,
+            subject: { name, imageSource },
+          }}
+        />
       </div>
     </div>
   );
