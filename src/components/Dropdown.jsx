@@ -1,16 +1,17 @@
-import { useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import arrowDown from "../assets/icons/arrow-down.svg";
 import arrowUp from "../assets/icons/arrow-up.svg";
 
 function Dropdown() {
   const [isOpen, setIsOpen] = useState(false);
   const [selected, setSelected] = useState("최신순");
+  const dropdownRef = useRef();
   const options = [
     { label: "최신순", value: "latest" },
     { label: "이름순", value: "name" },
   ];
 
-  const openOption = () => {
+  const handleDropdown = () => {
     setIsOpen(!isOpen);
   };
 
@@ -19,12 +20,25 @@ function Dropdown() {
     setIsOpen(false);
   };
 
+  useEffect(() => {
+    const handleOutsideClick = (e) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
+        setIsOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleOutsideClick);
+  }, []);
+
   return (
     <div
       className={`${isOpen ? "border-black text-black" : "border-grayscale-40 text-grayscale-40"} bg-grayscale-10 text-caption1 weight-medium relative rounded-lg border px-12 py-8`}
+      ref={dropdownRef}
     >
       <div className="flex items-center justify-center gap-4">
-        <button className="text-caption1 weight-medium" onClick={openOption}>
+        <button
+          className="text-caption1 weight-medium"
+          onClick={handleDropdown}
+        >
           {selected}
         </button>
         <img className="h-14 w-14" src={isOpen ? arrowUp : arrowDown} />
