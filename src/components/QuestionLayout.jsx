@@ -36,7 +36,7 @@ const QuestionLayout = () => {
   }, [id]);
   return (
     <div className="bg-grayscale-20 relative min-h-screen pb-126">
-      <div className="pc:block none absolute z-0 h-234 w-full bg-white" />
+      <div className="pc:block absolute z-0 hidden h-234 w-full bg-white" />
       <div className="tablet:bg-size-[1200px_234px] relative flex flex-col gap-12 bg-[url(/src/assets/images/openmind-bg.png)] bg-size-[1200px_177px] bg-top bg-no-repeat px-24">
         <header className="flex flex-col items-center gap-12">
           <Link to="/list">
