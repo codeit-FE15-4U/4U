@@ -43,9 +43,7 @@ function ListPage() {
           </p>
           {/* Dropdown 컴포넌트로 수정 예정 */}
           {/* Dropdown 클릭 시 이름순, 최신순 정렬기능 추가 예정 */}
-          <p className="text-caption1 rounded-lg border px-12 py-8 font-medium">
-            이름순
-          </p>
+          <Dropdown />
         </div>
         <div className="tablet:gap-20 flex flex-wrap items-center justify-center gap-16">
           <UserList users={users} />
