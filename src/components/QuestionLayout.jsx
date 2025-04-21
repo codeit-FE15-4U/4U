@@ -55,14 +55,7 @@ const QuestionLayout = () => {
           <li className="size-40 rounded-full bg-yellow-50"></li>
           <li className="size-40 rounded-full bg-blue-50"></li>
         </ul>
-        <div className="border-brown-20 bg-brown-10 tablet:px-32 mt-54 flex min-h-330 w-full max-w-716 flex-col items-center rounded-2xl border px-24 py-16">
-          <div>
-            <p className="text-body2 tablet:text-body1 text-brown-40 font-regular">
-              아직 질문이 없습니다
-            </p>
-          </div>
-          <img className="mt-66 w-114" src={EmptyBox} alt="빈 박스 이미지" />
-        </div>
+
         <Outlet
           context={{
             questionList,
