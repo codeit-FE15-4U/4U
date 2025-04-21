@@ -1,5 +1,5 @@
 import Button from "../components/Button";
-import MainInput from "../components/MainInput";
+import InputField from "../components/InputField";
 import Logo from "../assets/images/logo.png";
 import Arrow from "../assets/icons/arrow.svg?react";
 import { useState } from "react";
@@ -44,7 +44,11 @@ const MainPage = () => {
         <Arrow className="text-brown-40 size-20" />
       </Button>
       <div className="bg-grayscale-10 border-grayscale-10 flex flex-col items-center justify-center gap-16 rounded-2xl p-16">
-        <MainInput name={name} setName={setName} />
+        <InputField
+          name={name}
+          setName={setName}
+          placeholder={"이름을 입력해주세요"}
+        />
         <Button
           type="fill"
           disabled={name.length === 0 || name.length > 15}
