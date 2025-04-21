@@ -39,7 +39,7 @@ const MainPage = () => {
   return (
     <div className="bg-grayscale-20 flex h-screen flex-col items-center justify-center gap-24 bg-[url('./assets/images/main-bg.png')] bg-[length:100%_auto] bg-bottom bg-no-repeat">
       <img src={Logo} alt="Logo" className="w-248" />
-      <Button type="" onClick={handleListClick}>
+      <Button type="empty" onClick={handleListClick}>
         질문하러 가기
         <Arrow className="text-brown-40 size-20" />
       </Button>
