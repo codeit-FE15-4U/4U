@@ -22,6 +22,18 @@ export const getSubject = async ({ subjectId }) => {
   }
 };
 
+//네임 생성
+export const createSubject = async ({ name }) => {
+  try {
+    const response = await axios.post(`subjects/`, {
+      name,
+    });
+    return response.data;
+  } catch (error) {
+    console.error(error.message);
+    throw error;
+  }
+};
 export const getUserList = async ({ limit = 6, offset = 0 }) => {
   try {
     const response = await axios.get(
