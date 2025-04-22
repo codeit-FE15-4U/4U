@@ -1,12 +1,18 @@
 import { useState } from "react";
 import Button from "./Button";
 import InputTextarea from "./InputTextarea";
+import { patchAnswer, postAnswer } from "../api/subjects";
 
 function FeedCardAnswerInput({ setState, questionId, answer }) {
   const [value, setValue] = useState(answer?.content);
 
   const handleClick = (e) => {
     e.preventDefault();
+    if (answer) {
+      patchAnswer({ ...answer, content: value });
+    } else {
+      postAnswer({ questionId, content: value, isRejected: false });
+    }
     setState("sent");
   };
 
