@@ -1,6 +1,7 @@
 import { useState, useRef } from "react";
 import arrowDown from "../assets/icons/arrow-down.svg";
 import arrowUp from "../assets/icons/arrow-up.svg";
+import DropdownMenu from "./DropdownMenu";
 
 function Dropdown({ options }) {
   // options: label, value 값을 가진 객체로 받아오기
@@ -43,19 +44,12 @@ function Dropdown({ options }) {
         <img className="size-14" src={isOpen ? arrowUp : arrowDown} />
       </div>
       {isOpen && (
-        <ul className="border-grayscale-30 bg-grayscale-10 shadow-1pt absolute top-40 right-0 w-79 rounded-lg border">
-          {options.map((option) => {
-            return (
-              <li
-                className={`${selected === option.label ? "text-blue-50" : "text-grayscale-50"} hover:bg-grayscale-20 px-16 py-6`}
-                key={option.value}
-                onClick={() => handleOptionClick(option)}
-              >
-                {option.label}
-              </li>
-            );
-          })}
-        </ul>
+        <DropdownMenu
+          options={options}
+          selected={selected}
+          onSelect={handleOptionClick}
+          isOpen={isOpen}
+        />
       )}
     </div>
   );

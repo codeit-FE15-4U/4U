@@ -3,9 +3,9 @@ import { getUserList } from "../api/subjects";
 import logo from "../assets/images/logo.png";
 import arrow from "../assets/icons/arrow.svg";
 import Button from "../components/Button";
-import Dropdown from "../components/Dropdown";
 import UserList from "../components/UserList";
 import { useNavigate } from "react-router";
+import UserDropdownTrigger from "../components/UserDropdownTrigger";
 
 function ListPage() {
   const [users, setUsers] = useState([]);
@@ -46,7 +46,7 @@ function ListPage() {
             누구에게 질문할까요?
           </p>
           {/* Dropdown 클릭 시 이름순, 최신순 정렬기능 추가 예정 */}
-          <Dropdown options={options} />
+          <UserDropdownTrigger options={options} />
         </div>
         <div className="tablet:gap-20 flex flex-wrap items-center justify-center gap-16">
           <UserList users={users} />
