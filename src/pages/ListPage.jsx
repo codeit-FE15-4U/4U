@@ -5,7 +5,7 @@ import arrow from "../assets/icons/arrow.svg";
 import Button from "../components/Button";
 import UserList from "../components/UserList";
 import { useNavigate } from "react-router";
-import UserDropdownTrigger from "../components/UserDropdownTrigger";
+import UserDropdownTrigger from "../components/DropdownTriggerUser";
 
 function ListPage() {
   const [users, setUsers] = useState([]);
