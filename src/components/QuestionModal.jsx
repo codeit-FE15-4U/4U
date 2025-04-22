@@ -11,9 +11,9 @@ const QuestionModal = ({ onClose }) => {
       {/* 모달 배경 */}
       <div className="absolute inset-0 bg-black opacity-56" onClick={onClose} />
       {/* 모달 콘텐츠 */}
-      <div className="bg-grayscale-10 tablet:min-h-454 tablet:pt-40 tablet:pb-70 tablet:px-40 shadow-3pt z-10 h-568 min-h-568 w-full flex-col rounded-[24px] p-24">
+      <div className="bg-grayscale-10 tablet:min-h-454 tablet:max-w-612 tablet:max-h-454 tablet:px-40 shadow-3pt z-10 min-h-568 w-full min-w-327 flex-col rounded-[24px] p-24">
         <div className="flex items-center justify-between">
-          <div className="text-grayscale-60 flex gap-8 text-[20px]">
+          <div className="text-grayscale-60 flex gap-8 text-[20px] leading-25">
             <MessageImg className="size-28" />
             질문을 작성하세요
           </div>
@@ -32,7 +32,8 @@ const QuestionModal = ({ onClose }) => {
         <Button
           className="mt-8 w-full border-none"
           type="fill"
-          disabled={!message.trim()}
+          disabled={!message}
+          onClick={onClose}
         >
           질문 보내기
         </Button>
