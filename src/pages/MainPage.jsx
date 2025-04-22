@@ -38,18 +38,23 @@ const MainPage = () => {
 
   return (
     <div className="bg-grayscale-20 flex h-screen flex-col items-center justify-center gap-24 bg-[url('./assets/images/main-bg.png')] bg-[length:100%_auto] bg-bottom bg-no-repeat">
-      <img src={Logo} alt="Logo" className="w-248" />
-      <Button type="empty" onClick={handleListClick}>
+      <img src={Logo} alt="Logo" className="tablet:w-456 w-248" />
+      <Button
+        type="empty"
+        onClick={handleListClick}
+        className="tablet:absolute tablet:top-44 tablet:right-50 pc:top-45 pc:right-130 tablet:text-16 text-14"
+      >
         질문하러 가기
         <Arrow className="text-brown-40 size-20" />
       </Button>
-      <div className="bg-grayscale-10 border-grayscale-10 flex flex-col items-center justify-center gap-16 rounded-2xl p-16">
+      <div className="bg-grayscale-10 border-grayscale-10 tablet:p-32 flex flex-col items-center justify-center gap-16 rounded-2xl p-24">
         <InputField
           name={name}
           setName={setName}
           placeholder={"이름을 입력해주세요"}
         />
         <Button
+          className="tablet:w-336"
           type="fill"
           disabled={name.length === 0 || name.length > 15}
           onClick={handleQuestionClick}

@@ -44,3 +44,31 @@ export const getUserList = async ({ limit = 6, offset = 0 }) => {
     console.log(error.message);
   }
 };
+
+export const postAnswer = async ({ questionId, content, isRejected }) => {
+  try {
+    if (!questionId) throw Error("QuestionId does not exist");
+    const response = await axios.post(`questions/${questionId}/answer/`, {
+      questionId,
+      content,
+      isRejected,
+      team: "15-4",
+    });
+    return response;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const patchAnswer = async ({ id, content, isRejected }) => {
+  try {
+    if (!id) throw Error("Id does not exist");
+    const response = await axios.patch(`answers/${id}/`, {
+      content,
+      isRejected,
+    });
+    return response;
+  } catch (error) {
+    console.log(error);
+  }
+};
