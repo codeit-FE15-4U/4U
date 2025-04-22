@@ -7,9 +7,13 @@ const AnswerPage = () => {
   const { questionList, questionCount, subject } = useOutletContext();
   const navigate = useNavigate();
   const handleDelete = async () => {
-    await deleteSubject({ subjectId: subject.id });
-    localStorage.removeItem("subject");
-    navigate("/list");
+    try {
+      await deleteSubject({ subjectId: subject.id });
+      localStorage.removeItem("subject");
+      navigate("/list");
+    } catch {
+      alert("삭제를 실패했습니다.");
+    }
   };
   return (
     <div className="relative w-full max-w-716">
