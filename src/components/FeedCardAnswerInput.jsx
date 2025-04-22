@@ -20,11 +20,17 @@ function FeedCardAnswerInput({ setState, questionId, answer }) {
     <form>
       <InputTextarea
         name="answer"
+        className="h-186 w-full"
         placeholder="답변을 입력해주세요"
         value={value}
         setValue={setValue}
       />
-      <Button type="fill" onClick={handleClick} disabled={!!value}>
+      <Button
+        className="w-full"
+        type="fill"
+        onClick={handleClick}
+        disabled={!value}
+      >
         {answer ? "수정 완료" : "답변 완료"}
       </Button>
     </form>
