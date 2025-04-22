@@ -3,6 +3,8 @@ import { BrowserRouter, Routes, Route } from "react-router";
 import MainPage from "./pages/MainPage";
 import ListPage from "./pages/ListPage";
 import QuestionLayout from "./components/QuestionLayout";
+import QuestionPage from "./pages/QuestionPage";
+import AnswerPage from "./pages/AnswerPage";
 
 function App() {
   return (
@@ -11,8 +13,8 @@ function App() {
         <Route path="/" element={<MainPage />} />
         <Route path="/list" element={<ListPage />} />
         <Route path="/post/:id" element={<QuestionLayout />}>
-          {/* <Route index element={}/>
-          <Route path="answer" element={}/> */}
+          <Route index element={<QuestionPage />} />
+          <Route path="answer" element={<AnswerPage />} />
         </Route>
       </Routes>
     </BrowserRouter>
