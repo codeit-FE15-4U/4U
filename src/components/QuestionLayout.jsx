@@ -1,5 +1,4 @@
 import LogoImg from "../assets/images/logo.png";
-import EmptyBox from "../assets/images/empty-box.svg";
 import { Link, Outlet, useLocation, useParams } from "react-router";
 import { useEffect, useState } from "react";
 import { getQuestionList, getSubject } from "../api/subjects";
