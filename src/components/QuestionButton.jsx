@@ -12,7 +12,7 @@ const QuestionButton = () => {
     <>
       <Button
         type="round"
-        className="fixed right-24 bottom-24 disabled:opacity-50"
+        className="tablet:px-49.5 fixed right-24 bottom-24 px-24 py-14.5 text-[20px] disabled:opacity-50"
         onClick={handleOpen}
         disabled={isModalOpen}
       >
