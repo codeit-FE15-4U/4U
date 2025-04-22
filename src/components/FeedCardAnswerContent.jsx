@@ -6,13 +6,16 @@ import { patchAnswer, postAnswer } from "../api/subjects";
 function FeedCardAnswerInput({ state, setState, questionId, answer }) {
   const [value, setValue] = useState(answer?.content);
 
-  const handleClick = (e) => {
+  const handleClick = async (e) => {
     e.preventDefault();
+    const content = value;
+    setValue("");
     if (answer) {
-      patchAnswer({ ...answer, content: value });
+      await patchAnswer({ ...answer, content });
     } else {
-      postAnswer({ questionId, content: value, isRejected: false });
+      await postAnswer({ questionId, content, isRejected: false });
     }
+    setValue(content);
     setState("sent");
   };
 
