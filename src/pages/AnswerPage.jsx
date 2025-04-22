@@ -19,6 +19,7 @@ const AnswerPage = () => {
   return (
     <div className="relative w-full max-w-716">
       <Button
+        type="round"
         onClick={handleDelete}
         className="pc:top-10 tablet:top-0 tablet:w-100 tablet:h-35 tablet:text-[15px] absolute top-23 right-0 w-70 text-[10px]/25 font-extralight"
       >
