@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from "react";
+import { useState, useRef } from "react";
 import arrowDown from "../assets/icons/arrow-down.svg";
 import arrowUp from "../assets/icons/arrow-up.svg";
 
@@ -15,23 +15,20 @@ function Dropdown({ options }) {
   const handleDropdown = () => {
     setIsOpen(!isOpen);
   };
-
   const handleOptionClick = (option) => {
     setSelected(option.label);
     setIsOpen(false);
   };
-
-  useEffect(() => {
-    const handleOutsideClick = (e) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
-        setIsOpen(false);
-      }
-    };
-    document.addEventListener("mousedown", handleOutsideClick);
-  }, []);
+  const handleOutsideClick = (e) => {
+    if (!dropdownRef.current.contains(e.relatedTarget)) {
+      setIsOpen(false);
+    }
+  };
 
   return (
     <div
+      tabIndex={-1}
+      onBlur={handleOutsideClick}
       className={`${isOpen ? "border-black text-black" : "border-grayscale-40 text-grayscale-40"} bg-grayscale-10 text-caption1 weight-medium relative rounded-lg border px-12 py-8`}
       ref={dropdownRef}
     >

@@ -45,7 +45,6 @@ function ListPage() {
           <p className="tablet:text-h1 text-h3 font-regular">
             누구에게 질문할까요?
           </p>
-          {/* Dropdown 컴포넌트로 수정 예정 */}
           {/* Dropdown 클릭 시 이름순, 최신순 정렬기능 추가 예정 */}
           <Dropdown options={options} />
         </div>
