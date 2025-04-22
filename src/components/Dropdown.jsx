@@ -43,14 +43,14 @@ function Dropdown({ options }) {
           {selected}
         </button>
         {/* arrowUp, arrowDown icon 색상 변경 필요 */}
-        <img className="h-14 w-14" src={isOpen ? arrowUp : arrowDown} />
+        <img className="size-14" src={isOpen ? arrowUp : arrowDown} />
       </div>
       {isOpen && (
         <ul className="border-grayscale-30 bg-grayscale-10 shadow-1pt absolute top-40 right-0 w-79 rounded-lg border">
           {options.map((option) => {
             return (
               <li
-                className={`${selected === option.label ? "text-blue-50" : "text-grayscale-50"} px-16 py-6`}
+                className={`${selected === option.label ? "text-blue-50" : "text-grayscale-50"} hover:bg-grayscale-20 px-16 py-6`}
                 key={option.value}
                 onClick={() => handleOptionClick(option)}
               >
