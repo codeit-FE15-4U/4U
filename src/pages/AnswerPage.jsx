@@ -8,6 +8,7 @@ const AnswerPage = () => {
   const navigate = useNavigate();
   const handleDelete = async () => {
     await deleteSubject({ subjectId: subject.id });
+    localStorage.removeItem("subject");
     navigate("/list");
   };
   return (
