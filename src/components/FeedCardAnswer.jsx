@@ -1,4 +1,4 @@
-import FeedCardAnswerInput from "./FeedCardAnswerInput";
+import FeedCardAnswerContent from "./FeedCardAnswerContent";
 import getDurationString from "../utils/getDurationString";
 
 function FeedCardAnswer({ state, setState, subject, questionId, answer }) {
@@ -15,19 +15,12 @@ function FeedCardAnswer({ state, setState, subject, questionId, answer }) {
             {state === "empty" || getDurationString(answer?.createdAt) + "전"}
           </div>
         </div>
-        {state === "sent" && (
-          <div className="text-body3">{answer?.content}</div>
-        )}
-        {state === "rejected" && (
-          <div className="text-body3 text-red-50">답변 거절</div>
-        )}
-        {state === "empty" && (
-          <FeedCardAnswerInput
-            setState={setState}
-            questionId={questionId}
-            answer={answer}
-          />
-        )}
+        <FeedCardAnswerContent
+          state={state}
+          setState={setState}
+          questionId={questionId}
+          answer={answer}
+        />
       </section>
     </div>
   );
