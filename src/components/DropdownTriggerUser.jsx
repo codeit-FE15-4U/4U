@@ -33,13 +33,11 @@ function UserDropdownTrigger({ options }) {
       className={`${isOpen ? "border-black text-black" : "border-grayscale-40 text-grayscale-40"} bg-grayscale-10 text-caption1 weight-medium relative rounded-lg border px-12 py-8`}
       ref={dropdownRef}
     >
-      <div className="flex items-center justify-center gap-4">
-        <button
-          className="text-caption1 weight-medium"
-          onClick={handleDropdown}
-        >
-          {selected}
-        </button>
+      <div
+        className="flex items-center justify-center gap-4"
+        onClick={handleDropdown}
+      >
+        <button className="text-caption1 weight-medium">{selected}</button>
         {/* arrowUp, arrowDown icon 색상 변경 필요 */}
         <img className="size-14" src={isOpen ? arrowUp : arrowDown} />
       </div>
