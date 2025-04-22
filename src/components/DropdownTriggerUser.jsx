@@ -6,11 +6,11 @@ import DropdownMenu from "./DropdownMenu";
 function UserDropdownTrigger({ options }) {
   // options: label, value 값을 가진 객체로 받아오기
   // const options = [
-  //   { label: "최신순", value: "latest" },
-  //   { label: "이름순", value: "name" },
+  //   { label: "최신순", value: "latest", click:"" },
+  //   { label: "이름순", value: "name", click:"" },
   // ];
   const [isOpen, setIsOpen] = useState(false);
-  const [selected, setSelected] = useState("최신순");
+  const [selected, setSelected] = useState(options[0].label);
   const dropdownRef = useRef();
 
   const handleDropdown = () => {
@@ -19,8 +19,9 @@ function UserDropdownTrigger({ options }) {
   const handleOptionClick = (option) => {
     setSelected(option.label);
     setIsOpen(false);
+    option.click();
   };
-  const handleOutsideClick = (e) => {
+  const handleBlur = (e) => {
     if (!dropdownRef.current.contains(e.relatedTarget)) {
       setIsOpen(false);
     }
@@ -29,15 +30,15 @@ function UserDropdownTrigger({ options }) {
   return (
     <div
       tabIndex={-1}
-      onBlur={handleOutsideClick}
-      className={`${isOpen ? "border-black text-black" : "border-grayscale-40 text-grayscale-40"} bg-grayscale-10 text-caption1 weight-medium relative rounded-lg border px-12 py-8`}
+      onBlur={handleBlur}
+      className={`${isOpen ? "border-black text-black" : "border-grayscale-40 text-grayscale-40"} bg-grayscale-10 text-caption1 relative rounded-lg border px-12 py-8 font-medium`}
       ref={dropdownRef}
     >
       <div
         className="flex items-center justify-center gap-4"
         onClick={handleDropdown}
       >
-        <button className="text-caption1 weight-medium">{selected}</button>
+        <button>{selected}</button>
         {/* arrowUp, arrowDown icon 색상 변경 필요 */}
         <img className="size-14" src={isOpen ? arrowUp : arrowDown} />
       </div>
