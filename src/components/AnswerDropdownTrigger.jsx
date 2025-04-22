@@ -1,9 +1,8 @@
 import { useState, useRef } from "react";
-import arrowDown from "../assets/icons/arrow-down.svg";
-import arrowUp from "../assets/icons/arrow-up.svg";
 import DropdownMenu from "./DropdownMenu";
+import more from "../assets/icons/more.svg";
 
-function UserDropdownTrigger({ options }) {
+function AnswerDropdownTrigger({ options }) {
   // options: label, value 값을 가진 객체로 받아오기
   // const options = [
   //   { label: "최신순", value: "latest" },
@@ -30,7 +29,7 @@ function UserDropdownTrigger({ options }) {
     <div
       tabIndex={-1}
       onBlur={handleOutsideClick}
-      className={`${isOpen ? "border-black text-black" : "border-grayscale-40 text-grayscale-40"} bg-grayscale-10 text-caption1 weight-medium relative rounded-lg border px-12 py-8`}
+      className="relative"
       ref={dropdownRef}
     >
       <div className="flex items-center justify-center gap-4">
@@ -38,10 +37,8 @@ function UserDropdownTrigger({ options }) {
           className="text-caption1 weight-medium"
           onClick={handleDropdown}
         >
-          {selected}
+          <img src={more} />
         </button>
-        {/* arrowUp, arrowDown icon 색상 변경 필요 */}
-        <img className="size-14" src={isOpen ? arrowUp : arrowDown} />
       </div>
       {isOpen && (
         <DropdownMenu
@@ -54,4 +51,4 @@ function UserDropdownTrigger({ options }) {
     </div>
   );
 }
-export default UserDropdownTrigger;
+export default AnswerDropdownTrigger;
