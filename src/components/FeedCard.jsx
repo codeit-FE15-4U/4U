@@ -35,6 +35,7 @@ function FeedCard({ isAnswerPage, subject, question }) {
             state={state}
             setState={setState}
             subject={subject}
+            questionId={question.id}
             answer={question.answer}
           />
         )}

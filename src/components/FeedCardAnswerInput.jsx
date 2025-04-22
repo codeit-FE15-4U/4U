@@ -2,8 +2,8 @@ import { useState } from "react";
 import Button from "./Button";
 import InputTextarea from "./InputTextarea";
 
-function FeedCardAnswerInput({ setState, content }) {
-  const [value, setValue] = useState(content);
+function FeedCardAnswerInput({ setState, questionId, answer }) {
+  const [value, setValue] = useState(answer?.content);
 
   const handleClick = (e) => {
     e.preventDefault();
@@ -19,7 +19,7 @@ function FeedCardAnswerInput({ setState, content }) {
         setValue={setValue}
       />
       <Button type="fill" onClick={handleClick} disabled={!!value}>
-        {content ? "수정 완료" : "답변 완료"}
+        {answer ? "수정 완료" : "답변 완료"}
       </Button>
     </form>
   );

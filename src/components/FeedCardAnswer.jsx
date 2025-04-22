@@ -1,7 +1,7 @@
 import FeedCardAnswerInput from "./FeedCardAnswerInput";
 import getDurationString from "../utils/getDurationString";
 
-function FeedCardAnswer({ state, setState, subject, answer }) {
+function FeedCardAnswer({ state, setState, subject, questionId, answer }) {
   return (
     <div className="flex flex-row gap-12">
       <div
@@ -22,7 +22,11 @@ function FeedCardAnswer({ state, setState, subject, answer }) {
           <div className="text-body3 text-red-50">답변 거절</div>
         )}
         {state === "empty" && (
-          <FeedCardAnswerInput setState={setState} content={answer?.content} />
+          <FeedCardAnswerInput
+            setState={setState}
+            questionId={questionId}
+            answer={answer}
+          />
         )}
       </section>
     </div>
