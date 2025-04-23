@@ -2,7 +2,7 @@ import { useCallback, useEffect, useState } from "react";
 import { Link } from "react-router";
 import { getUserList } from "../api/subjects";
 import logo from "../assets/images/logo.png";
-import arrow from "../assets/icons/arrow.svg";
+import Arrow from "../assets/icons/arrow.svg?react";
 import Button from "../components/Button";
 import UserList from "../components/UserList";
 import { useNavigate } from "react-router";
@@ -51,8 +51,7 @@ function ListPage() {
         </Link>
         <Button type="empty" onClick={handleButtonClick}>
           답변하러 가기
-          {/* arrow icon 색상 변경 필요 */}
-          <img src={arrow} />
+          <Arrow className="text-brown-40 size-18" />
         </Button>
       </div>
       <div className="tablet:gap-32 tablet:px-50 flex flex-col gap-20 px-24">
