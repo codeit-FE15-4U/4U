@@ -51,7 +51,6 @@ function ListPage() {
         </Link>
         <Button type="empty" onClick={handleButtonClick}>
           답변하러 가기
-          {/* arrow icon 색상 변경 필요 */}
           <Arrow className="text-brown-40 size-18" />
         </Button>
       </div>
