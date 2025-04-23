@@ -6,6 +6,7 @@ import Button from "../components/Button";
 import UserList from "../components/UserList";
 import { useNavigate } from "react-router";
 import UserDropdownTrigger from "../components/DropdownTriggerUser";
+import AnswerDropdownTrigger from "../components/DropdownTriggerAnswer";
 
 function ListPage() {
   const [users, setUsers] = useState([]);
@@ -46,7 +47,7 @@ function ListPage() {
             누구에게 질문할까요?
           </p>
           {/* Dropdown 클릭 시 이름순, 최신순 정렬기능 추가 예정 */}
-          <UserDropdownTrigger options={options} />
+          <AnswerDropdownTrigger options={options} type="user" />
         </div>
         <div className="tablet:gap-20 flex flex-wrap items-center justify-center gap-16">
           <UserList users={users} />

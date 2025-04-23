@@ -32,13 +32,11 @@ function AnswerDropdownTrigger({ options }) {
       className="relative"
       ref={dropdownRef}
     >
-      <div className="flex items-center justify-center gap-4">
-        <button
-          className="text-caption1 weight-medium"
-          onClick={handleDropdown}
-        >
-          <img src={more} />
-        </button>
+      <div
+        className="flex items-center justify-center gap-4"
+        onClick={handleDropdown}
+      >
+        <img src={more} />
       </div>
       {isOpen && (
         <DropdownMenu

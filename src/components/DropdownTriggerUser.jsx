@@ -1,9 +1,10 @@
 import { useState, useRef } from "react";
 import arrowDown from "../assets/icons/arrow-down.svg";
 import arrowUp from "../assets/icons/arrow-up.svg";
+import more from "../assets/icons/more.svg";
 import DropdownMenu from "./DropdownMenu";
 
-function UserDropdownTrigger({ options }) {
+function UserDropdownTrigger({ options, type }) {
   // options: label, value 값을 가진 객체로 받아오기
   // const options = [
   //   { label: "최신순", value: "latest", click:"" },
@@ -12,7 +13,19 @@ function UserDropdownTrigger({ options }) {
   const [isOpen, setIsOpen] = useState(false);
   const [selected, setSelected] = useState(options[0].label);
   const dropdownRef = useRef();
-
+  const triggerType = () => {
+    if (type === "user") {
+      return (
+        <>
+          <button>{selected}</button>
+          {/* arrowUp, arrowDown icon 색상 변경 필요 */}
+          <img className="size-14" src={isOpen ? arrowUp : arrowDown} />
+        </>
+      );
+    } else if (type === "answer") {
+      return <img src={more} />;
+    }
+  };
   const handleDropdown = () => {
     setIsOpen(!isOpen);
   };
@@ -38,9 +51,7 @@ function UserDropdownTrigger({ options }) {
         className="flex items-center justify-center gap-4"
         onClick={handleDropdown}
       >
-        <button>{selected}</button>
-        {/* arrowUp, arrowDown icon 색상 변경 필요 */}
-        <img className="size-14" src={isOpen ? arrowUp : arrowDown} />
+        {triggerType()}
       </div>
       {isOpen && (
         <DropdownMenu
