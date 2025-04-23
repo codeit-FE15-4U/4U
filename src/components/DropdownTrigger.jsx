@@ -1,7 +1,7 @@
 import { useState, useRef } from "react";
-import arrowDown from "../assets/icons/arrow-down.svg";
-import arrowUp from "../assets/icons/arrow-up.svg";
-import more from "../assets/icons/more.svg";
+import ArrowDown from "../assets/icons/arrow-down.svg?react";
+import ArrowUp from "../assets/icons/arrow-up.svg?react";
+import More from "../assets/icons/more.svg?react";
 import DropdownMenu from "./DropdownMenu";
 
 function DropdownTrigger({ options, type }) {
@@ -18,12 +18,19 @@ function DropdownTrigger({ options, type }) {
       return (
         <>
           <button>{selected}</button>
-          {/* arrowUp, arrowDown icon 색상 변경 필요 */}
-          <img className="size-14" src={isOpen ? arrowUp : arrowDown} />
+          {isOpen ? (
+            <ArrowUp
+              className={`${isOpen ? "border-black text-black" : "border-grayscale-40 text-grayscale-40"}`}
+            />
+          ) : (
+            <ArrowDown
+              className={`${isOpen ? "border-black text-black" : "border-grayscale-40 text-grayscale-40"}`}
+            />
+          )}
         </>
       );
     } else if (type === "answer") {
-      return <img src={more} />;
+      return <More />;
     } else {
       return null;
     }
