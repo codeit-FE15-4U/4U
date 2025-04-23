@@ -6,10 +6,11 @@ import FeedCardAnswer from "./FeedCardAnswer";
 import IconMore from "../assets/icons/more.svg?react";
 
 function FeedCard({ isAnswerPage, subject, question }) {
+  const [answer, setAnswer] = useState(question?.answer);
   const [state, setState] = useState(
     (function getState() {
-      if (question?.answer) {
-        return question.answer.isRejected ? "rejected" : "sent";
+      if (answer) {
+        return answer.isRejected ? "rejected" : "sent";
       } else {
         return isAnswerPage ? "empty" : "none";
       }
@@ -36,7 +37,7 @@ function FeedCard({ isAnswerPage, subject, question }) {
             setState={setState}
             subject={subject}
             questionId={question.id}
-            answer={question.answer}
+            answer={answer}
           />
         )}
         <div className="border-grayscale-30 h-43 border-t border-solid">
