@@ -1,5 +1,4 @@
 function DropdownMenu({ options, selected, onSelect, isOpen }) {
-  // options: label, value 값을 가진 객체로 받아오기
   if (!isOpen) return null;
 
   return (

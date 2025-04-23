@@ -24,6 +24,8 @@ function DropdownTrigger({ options, type }) {
       );
     } else if (type === "answer") {
       return <img src={more} />;
+    } else {
+      return null;
     }
   };
   const handleDropdown = () => {
@@ -44,7 +46,11 @@ function DropdownTrigger({ options, type }) {
     <div
       tabIndex={-1}
       onBlur={handleBlur}
-      className={`${isOpen ? "border-black text-black" : "border-grayscale-40 text-grayscale-40"} bg-grayscale-10 text-caption1 relative rounded-lg border px-12 py-8 font-medium`}
+      className={
+        type === "user"
+          ? `${isOpen ? "border-black text-black" : "border-grayscale-40 text-grayscale-40"} bg-grayscale-10 text-caption1 relative rounded-lg border px-12 py-8 font-medium`
+          : "text-caption1 relative font-medium"
+      }
       ref={dropdownRef}
     >
       <div
