@@ -4,7 +4,6 @@ import Button from "./Button";
 
 const QuestionButton = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-
   const handleOpen = () => setIsModalOpen(true);
   const handleClose = () => setIsModalOpen(false);
 
