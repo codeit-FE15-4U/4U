@@ -20,17 +20,17 @@ function DropdownTrigger({ options, type }) {
           <button>{selected}</button>
           {isOpen ? (
             <ArrowUp
-              className={`${isOpen ? "border-black text-black" : "border-grayscale-40 text-grayscale-40"}`}
+              className={`${isOpen ? "border-black text-black" : "border-grayscale-40 text-grayscale-40"} size-14`}
             />
           ) : (
             <ArrowDown
-              className={`${isOpen ? "border-black text-black" : "border-grayscale-40 text-grayscale-40"}`}
+              className={`${isOpen ? "border-black text-black" : "border-grayscale-40 text-grayscale-40"} size-14`}
             />
           )}
         </>
       );
     } else if (type === "answer") {
-      return <More />;
+      return <More className="size-26" />;
     } else {
       return null;
     }
