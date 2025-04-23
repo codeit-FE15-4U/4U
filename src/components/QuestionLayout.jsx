@@ -27,11 +27,11 @@ const QuestionLayout = () => {
     }
   }, [name, id]);
   useEffect(() => {
-    const getData = async () => {
+    const getInitialData = async () => {
       const { results } = await getQuestionList({ subjectId: id });
-      setQuestionList((prev) => [...prev, ...results]);
+      setQuestionList(results);
     };
-    getData();
+    getInitialData();
   }, [id]);
   return (
     <div className="bg-grayscale-20 relative min-h-screen pb-126">
