@@ -46,6 +46,18 @@ export const getUserList = async ({ limit = 6, offset = 0, sort }) => {
   }
 };
 
+export const postQuestion = async ({ subjectId, content }) => {
+  try {
+    const response = await axios.post(`subjects/${subjectId}/questions/`, {
+      content,
+    });
+    return response.data;
+  } catch (error) {
+    console.error(error);
+    throw error;
+  }
+};
+
 export const postAnswer = async ({ questionId, content, isRejected }) => {
   try {
     if (!questionId) throw Error("QuestionId does not exist");
