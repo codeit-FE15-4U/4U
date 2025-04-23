@@ -8,11 +8,24 @@ import { useNavigate } from "react-router";
 import DropdownTrigger from "../components/DropdownTrigger";
 
 function ListPage() {
-  const [users, setUsers] = useState([]);
   const navigate = useNavigate();
+  const [users, setUsers] = useState([]);
+  const [order, setOrder] = useState("createdAt");
+  const sortedUsers = [...users].sort((a, b) => {
+    if (order === "createdAt") {
+      return new Date(b.createdAt) - new Date(a.createdAt);
+    } else if (order === "name") {
+      return a.name.localeCompare(b.name);
+    }
+    return 0;
+  });
+
+  const handleLatestClick = () => setOrder("createdAt");
+  const handleNameClick = () => setOrder("name");
+
   const options = [
-    { label: "최신순", value: "latest" },
-    { label: "이름순", value: "name" },
+    { label: "최신순", value: "createdAt", click: handleLatestClick },
+    { label: "이름순", value: "name", click: handleNameClick },
   ];
 
   const handleButtonClick = () => {
@@ -45,11 +58,10 @@ function ListPage() {
           <p className="tablet:text-h1 text-h3 font-regular">
             누구에게 질문할까요?
           </p>
-          {/* Dropdown 클릭 시 이름순, 최신순 정렬기능 추가 예정 */}
           <DropdownTrigger options={options} type="user" />
         </div>
         <div className="tablet:gap-20 flex flex-wrap items-center justify-center gap-16">
-          <UserList users={users} />
+          <UserList users={sortedUsers} />
         </div>
       </div>
       {/* Pagenation 컴포넌트로 수정 예정*/}
