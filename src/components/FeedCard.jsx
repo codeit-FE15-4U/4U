@@ -3,6 +3,7 @@ import { useState } from "react";
 // import Reaction from "./Reaction";
 import FeedCardQuestion from "./FeedCardQuestion";
 import FeedCardAnswer from "./FeedCardAnswer";
+import FeedCardAnswerInput from "./FeedCardAnswerContent";
 import IconMore from "../assets/icons/more.svg?react";
 
 function FeedCard({ isAnswerPage, subject, question }) {
@@ -32,13 +33,15 @@ function FeedCard({ isAnswerPage, subject, question }) {
           createdAt={question.createdAt}
         />
         {state === "none" || (
-          <FeedCardAnswer
-            state={state}
-            setState={setState}
-            subject={subject}
-            questionId={question.id}
-            answer={answer}
-          />
+          <FeedCardAnswer state={state} subject={subject} answer={answer}>
+            <FeedCardAnswerInput
+              state={state}
+              setState={setState}
+              questionId={question.id}
+              answer={answer}
+              setAnswer={setAnswer}
+            />
+          </FeedCardAnswer>
         )}
         <div className="border-grayscale-30 h-43 border-t border-solid">
           {/* <Reaction like={question.like} dislike={question.dislike} /> */}

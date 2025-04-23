@@ -1,7 +1,6 @@
-import FeedCardAnswerContent from "./FeedCardAnswerContent";
 import getDurationString from "../utils/getDurationString";
 
-function FeedCardAnswer({ state, setState, subject, questionId, answer }) {
+function FeedCardAnswer({ state, subject, answer, children }) {
   return (
     <div className="flex flex-row gap-12">
       <div
@@ -15,12 +14,7 @@ function FeedCardAnswer({ state, setState, subject, questionId, answer }) {
             {state === "empty" || getDurationString(answer?.createdAt) + "전"}
           </div>
         </div>
-        <FeedCardAnswerContent
-          state={state}
-          setState={setState}
-          questionId={questionId}
-          answer={answer}
-        />
+        {children}
       </section>
     </div>
   );
