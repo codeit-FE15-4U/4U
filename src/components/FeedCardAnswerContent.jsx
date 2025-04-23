@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import Button from "./Button";
 import InputTextarea from "./InputTextarea";
 import { patchAnswer, postAnswer } from "../api/subjects";
@@ -10,29 +10,35 @@ function FeedCardAnswerInput({
   answer,
   setAnswer,
 }) {
-  const [value, setValue] = useState(answer?.content);
+  const content = useRef();
   const [disabled, setDisabled] = useState(!answer);
 
   const handleClick = async (e) => {
     e.preventDefault();
     setDisabled(true);
     if (answer) {
-      setAnswer(await patchAnswer({ ...answer, content: value }));
+      setAnswer(
+        await patchAnswer({ ...answer, content: content.current.value }),
+      );
     } else {
       setAnswer(
-        await postAnswer({ questionId, content: value, isRejected: false }),
+        await postAnswer({
+          questionId,
+          content: content.current.value,
+          isRejected: false,
+        }),
       );
     }
     setState("sent");
   };
 
-  const handleChange = (e) => {
-    setDisabled(e.target.value ? false : true);
+  const handleChange = () => {
+    setDisabled(content.current.value ? false : true);
   };
 
   switch (state) {
     case "sent":
-      return <div className="text-body3">{value}</div>;
+      return <div className="text-body3">{answer?.content}</div>;
     case "rejected":
       return <div className="text-body3 text-red-50">답변 거절</div>;
     case "empty":
@@ -42,8 +48,8 @@ function FeedCardAnswerInput({
             name="answer"
             className="h-186 w-full"
             placeholder="답변을 입력해주세요"
-            value={value}
-            setValue={setValue}
+            value={answer?.content}
+            ref={content}
           />
           <Button
             className="w-full"
