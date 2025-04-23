@@ -4,7 +4,7 @@ import arrowUp from "../assets/icons/arrow-up.svg";
 import more from "../assets/icons/more.svg";
 import DropdownMenu from "./DropdownMenu";
 
-function UserDropdownTrigger({ options, type }) {
+function DropdownTrigger({ options, type }) {
   // options: label, value 값을 가진 객체로 받아오기
   // const options = [
   //   { label: "최신순", value: "latest", click:"" },
@@ -64,4 +64,4 @@ function UserDropdownTrigger({ options, type }) {
     </div>
   );
 }
-export default UserDropdownTrigger;
+export default DropdownTrigger;
