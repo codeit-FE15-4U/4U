@@ -28,8 +28,12 @@ function ListPage() {
       return;
     }
     const { id } = JSON.parse(data);
-    id ? navigate(`/post/${id}/answer`) : navigate("/");
+    const selectedUser = users.find((user) => user.id === id);
+    id
+      ? navigate(`/post/${id}/answer`, { state: { selectedUser } })
+      : navigate("/");
   };
+
   const getUser = useCallback(async (options) => {
     const user = await getUserList(options);
     setUsers(user.data.results);
@@ -45,12 +49,10 @@ function ListPage() {
         <Link to="/">
           <img className="h-57 w-146" src={logo}></img>
         </Link>
-        {/* Button 클릭 시 질문 받기로 생성한 id가 로컬 스토리지에 없으면 “/” 페이지로 이동 -> ok */}
-        {/* Button 클릭 시 질문 받기로 생성한 id가 로컬 스토리지에 있으면 “/post/{id}/answer” 페이지로 이동 -> 확인필요 */}
         <Button type="empty" onClick={handleButtonClick}>
           답변하러 가기
           {/* arrow icon 색상 변경 필요 */}
-          <img className="stroke" src={arrow} />
+          <img src={arrow} />
         </Button>
       </div>
       <div className="tablet:gap-32 tablet:px-50 flex flex-col gap-20 px-24">

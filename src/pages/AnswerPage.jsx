@@ -5,7 +5,6 @@ import FeedCard from "../components/FeedCard";
 import { deleteSubject } from "../api/subjects";
 import Button from "../components/Button";
 
-
 const AnswerPage = () => {
   const [isDeleting, setIsDeleting] = useState(false);
   const { questionList, questionCount, subject } = useOutletContext();
