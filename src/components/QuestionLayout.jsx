@@ -1,7 +1,7 @@
-import LogoImg from "../assets/images/logo.png";
 import { Link, Outlet, useLocation, useParams } from "react-router";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { getQuestionList, getSubject } from "../api/subjects";
+import LogoImg from "../assets/images/logo.png";
 
 const QuestionLayout = () => {
   const [questionList, setQuestionList] = useState([]);
@@ -12,7 +12,10 @@ const QuestionLayout = () => {
   const [questionCount, setQuestionCount] = useState(
     location.state?.questionCount,
   );
-
+  const [offset, setOffset] = useState(0);
+  const [isMoreQuestion, setIsMoreQuestion] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const ref = useRef(null);
   useEffect(() => {
     if (!name) {
       const getSubjectData = async () => {
@@ -28,11 +31,47 @@ const QuestionLayout = () => {
   }, [name, id]);
   useEffect(() => {
     const getInitialData = async () => {
+      setIsLoading(true);
       const { results } = await getQuestionList({ subjectId: id });
       setQuestionList(results);
+      setOffset(results.length);
+      if (results.length < questionCount) {
+        setIsMoreQuestion(true);
+      }
+      setIsLoading(false);
     };
     getInitialData();
-  }, [id]);
+  }, [id, questionCount]);
+  const getMoreData = useCallback(async () => {
+    if (isLoading) return;
+    setIsLoading(true);
+    const { results } = await getQuestionList({ subjectId: id, offset });
+    setQuestionList((prev) => [...prev, ...results]);
+    setOffset((prev) => prev + results.length);
+    if (offset + results.length >= questionCount) {
+      setIsMoreQuestion(false);
+    }
+    setIsLoading(false);
+  }, [id, offset, questionCount, isLoading]);
+  useEffect(() => {
+    if (!ref.current || !isMoreQuestion) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          getMoreData();
+        }
+      },
+      { threshold: 0.1 },
+    );
+
+    observer.observe(ref.current);
+
+    return () => {
+      observer.disconnect();
+    };
+  }, [isMoreQuestion, isLoading, offset, getMoreData, id, questionCount]);
+
   return (
     <div className="bg-grayscale-20 relative min-h-screen pb-126">
       <div className="tablet:bg-size-[1200px_234px] tablet:h-234 absolute h-177 w-full bg-white bg-[url(/src/assets/images/openmind-bg.png)] bg-size-[906px_177px] bg-center bg-no-repeat" />
@@ -66,6 +105,7 @@ const QuestionLayout = () => {
             }}
           />
         </main>
+        <div ref={ref}></div>
       </div>
     </div>
   );
