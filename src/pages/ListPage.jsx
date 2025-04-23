@@ -22,7 +22,12 @@ function ListPage() {
   ];
 
   const handleButtonClick = () => {
-    const id = localStorage.getItem("userId");
+    const data = localStorage.getItem("subject");
+    if (!data) {
+      navigate("/");
+      return;
+    }
+    const { id } = JSON.parse(data);
     id ? navigate(`/post/${id}/answer`) : navigate("/");
   };
   const getUser = useCallback(async (options) => {
