@@ -1,34 +1,22 @@
 import { Link, Outlet, useLocation, useParams } from "react-router";
 import { useCallback, useEffect, useRef, useState } from "react";
-import { getQuestionList, getSubject } from "../api/subjects";
+import { getQuestionList } from "../api/subjects";
+import useSubject from "../hooks/useSubject";
 import LogoImg from "../assets/images/logo.png";
 
 const QuestionLayout = () => {
   const [questionList, setQuestionList] = useState([]);
   const { id } = useParams();
   const location = useLocation();
-  const [name, setName] = useState(location.state?.name);
-  const [imageSource, setImageSource] = useState(location.state?.imageSource);
-  const [questionCount, setQuestionCount] = useState(
-    location.state?.questionCount,
-  );
+  const { name, imageSource, questionCount } = useSubject({
+    id,
+    subject: location.state,
+  });
   const [offset, setOffset] = useState(0);
   const [isMoreQuestion, setIsMoreQuestion] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const ref = useRef(null);
-  useEffect(() => {
-    if (!name) {
-      const getSubjectData = async () => {
-        const { name, imageSource, questionCount } = await getSubject({
-          subjectId: id,
-        });
-        setName(name);
-        setImageSource(imageSource);
-        setQuestionCount(questionCount);
-      };
-      getSubjectData();
-    }
-  }, [name, id]);
+
   useEffect(() => {
     const getInitialData = async () => {
       setIsLoading(true);
