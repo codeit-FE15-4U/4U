@@ -1,7 +1,8 @@
 import { Link, Outlet, useLocation, useParams } from "react-router";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { getQuestionList } from "../api/subjects";
 import useSubject from "../hooks/useSubject";
+import useInfiniteScroll from "../hooks/useInfiniteScroll";
 import LogoImg from "../assets/images/logo.png";
 
 const QuestionLayout = () => {
@@ -15,7 +16,6 @@ const QuestionLayout = () => {
   const [offset, setOffset] = useState(0);
   const [isMoreQuestion, setIsMoreQuestion] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const ref = useRef(null);
 
   useEffect(() => {
     if (!questionCount) return;
@@ -42,24 +42,7 @@ const QuestionLayout = () => {
     }
     setIsLoading(false);
   }, [id, offset, questionCount, isLoading]);
-  useEffect(() => {
-    if (!ref.current || !isMoreQuestion) return;
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries[0].isIntersecting) {
-          getMoreData();
-        }
-      },
-      { threshold: 0.1 },
-    );
-
-    observer.observe(ref.current);
-
-    return () => {
-      observer.disconnect();
-    };
-  }, [isMoreQuestion, isLoading, offset, getMoreData, id, questionCount]);
+  const { ref } = useInfiniteScroll({ callback: getMoreData, isMoreQuestion });
 
   return (
     <div className="bg-grayscale-20 relative min-h-screen pb-126">
