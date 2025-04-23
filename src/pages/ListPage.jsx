@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { getUserList } from "../api/subjects";
 import logo from "../assets/images/logo.png";
 import arrow from "../assets/icons/arrow.svg";
@@ -24,14 +24,14 @@ function ListPage() {
     const id = localStorage.getItem("userId");
     id ? navigate(`/post/${id}/answer`) : navigate("/");
   };
-  const getUser = async () => {
-    const user = await getUserList({ limit: 6, offset: 0, sort });
+  const getUser = useCallback(async (options) => {
+    const user = await getUserList(options);
     setUsers(user.data.results);
-  };
+  }, []);
 
   useEffect(() => {
-    getUser();
-  }, [sort]);
+    getUser({ limit: 6, offset: 0, sort });
+  }, [getUser, sort]);
 
   return (
     <div className="bg-grayscale-20">
