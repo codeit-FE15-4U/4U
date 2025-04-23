@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
+import { Link } from "react-router";
 import { getUserList } from "../api/subjects";
 import logo from "../assets/images/logo.png";
 import arrow from "../assets/icons/arrow.svg";
@@ -36,7 +37,9 @@ function ListPage() {
   return (
     <div className="bg-grayscale-20">
       <div className="tablet:flex-row tablet:justify-between flex flex-col items-center justify-center gap-24 px-50 pt-40 pb-60">
-        <img className="h-57 w-146" src={logo}></img>
+        <Link to="/">
+          <img className="h-57 w-146" src={logo}></img>
+        </Link>
         {/* Button 클릭 시 질문 받기로 생성한 id가 로컬 스토리지에 없으면 “/” 페이지로 이동 -> ok */}
         {/* Button 클릭 시 질문 받기로 생성한 id가 로컬 스토리지에 있으면 “/post/{id}/answer” 페이지로 이동 -> 확인필요 */}
         <Button type="empty" onClick={handleButtonClick}>
