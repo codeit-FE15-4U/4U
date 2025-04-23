@@ -34,10 +34,11 @@ export const createSubject = async ({ name }) => {
     throw error;
   }
 };
-export const getUserList = async ({ limit = 6, offset = 0 }) => {
+
+export const getUserList = async ({ limit = 6, offset = 0, sort }) => {
   try {
     const response = await axios.get(
-      `subjects/?limit=${limit}&offset=${offset}`,
+      `subjects/?limit=${limit}&offset=${offset}&sort=${sort}`,
     );
     return response;
   } catch (error) {
@@ -54,7 +55,7 @@ export const postAnswer = async ({ questionId, content, isRejected }) => {
       isRejected,
       team: "15-4",
     });
-    return response;
+    return response.data;
   } catch (error) {
     console.log(error);
   }
@@ -67,7 +68,7 @@ export const patchAnswer = async ({ id, content, isRejected }) => {
       content,
       isRejected,
     });
-    return response;
+    return response.data;
   } catch (error) {
     console.log(error);
   }
