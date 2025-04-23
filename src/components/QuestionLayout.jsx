@@ -18,6 +18,7 @@ const QuestionLayout = () => {
   const ref = useRef(null);
 
   useEffect(() => {
+    if (!questionCount) return;
     const getInitialData = async () => {
       setIsLoading(true);
       const { results } = await getQuestionList({ subjectId: id });
