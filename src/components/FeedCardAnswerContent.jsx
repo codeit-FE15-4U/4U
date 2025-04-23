@@ -3,7 +3,13 @@ import Button from "./Button";
 import InputTextarea from "./InputTextarea";
 import { patchAnswer, postAnswer } from "../api/subjects";
 
-function FeedCardAnswerInput({ state, setState, questionId, answer }) {
+function FeedCardAnswerInput({
+  state,
+  setState,
+  questionId,
+  answer,
+  setAnswer,
+}) {
   const [value, setValue] = useState(answer?.content);
 
   const handleClick = async (e) => {
@@ -11,9 +17,9 @@ function FeedCardAnswerInput({ state, setState, questionId, answer }) {
     const content = value;
     setValue("");
     if (answer) {
-      await patchAnswer({ ...answer, content });
+      setAnswer(await patchAnswer({ ...answer, content }));
     } else {
-      await postAnswer({ questionId, content, isRejected: false });
+      setAnswer(await postAnswer({ questionId, content, isRejected: false }));
     }
     setValue(content);
     setState("sent");
