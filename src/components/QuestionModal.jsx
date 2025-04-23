@@ -1,35 +1,17 @@
+import InputTextarea from "./InputTextarea";
 import Close from "../assets/icons/close.svg?react";
 import MessageImg from "../assets/icons/messages.svg?react";
 import Button from "./Button";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useParams, useLocation } from "react-router";
-import { getSubject, postQuestion } from "../api/subjects";
+import { postQuestion } from "../api/subjects";
 
 const QuestionModal = ({ onClose }) => {
   const [message, setMessage] = useState("");
-  const [name, setName] = useState(location.state?.name);
-  const [imageSource, setImageSource] = useState(location.state?.imageSource);
   const { id } = useParams();
   const location = useLocation();
-
-  useEffect(() => {
-    const fetchSubjectData = async () => {
-      try {
-        const { name, imageSource } = await getSubject({ subjectId: id });
-        setName(name);
-        setImageSource(imageSource);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
-    };
-
-    if (location.state?.name && location.state?.imageSource) {
-      setName(location.state.name);
-      setImageSource(location.state.imageSource);
-    } else {
-      fetchSubjectData();
-    }
-  }, [id, location.state]);
+  const name = location.state?.name;
+  const imageSource = location.state?.imageSource;
 
   const handleSendMessage = async () => {
     try {
@@ -38,6 +20,7 @@ const QuestionModal = ({ onClose }) => {
       onClose();
     } catch (error) {
       console.error("Error sending message:", error);
+      alert("질문을 전송하지 못했습니다. 다시 시도해주세요.");
     }
   };
 
@@ -67,11 +50,11 @@ const QuestionModal = ({ onClose }) => {
           />
           <p>{name}</p>
         </div>
-        <textarea
+        <InputTextarea
           value={message}
-          onChange={(e) => setMessage(e.target.value)}
-          className="bg-grayscale-20 tablet:min-h-180 mt-12 min-h-358 w-full resize-none border-none p-16 focus:outline-none"
-          placeholder="질문을 입력해주세요."
+          className="tablet:min-h-180 mt-12 min-h-358 w-full resize-none"
+          placeholder="질문을 입력해주세요"
+          setValue={setMessage}
         />
         <Button
           className="mt-8 w-full border-none"

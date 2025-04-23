@@ -13,7 +13,6 @@ const QuestionButton = () => {
         type="round"
         className="tablet:px-49.5 fixed right-24 bottom-24 px-24 py-14.5 text-[20px]"
         onClick={handleOpen}
-        disabled={isModalOpen}
       >
         <span className="tablet:hidden inline">질문 작성</span>
         <span className="tablet:inline hidden">질문 작성하기</span>
