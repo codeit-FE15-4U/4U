@@ -1,7 +1,8 @@
 import { Link, Outlet, useLocation, useParams } from "react-router";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useState } from "react";
 import { getQuestionList } from "../api/subjects";
 import useSubject from "../hooks/useSubject";
+import useInitialQuestion from "../hooks/useInitialQuestion";
 import useInfiniteScroll from "../hooks/useInfiniteScroll";
 import LogoImg from "../assets/images/logo.png";
 
@@ -9,30 +10,25 @@ const QuestionLayout = () => {
   const [questionList, setQuestionList] = useState([]);
   const { id } = useParams();
   const location = useLocation();
-  const { name, imageSource, questionCount } = useSubject({
-    id,
-    subject: location.state,
-  });
   const [offset, setOffset] = useState(0);
   const [isMoreQuestion, setIsMoreQuestion] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
-  useEffect(() => {
-    if (!questionCount) return;
-    const getInitialData = async () => {
-      setIsLoading(true);
-      const { results } = await getQuestionList({ subjectId: id });
-      setQuestionList(results);
-      setOffset(results.length);
-      if (results.length < questionCount) {
-        setIsMoreQuestion(true);
-      }
-      setIsLoading(false);
-    };
-    getInitialData();
-  }, [id, questionCount]);
+  const { name, imageSource, questionCount } = useSubject({
+    id,
+    subject: location.state,
+  });
+
+  const { isInitialLoading } = useInitialQuestion({
+    id,
+    questionCount,
+    setQuestionList,
+    setOffset,
+    setIsMoreQuestion,
+  });
+
   const getMoreData = useCallback(async () => {
-    if (isLoading) return;
+    if (isInitialLoading || isLoading) return;
     setIsLoading(true);
     const { results } = await getQuestionList({ subjectId: id, offset });
     setQuestionList((prev) => [...prev, ...results]);
@@ -41,7 +37,8 @@ const QuestionLayout = () => {
       setIsMoreQuestion(false);
     }
     setIsLoading(false);
-  }, [id, offset, questionCount, isLoading]);
+  }, [id, offset, questionCount, isLoading, isInitialLoading]);
+
   const { ref } = useInfiniteScroll({ callback: getMoreData, isMoreQuestion });
 
   return (
