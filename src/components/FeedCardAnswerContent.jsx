@@ -11,18 +11,23 @@ function FeedCardAnswerInput({
   setAnswer,
 }) {
   const [value, setValue] = useState(answer?.content);
+  const [disabled, setDisabled] = useState(!answer);
 
   const handleClick = async (e) => {
     e.preventDefault();
-    const content = value;
-    setValue("");
+    setDisabled(true);
     if (answer) {
-      setAnswer(await patchAnswer({ ...answer, content }));
+      setAnswer(await patchAnswer({ ...answer, content: value }));
     } else {
-      setAnswer(await postAnswer({ questionId, content, isRejected: false }));
+      setAnswer(
+        await postAnswer({ questionId, content: value, isRejected: false }),
+      );
     }
-    setValue(content);
     setState("sent");
+  };
+
+  const handleChange = (e) => {
+    setDisabled(e.target.value ? false : true);
   };
 
   switch (state) {
@@ -32,7 +37,7 @@ function FeedCardAnswerInput({
       return <div className="text-body3 text-red-50">답변 거절</div>;
     case "empty":
       return (
-        <form>
+        <form onChange={handleChange}>
           <InputTextarea
             name="answer"
             className="h-186 w-full"
@@ -44,7 +49,7 @@ function FeedCardAnswerInput({
             className="w-full"
             type="fill"
             onClick={handleClick}
-            disabled={!value}
+            disabled={disabled}
           >
             {answer ? "수정 완료" : "답변 완료"}
           </Button>
