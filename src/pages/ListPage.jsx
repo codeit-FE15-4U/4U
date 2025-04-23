@@ -10,18 +10,10 @@ import DropdownTrigger from "../components/DropdownTrigger";
 function ListPage() {
   const navigate = useNavigate();
   const [users, setUsers] = useState([]);
-  const [order, setOrder] = useState("createdAt");
-  const sortedUsers = [...users].sort((a, b) => {
-    if (order === "createdAt") {
-      return new Date(b.createdAt) - new Date(a.createdAt);
-    } else if (order === "name") {
-      return a.name.localeCompare(b.name);
-    }
-    return 0;
-  });
+  const [sort, setSort] = useState("createdAt");
 
-  const handleLatestClick = () => setOrder("createdAt");
-  const handleNameClick = () => setOrder("name");
+  const handleLatestClick = () => setSort("createdAt");
+  const handleNameClick = () => setSort("name");
 
   const options = [
     { label: "최신순", value: "createdAt", click: handleLatestClick },
@@ -33,13 +25,13 @@ function ListPage() {
     id ? navigate(`/post/${id}/answer`) : navigate("/");
   };
   const getUser = async () => {
-    const user = await getUserList({ limit: 6, offset: 0 });
+    const user = await getUserList({ limit: 6, offset: 0, sort });
     setUsers(user.data.results);
   };
 
   useEffect(() => {
     getUser();
-  }, []);
+  }, [sort]);
 
   return (
     <div className="bg-grayscale-20">
@@ -61,7 +53,7 @@ function ListPage() {
           <DropdownTrigger options={options} type="user" />
         </div>
         <div className="tablet:gap-20 flex flex-wrap items-center justify-center gap-16">
-          <UserList users={sortedUsers} />
+          <UserList users={users} />
         </div>
       </div>
       {/* Pagenation 컴포넌트로 수정 예정*/}
