@@ -1,27 +1,37 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { getUserList } from "../api/subjects";
 import logo from "../assets/images/logo.png";
 import arrow from "../assets/icons/arrow.svg";
 import Button from "../components/Button";
 import UserList from "../components/UserList";
 import { useNavigate } from "react-router";
+import DropdownTrigger from "../components/DropdownTrigger";
 
 function ListPage() {
-  const [users, setUsers] = useState([]);
   const navigate = useNavigate();
+  const [users, setUsers] = useState([]);
+  const [sort, setSort] = useState("createdAt");
+
+  const handleLatestClick = () => setSort("createdAt");
+  const handleNameClick = () => setSort("name");
+
+  const options = [
+    { label: "최신순", value: "createdAt", click: handleLatestClick },
+    { label: "이름순", value: "name", click: handleNameClick },
+  ];
 
   const handleButtonClick = () => {
     const id = localStorage.getItem("userId");
     id ? navigate(`/post/${id}/answer`) : navigate("/");
   };
-  const getUser = async () => {
-    const user = await getUserList({ limit: 6, offset: 0 });
+  const getUser = useCallback(async (options) => {
+    const user = await getUserList(options);
     setUsers(user.data.results);
-  };
+  }, []);
 
   useEffect(() => {
-    getUser();
-  }, []);
+    getUser({ limit: 6, offset: 0, sort });
+  }, [getUser, sort]);
 
   return (
     <div className="bg-grayscale-20">
@@ -40,11 +50,7 @@ function ListPage() {
           <p className="tablet:text-h1 text-h3 font-regular">
             누구에게 질문할까요?
           </p>
-          {/* Dropdown 컴포넌트로 수정 예정 */}
-          {/* Dropdown 클릭 시 이름순, 최신순 정렬기능 추가 예정 */}
-          <p className="text-caption1 rounded-lg border px-12 py-8 font-medium">
-            이름순
-          </p>
+          <DropdownTrigger options={options} type="user" />
         </div>
         <div className="tablet:gap-20 flex flex-wrap items-center justify-center gap-16">
           <UserList users={users} />

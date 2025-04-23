@@ -1,7 +1,8 @@
 import { useOutletContext } from "react-router";
 import QuestionBox from "../components/QuestionBox";
 import FeedCard from "../components/FeedCard";
-import Button from "../components/Button";
+
+import QuestionButton from "../components/QuestionButton";
 
 const QuestionPage = () => {
   const { questionList, questionCount, subject } = useOutletContext();
@@ -22,9 +23,7 @@ const QuestionPage = () => {
           })}
         </ul>
       </QuestionBox>
-      <Button type="round" className="fixed right-24 bottom-24">
-        질문 작성하기
-      </Button>
+      <QuestionButton />
     </>
   );
 };

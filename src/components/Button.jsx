@@ -27,9 +27,9 @@ function Button({
     },
     round: {
       baseStyle:
-        "bg-brown-40 text-grayscale-10 tablet:w-208 px-24 py-12 rounded-full shadow-1pt cursor-pointer",
+        "bg-brown-40 text-grayscale-10 rounded-full shadow-2pt cursor-pointer",
       hoverStyle: "",
-      disabledStyle: "",
+      disabledStyle: "disabled:bg-brown-30 disabled:cursor-not-allowed",
     },
   };
 
