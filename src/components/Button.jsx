@@ -29,7 +29,7 @@ function Button({
       baseStyle:
         "bg-brown-40 text-grayscale-10 rounded-full shadow-2pt cursor-pointer",
       hoverStyle: "",
-      disabledStyle: "",
+      disabledStyle: "disabled:bg-brown-30 disabled:cursor-not-allowed",
     },
   };
 

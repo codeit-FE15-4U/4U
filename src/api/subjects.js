@@ -72,3 +72,13 @@ export const patchAnswer = async ({ id, content, isRejected }) => {
     console.log(error);
   }
 };
+
+export const deleteSubject = async ({ subjectId }) => {
+  try {
+    const response = await axios.delete(`subjects/${subjectId}/`);
+    return response.data;
+  } catch (error) {
+    console.error(error.message);
+    throw error;
+  }
+};
