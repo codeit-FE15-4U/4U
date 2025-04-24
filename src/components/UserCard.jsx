@@ -1,4 +1,4 @@
-import messages from "../assets/icons/messages.svg";
+import Messages from "../assets/icons/messages.svg?react";
 
 function UserCard({ imageSource, name, questionCount }) {
   return (
@@ -11,8 +11,7 @@ function UserCard({ imageSource, name, questionCount }) {
       </div>
       <div className="text-caption1 font-regular text-grayscale-40 flex items-center justify-between">
         <div className="flex items-center justify-center gap-4">
-          {/* messages icon 색상 변경 필요 */}
-          <img className="size-16" src={messages} />
+          <Messages className="size-16" />
           <span>받은 질문</span>
         </div>
         <p>{questionCount}개</p>
