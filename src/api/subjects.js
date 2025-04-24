@@ -1,17 +1,5 @@
 import axios from "./axios";
 
-export const getQuestionList = async ({ subjectId, limit = 8, offset = 0 }) => {
-  try {
-    const response = await axios.get(
-      `subjects/${subjectId}/questions/?limit=${limit}&offset=${offset}`,
-    );
-    return response.data;
-  } catch (error) {
-    console.error(error.message);
-    throw error;
-  }
-};
-
 export const getSubject = async ({ subjectId }) => {
   try {
     const response = await axios.get(`subjects/${subjectId}/`);
@@ -35,7 +23,7 @@ export const createSubject = async ({ name }) => {
   }
 };
 
-export const getUserList = async ({ limit = 6, offset = 0, sort }) => {
+export const getSubjectList = async ({ limit = 6, offset = 0, sort }) => {
   try {
     const response = await axios.get(
       `subjects/?limit=${limit}&offset=${offset}&sort=${sort}`,
@@ -43,34 +31,6 @@ export const getUserList = async ({ limit = 6, offset = 0, sort }) => {
     return response;
   } catch (error) {
     console.log(error.message);
-  }
-};
-
-export const postAnswer = async ({ questionId, content, isRejected }) => {
-  try {
-    if (!questionId) throw Error("QuestionId does not exist");
-    const response = await axios.post(`questions/${questionId}/answers/`, {
-      questionId,
-      content,
-      isRejected,
-      team: "15-4",
-    });
-    return response.data;
-  } catch (error) {
-    console.log(error);
-  }
-};
-
-export const patchAnswer = async ({ id, content, isRejected }) => {
-  try {
-    if (!id) throw Error("Id does not exist");
-    const response = await axios.patch(`answers/${id}/`, {
-      content,
-      isRejected,
-    });
-    return response.data;
-  } catch (error) {
-    console.log(error);
   }
 };
 
