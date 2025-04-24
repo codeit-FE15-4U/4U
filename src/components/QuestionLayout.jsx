@@ -1,40 +1,47 @@
-import LogoImg from "../assets/images/logo.png";
 import { Link, Outlet, useLocation, useParams } from "react-router";
-import { useEffect, useState } from "react";
-import { getSubject } from "../api/subjects";
+import { useCallback, useState } from "react";
 import { getQuestionList } from "../api/questions";
+import useSubject from "../hooks/useSubject";
+import useInitialQuestion from "../hooks/useInitialQuestion";
+import useInfiniteScroll from "../hooks/useInfiniteScroll";
+import LogoImg from "../assets/images/logo.png";
 import UrlShareButton from "./UrlShareButton";
 
 const QuestionLayout = () => {
   const [questionList, setQuestionList] = useState([]);
   const { id } = useParams();
   const location = useLocation();
-  const [name, setName] = useState(location.state?.name);
-  const [imageSource, setImageSource] = useState(location.state?.imageSource);
-  const [questionCount, setQuestionCount] = useState(
-    location.state?.questionCount,
-  );
+  const [offset, setOffset] = useState(0);
+  const [isMoreQuestion, setIsMoreQuestion] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
-  useEffect(() => {
-    if (!name) {
-      const getSubjectData = async () => {
-        const { name, imageSource, questionCount } = await getSubject({
-          subjectId: id,
-        });
-        setName(name);
-        setImageSource(imageSource);
-        setQuestionCount(questionCount);
-      };
-      getSubjectData();
+  const { name, imageSource, questionCount } = useSubject({
+    id,
+    subject: location.state,
+  });
+
+  const { isInitialLoading } = useInitialQuestion({
+    id,
+    questionCount,
+    setQuestionList,
+    setOffset,
+    setIsMoreQuestion,
+  });
+
+  const getMoreData = useCallback(async () => {
+    if (isInitialLoading || isLoading) return;
+    setIsLoading(true);
+    const { results } = await getQuestionList({ subjectId: id, offset });
+    setQuestionList((prev) => [...prev, ...results]);
+    setOffset((prev) => prev + results.length);
+    if (offset + results.length >= questionCount) {
+      setIsMoreQuestion(false);
     }
-  }, [name, id]);
-  useEffect(() => {
-    const getData = async () => {
-      const { results } = await getQuestionList({ subjectId: id });
-      setQuestionList((prev) => [...prev, ...results]);
-    };
-    getData();
-  }, [id]);
+    setIsLoading(false);
+  }, [id, offset, questionCount, isLoading, isInitialLoading]);
+
+  const { ref } = useInfiniteScroll({ callback: getMoreData, isMoreQuestion });
+
   return (
     <div className="bg-grayscale-20 relative min-h-screen pb-126">
       <div className="tablet:bg-size-[1200px_234px] tablet:h-234 absolute h-177 w-full bg-white bg-[url(/src/assets/images/openmind-bg.png)] bg-size-[906px_177px] bg-center bg-no-repeat" />
@@ -70,6 +77,7 @@ const QuestionLayout = () => {
             }}
           />
         </main>
+        <div ref={ref}></div>
       </div>
     </div>
   );
