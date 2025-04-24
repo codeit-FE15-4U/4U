@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getQuestionList } from "../api/subjects";
+import { getQuestionList } from "../api/questions";
 
 const useInitialQuestion = ({
   id,
