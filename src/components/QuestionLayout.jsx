@@ -1,7 +1,8 @@
 import LogoImg from "../assets/images/logo.png";
 import { Link, Outlet, useLocation, useParams } from "react-router";
 import { useEffect, useState } from "react";
-import { getQuestionList, getSubject } from "../api/subjects";
+import { getSubject } from "../api/subjects";
+import { getQuestionList } from "../api/questions";
 
 const QuestionLayout = () => {
   const [questionList, setQuestionList] = useState([]);
