@@ -1,12 +1,12 @@
 import { useCallback, useEffect, useState } from "react";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import { getUserList } from "../api/subjects";
 import logo from "../assets/images/logo.png";
 import Arrow from "../assets/icons/arrow.svg?react";
 import Button from "../components/Button";
 import UserList from "../components/UserList";
-import { useNavigate } from "react-router";
 import DropdownTrigger from "../components/DropdownTrigger";
+import Pagenation from "../components/Pagenation";
 
 function ListPage() {
   const navigate = useNavigate();
@@ -65,8 +65,7 @@ function ListPage() {
           <UserList users={users} />
         </div>
       </div>
-      {/* Pagenation 컴포넌트로 수정 예정*/}
-      <div className="flex items-center justify-center">1 2 3 4 5</div>
+      <Pagenation />
     </div>
   );
 }
