@@ -48,7 +48,7 @@ function FeedCardAnswerInput({
             name="answer"
             className="h-186 w-full"
             placeholder="답변을 입력해주세요"
-            value={answer?.content}
+            defaultValue={answer?.content}
             ref={content}
           />
           <Button
