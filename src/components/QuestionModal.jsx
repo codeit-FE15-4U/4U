@@ -50,12 +50,14 @@ const QuestionModal = ({ onClose }) => {
           />
           <p>{name}</p>
         </div>
+        {/* 질문 입력 창 */}
         <InputTextarea
           value={message}
           className="tablet:min-h-180 mt-12 min-h-358 w-full resize-none"
           placeholder="질문을 입력해주세요"
           setValue={setMessage}
         />
+
         <Button
           className="mt-8 w-full border-none"
           type="fill"
@@ -70,3 +72,9 @@ const QuestionModal = ({ onClose }) => {
 };
 
 export default QuestionModal;
+
+// 리스트를 셋리스트를 보내는 질문하기에 보내줘서, 셋퀘스천을 사용해서, 퀘스쳔리스트에 내용을 추가해주면된다,
+// 퀘스천리스트에 맵으로 넣었는데, 퀘스천리스트에 첫번째 부분에 내용을 추가해주면 될것같습니다
+// 리스폰스로 서브젝트아이디 컨텐츠 등등 다옵니다 답변을 받으면, 형태가 똑같이 오내요, 답변을 받아온 부분을 퀘스천리스트에 추가만하면될것같습니다. 제가 셋을 받도록 컨포넌트를 만들어주세요 setQuestionList(prev=>[...new,...prev])
+// 마지막에 해보시면 될것같습니다.
+//
