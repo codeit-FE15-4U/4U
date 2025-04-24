@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router";
-import { getUserList } from "../api/subjects";
+import { getSubjectList } from "../api/subjects";
 import logo from "../assets/images/logo.png";
 import Arrow from "../assets/icons/arrow.svg?react";
 import Button from "../components/Button";
@@ -50,7 +50,7 @@ function ListPage() {
   useEffect(() => {
     const getUser = async () => {
       const offset = (currentPage - 1) * itemsPerPage;
-      const user = await getUserList({ limit: 8, offset, sort });
+      const user = await getSubjectList({ limit: 8, offset, sort });
       setUsers(user.data.results);
       setTotalUsers(user.data.count);
       setTotalPages(Math.ceil(totalUsers / itemsPerPage));
