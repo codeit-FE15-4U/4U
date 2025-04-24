@@ -2,6 +2,7 @@ import LogoImg from "../assets/images/logo.png";
 import { Link, Outlet, useLocation, useParams } from "react-router";
 import { useEffect, useState } from "react";
 import { getQuestionList, getSubject } from "../api/subjects";
+import FacebookShareButton from "./FacebookShareButton";
 
 const QuestionLayout = () => {
   const [questionList, setQuestionList] = useState([]);
@@ -53,7 +54,9 @@ const QuestionLayout = () => {
           <ul className="flex gap-12">
             <li className="bg-brown-40 size-40 rounded-full"></li>
             <li className="size-40 rounded-full bg-yellow-50"></li>
-            <li className="size-40 rounded-full bg-blue-50"></li>
+            <li>
+              <FacebookShareButton />
+            </li>
           </ul>
         </header>
 
