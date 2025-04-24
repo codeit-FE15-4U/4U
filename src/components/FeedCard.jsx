@@ -3,7 +3,7 @@ import { useState } from "react";
 // import Reaction from "./Reaction";
 import FeedCardQuestion from "./FeedCardQuestion";
 import FeedCardAnswer from "./FeedCardAnswer";
-import FeedCardAnswerContent from "./FeedCardAnswerContent";
+import FeedCardAnswerInput from "./FeedCardAnswerInput";
 import IconMore from "../assets/icons/more.svg?react";
 
 function FeedCard({ isAnswerPage, subject, question }) {
@@ -34,13 +34,20 @@ function FeedCard({ isAnswerPage, subject, question }) {
         />
         {state === "none" || (
           <FeedCardAnswer state={state} subject={subject} answer={answer}>
-            <FeedCardAnswerContent
-              state={state}
-              setState={setState}
-              questionId={question.id}
-              answer={answer}
-              setAnswer={setAnswer}
-            />
+            {state === "sent" && (
+              <div className="text-body3">{answer?.content}</div>
+            )}
+            {state === "rejected" && (
+              <div className="text-body3 text-red-50">답변 거절</div>
+            )}
+            {state === "empty" && (
+              <FeedCardAnswerInput
+                setState={setState}
+                questionId={question.id}
+                answer={answer}
+                setAnswer={setAnswer}
+              />
+            )}
           </FeedCardAnswer>
         )}
         <div className="border-grayscale-30 h-43 border-t border-solid">
