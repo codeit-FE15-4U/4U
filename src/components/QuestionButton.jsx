@@ -2,7 +2,7 @@ import { useState } from "react";
 import QuestionModal from "./QuestionModal";
 import Button from "./Button";
 
-const QuestionButton = () => {
+const QuestionButton = ({ setQuestionList }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const handleOpen = () => setIsModalOpen(true);
   const handleClose = () => setIsModalOpen(false);
@@ -18,7 +18,12 @@ const QuestionButton = () => {
         <span className="tablet:inline hidden">질문 작성하기</span>
       </Button>
 
-      {isModalOpen && <QuestionModal onClose={handleClose} />}
+      {isModalOpen && (
+        <QuestionModal
+          onClose={handleClose}
+          setQuestionList={setQuestionList}
+        />
+      )}
     </>
   );
 };
