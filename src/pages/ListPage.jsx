@@ -49,7 +49,7 @@ function ListPage() {
 
   const getUser = useCallback(async () => {
     const offset = (currentPage - 1) * itemsPerPage;
-    const user = await getUserList({ limit: itemsPerPage, offset, sort });
+    const user = await getUserList({ limit: 8, offset, sort });
     setUsers(user.data.results);
     setTotalUsers(user.data.count);
     setTotalPages(Math.ceil(totalUsers / itemsPerPage));
@@ -85,7 +85,7 @@ function ListPage() {
           <DropdownTrigger options={options} type="user" />
         </div>
         <div className="tablet:gap-20 flex flex-wrap items-center justify-center gap-16">
-          <UserList users={users} />
+          <UserList users={users.slice(0, itemsPerPage)} />
         </div>
       </div>
       <Pagenation
