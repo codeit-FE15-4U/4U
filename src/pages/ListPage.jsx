@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
 import { Link } from "react-router";
-import { getUserList } from "../api/subjects";
+import { getSubjectList } from "../api/subjects";
 import logo from "../assets/images/logo.png";
 import Arrow from "../assets/icons/arrow.svg?react";
 import Button from "../components/Button";
@@ -35,7 +35,7 @@ function ListPage() {
   };
 
   const getUser = useCallback(async (options) => {
-    const user = await getUserList(options);
+    const user = await getSubjectList(options);
     setUsers(user.data.results);
   }, []);
 
