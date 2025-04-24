@@ -12,10 +12,8 @@ function App() {
       <Routes>
         <Route path="/" element={<MainPage />} />
         <Route path="/list" element={<ListPage />} />
-        <Route path="/post/:id" element={<QuestionLayout />}>
-          <Route index element={<QuestionPage />} />
-          <Route path="answer" element={<AnswerPage />} />
-        </Route>
+        <Route path="/post/:id" element={<QuestionPage />} />
+        <Route path="/post/:id/answer" element={<AnswerPage />} />
       </Routes>
     </BrowserRouter>
   );

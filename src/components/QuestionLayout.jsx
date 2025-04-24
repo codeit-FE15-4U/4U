@@ -1,48 +1,9 @@
-import { Link, Outlet, useLocation, useParams } from "react-router";
-import { useCallback, useState } from "react";
-import { getQuestionList } from "../api/questions";
-import useSubject from "../hooks/useSubject";
-import useInitialQuestion from "../hooks/useInitialQuestion";
-import useInfiniteScroll from "../hooks/useInfiniteScroll";
+import { Link } from "react-router";
 import LogoImg from "../assets/images/logo.png";
 import UrlShareButton from "./UrlShareButton";
 import FacebookShareButton from "./FacebookShareButton";
 
-const QuestionLayout = () => {
-  const [questionList, setQuestionList] = useState([]);
-  const { id } = useParams();
-  const location = useLocation();
-  const [offset, setOffset] = useState(0);
-  const [isMoreQuestion, setIsMoreQuestion] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
-
-  const { name, imageSource, questionCount } = useSubject({
-    id,
-    subject: location.state,
-  });
-
-  const { isInitialLoading } = useInitialQuestion({
-    id,
-    questionCount,
-    setQuestionList,
-    setOffset,
-    setIsMoreQuestion,
-  });
-
-  const getMoreData = useCallback(async () => {
-    if (isInitialLoading || isLoading) return;
-    setIsLoading(true);
-    const { results } = await getQuestionList({ subjectId: id, offset });
-    setQuestionList((prev) => [...prev, ...results]);
-    setOffset((prev) => prev + results.length);
-    if (offset + results.length >= questionCount) {
-      setIsMoreQuestion(false);
-    }
-    setIsLoading(false);
-  }, [id, offset, questionCount, isLoading, isInitialLoading]);
-
-  const { ref } = useInfiniteScroll({ callback: getMoreData, isMoreQuestion });
-
+const QuestionLayout = ({ children, subject }) => {
   return (
     <div className="bg-grayscale-20 relative min-h-screen pb-126">
       <div className="tablet:bg-size-[1200px_234px] tablet:h-234 absolute h-177 w-full bg-white bg-[url(/src/assets/images/openmind-bg.png)] bg-size-[906px_177px] bg-center bg-no-repeat" />
@@ -57,9 +18,9 @@ const QuestionLayout = () => {
           </Link>
           <div
             className="tablet:size-136 size-104 rounded-full bg-cover bg-center"
-            style={{ backgroundImage: `url(${imageSource})` }}
+            style={{ backgroundImage: `url(${subject.imageSource})` }}
           />
-          <p className="tablet:text-h2 text-h3 font-regular">{name}</p>
+          <p className="tablet:text-h2 text-h3 font-regular">{subject.name}</p>
           <ul className="flex gap-12">
             <li>
               <UrlShareButton />
@@ -71,16 +32,7 @@ const QuestionLayout = () => {
           </ul>
         </header>
 
-        <main className="mt-12 flex justify-center">
-          <Outlet
-            context={{
-              questionList,
-              questionCount,
-              subject: { name, imageSource, id },
-            }}
-          />
-        </main>
-        <div ref={ref}></div>
+        <main className="mt-12 flex justify-center">{children}</main>
       </div>
     </div>
   );
