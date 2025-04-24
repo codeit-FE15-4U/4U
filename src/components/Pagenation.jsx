@@ -17,7 +17,7 @@ function Pagenation({ totalPages, currentPage, onPageChange }) {
         const page = index + 1;
         return (
           <li
-            className={`${page === currentPage && "text-brown-40"} flex size-40 cursor-pointer items-center justify-center`}
+            className={`${page === currentPage ? "text-brown-40" : ""} flex size-40 cursor-pointer items-center justify-center`}
             key={index}
             onClick={() => movePage(page)}
           >

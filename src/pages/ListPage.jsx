@@ -16,8 +16,14 @@ function ListPage() {
   const [totalPages, setTotalPages] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(4);
   const [currentPage, setCurrentPage] = useState(1);
-  const handleLatestClick = () => setSort("createdAt");
-  const handleNameClick = () => setSort("name");
+  const handleLatestClick = () => {
+    setSort("createdAt");
+    setCurrentPage(1);
+  };
+  const handleNameClick = () => {
+    setSort("name");
+    setCurrentPage(1);
+  };
 
   const options = [
     { label: "최신순", value: "createdAt", click: handleLatestClick },
