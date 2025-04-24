@@ -3,6 +3,7 @@ import { Link, Outlet, useLocation, useParams } from "react-router";
 import { useEffect, useState } from "react";
 import { getSubject } from "../api/subjects";
 import { getQuestionList } from "../api/questions";
+import UrlShareButton from "./UrlShareButton";
 
 const QuestionLayout = () => {
   const [questionList, setQuestionList] = useState([]);
@@ -52,7 +53,9 @@ const QuestionLayout = () => {
           />
           <p className="tablet:text-h2 text-h3 font-regular">{name}</p>
           <ul className="flex gap-12">
-            <li className="bg-brown-40 size-40 rounded-full"></li>
+            <li>
+              <UrlShareButton />
+            </li>
             <li className="size-40 rounded-full bg-yellow-50"></li>
             <li className="size-40 rounded-full bg-blue-50"></li>
           </ul>
