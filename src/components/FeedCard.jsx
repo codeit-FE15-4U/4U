@@ -3,7 +3,7 @@ import { useState } from "react";
 // import Reaction from "./Reaction";
 import FeedCardQuestion from "./FeedCardQuestion";
 import FeedCardAnswer from "./FeedCardAnswer";
-import FeedCardAnswerInput from "./FeedCardAnswerContent";
+import FeedCardAnswerContent from "./FeedCardAnswerContent";
 import IconMore from "../assets/icons/more.svg?react";
 
 function FeedCard({ isAnswerPage, subject, question }) {
@@ -34,7 +34,7 @@ function FeedCard({ isAnswerPage, subject, question }) {
         />
         {state === "none" || (
           <FeedCardAnswer state={state} subject={subject} answer={answer}>
-            <FeedCardAnswerInput
+            <FeedCardAnswerContent
               state={state}
               setState={setState}
               questionId={question.id}
