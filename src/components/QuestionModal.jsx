@@ -1,23 +1,43 @@
-import Close from "../assets/icons/close.svg?react";
-import MessageImg from "../assets/icons/messages.svg?react";
-import Button from "./Button";
 import { useState } from "react";
 import { useParams, useLocation } from "react-router";
-import { postQuestion } from "../api/subjects";
+
+import { postQuestion } from "../api/questions.js";
+
+import Button from "./Button";
+import Close from "../assets/icons/close.svg?react";
+import MessageImg from "../assets/icons/messages.svg?react";
 
 const QuestionModal = ({ onClose, setQuestionList }) => {
   const [message, setMessage] = useState("");
   const { id } = useParams();
   const { state } = useLocation();
   const { name, imageSource } = state;
+  const handleSendMessage = async () => {
+    try {
+      const response = await postQuestion({ subjectId: id, content: message });
+      console.log(response);
+      if (typeof setQuestionList === "function") {
+        setQuestionList((prev) => {
+          const newList = Array.isArray(prev) ? prev : [];
+          return [response, ...newList];
+        });
+      } else {
+        console.warn(
+          "setQuestionList가 함수가 아닙니다, 리스트 업데이트를 스킵합니다.",
+        );
+      } // 머지 전에 모달확인+디버깅체크
+
+      onClose();
+    } catch (error) {
+      console.error("질문 보내기 실패:", error);
+      alert("질문 보내기 실패");
+    }
+  };
 
   return (
     <div className="tablet:px-78 fixed inset-0 flex items-center justify-center p-24">
-      {/* 모달 배경 */}
       <div className="absolute inset-0 bg-black opacity-56" onClick={onClose} />
-      {/* 모달 배경 클릭하면 창 닫기 */}
       <div className="bg-grayscale-10 tablet:min-h-454 tablet:max-w-612 tablet:max-h-454 tablet:px-40 shadow-3pt z-10 min-h-568 w-full min-w-327 flex-col rounded-[24px] p-24">
-        {/* 모달 콘텐츠 */}
         <div className="flex items-center justify-between">
           <div className="text-grayscale-60 flex gap-8 text-[20px] leading-25">
             <MessageImg className="size-28" />
@@ -27,8 +47,6 @@ const QuestionModal = ({ onClose, setQuestionList }) => {
             <Close className="tablet:size-28 size-22 cursor-pointer" />
           </button>
         </div>
-
-        {/* 질문 받는 사람 */}
         <div className="mt-40 flex items-center gap-4">
           <span className="text-[18px] leading-25">To.</span>
           <div
@@ -37,14 +55,12 @@ const QuestionModal = ({ onClose, setQuestionList }) => {
           />
           <p>{name}</p>
         </div>
-        {/* 질문 입력 창 */}
         <textarea
           value={message}
           className="tablet:min-h-180 bg-grayscale-20 text-body3 font-regular border-brown-40 placeholder:text-grayscale-40 mt-12 flex min-h-358 w-full resize-none rounded-lg border-solid p-16 focus:border focus:p-15 focus:outline-none"
           placeholder="질문을 입력해주세요"
           onChange={(e) => setMessage(e.target.value)}
         />
-
         <Button
           className="mt-8 w-full border-none"
           type="fill"
@@ -59,10 +75,3 @@ const QuestionModal = ({ onClose, setQuestionList }) => {
 };
 
 export default QuestionModal;
-
-// 리스트를 셋리스트를 보내는 질문하기에 보내줘서, 셋퀘스천을 사용해서, 퀘스쳔리스트에 내용을 추가해주면된다,
-// 퀘스천리스트에 맵으로 넣었는데, 퀘스천리스트에 첫번째 부분에 내용을 추가해주면 될것같습니다
-// 리스폰스로 서브젝트아이디 컨텐츠 등등 다옵니다 답변을 받으면, 형태가 똑같이 오내요, 답변을 받아온 부분을 퀘스천리스트에 추가만하면될것같습니다. 제가 셋을 받도록 컨포넌트를 만들어주세요
-// setQuestionList(prev=>[...new,...prev])
-// 마지막에 해보시면 될것같습니다.
-//
