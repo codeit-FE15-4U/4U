@@ -1,16 +1,10 @@
-import { useState } from "react";
 import ArrowLeft from "../assets/icons/arrow-left.svg?react";
 import ArrowRight from "../assets/icons/arrow-right.svg?react";
 
-function Pagenation() {
-  const totalUsers = 32;
-  const itemsPerPage = 6;
-  const totalPages = Math.ceil(totalUsers / itemsPerPage);
-  const [currentPage, setcurrentPage] = useState(1);
-
+function Pagenation({ totalPages, currentPage, onPageChange }) {
   const movePage = (page) => {
     if (page < 1 || page > totalPages) return;
-    setcurrentPage(page);
+    onPageChange(page);
   };
 
   return (

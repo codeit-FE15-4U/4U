@@ -12,7 +12,10 @@ function ListPage() {
   const navigate = useNavigate();
   const [users, setUsers] = useState([]);
   const [sort, setSort] = useState("createdAt");
-
+  const [totalUsers, setTotalUsers] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
+  const [itemsPerPage, setItemsPerPage] = useState(4);
+  const [currentPage, setCurrentPage] = useState(1);
   const handleLatestClick = () => setSort("createdAt");
   const handleNameClick = () => setSort("name");
 
@@ -34,14 +37,28 @@ function ListPage() {
       : navigate("/");
   };
 
-  const getUser = useCallback(async (options) => {
-    const user = await getUserList(options);
-    setUsers(user.data.results);
+  const handleResize = useCallback(() => {
+    window.innerWidth > 891 ? setItemsPerPage(8) : setItemsPerPage(6);
   }, []);
 
+  const getUser = useCallback(async () => {
+    const offset = (currentPage - 1) * itemsPerPage;
+    const user = await getUserList({ limit: itemsPerPage, offset, sort });
+    setUsers(user.data.results);
+    setTotalUsers(user.data.count);
+    setTotalPages(Math.ceil(totalUsers / itemsPerPage));
+  }, [totalUsers, itemsPerPage, currentPage, sort]);
+
   useEffect(() => {
-    getUser({ limit: 10, offset: 0, sort });
-  }, [getUser, sort]);
+    getUser();
+  }, [getUser]);
+
+  useEffect(() => {
+    handleResize();
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, [handleResize]);
 
   return (
     <div className="bg-grayscale-20">
@@ -65,7 +82,11 @@ function ListPage() {
           <UserList users={users} />
         </div>
       </div>
-      <Pagenation />
+      <Pagenation
+        totalPages={totalPages}
+        currentPage={currentPage}
+        onPageChange={setCurrentPage}
+      />
     </div>
   );
 }
