@@ -3,7 +3,7 @@ import LogoImg from "../assets/images/logo.png";
 import UrlShareButton from "./UrlShareButton";
 import FacebookShareButton from "./FacebookShareButton";
 
-const QuestionLayout = ({ children, subject }) => {
+const QuestionContainer = ({ children, subject }) => {
   return (
     <div className="bg-grayscale-20 relative min-h-screen pb-126">
       <div className="tablet:bg-size-[1200px_234px] tablet:h-234 absolute h-177 w-full bg-white bg-[url(/src/assets/images/openmind-bg.png)] bg-size-[906px_177px] bg-center bg-no-repeat" />
@@ -37,4 +37,4 @@ const QuestionLayout = ({ children, subject }) => {
     </div>
   );
 };
-export default QuestionLayout;
+export default QuestionContainer;

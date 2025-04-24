@@ -7,7 +7,7 @@ import useSubject from "../hooks/useSubject";
 import useInitialQuestion from "../hooks/useInitialQuestion";
 import useInfiniteScroll from "../hooks/useInfiniteScroll";
 import { getQuestionList } from "../api/questions";
-import QuestionLayout from "../components/QuestionLayout";
+import QuestionContainer from "../components/QuestionContainer";
 
 const QuestionPage = () => {
   const [questionList, setQuestionList] = useState([]);
@@ -45,7 +45,7 @@ const QuestionPage = () => {
 
   const { ref } = useInfiniteScroll({ callback: getMoreData, isMoreQuestion });
   return (
-    <QuestionLayout subject={subject}>
+    <QuestionContainer subject={subject}>
       <QuestionBox count={questionCount}>
         <ul className="tablet:gap-20 mt-16 flex w-full flex-col gap-16">
           {questionList.map((question) => {
@@ -63,7 +63,7 @@ const QuestionPage = () => {
         <div ref={ref}></div>
       </QuestionBox>
       <QuestionButton />
-    </QuestionLayout>
+    </QuestionContainer>
   );
 };
 export default QuestionPage;

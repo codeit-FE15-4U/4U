@@ -8,7 +8,7 @@ import useInfiniteScroll from "../hooks/useInfiniteScroll";
 import useSubject from "../hooks/useSubject";
 import useInitialQuestion from "../hooks/useInitialQuestion";
 import { getQuestionList } from "../api/questions";
-import QuestionLayout from "../components/QuestionLayout";
+import QuestionContainer from "../components/QuestionContainer";
 
 const AnswerPage = () => {
   const [questionList, setQuestionList] = useState([]);
@@ -62,7 +62,7 @@ const AnswerPage = () => {
     }
   };
   return (
-    <QuestionLayout subject={subject}>
+    <QuestionContainer subject={subject}>
       <div className="relative w-full max-w-716">
         <Button
           disabled={isDeleting}
@@ -89,7 +89,7 @@ const AnswerPage = () => {
           <div ref={ref}></div>
         </QuestionBox>
       </div>
-    </QuestionLayout>
+    </QuestionContainer>
   );
 };
 export default AnswerPage;
