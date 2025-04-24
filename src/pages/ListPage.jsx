@@ -40,7 +40,7 @@ function ListPage() {
   }, []);
 
   useEffect(() => {
-    getUser({ limit: 6, offset: 0, sort });
+    getUser({ limit: 10, offset: 0, sort });
   }, [getUser, sort]);
 
   return (

@@ -1,3 +1,4 @@
+import { useState } from "react";
 import ArrowLeft from "../assets/icons/arrow-left.svg?react";
 import ArrowRight from "../assets/icons/arrow-right.svg?react";
 
@@ -5,11 +6,19 @@ function Pagenation() {
   const totalUsers = 32;
   const itemsPerPage = 6;
   const totalPages = Math.ceil(totalUsers / itemsPerPage);
-  const currentPage = 1;
+  const [currentPage, setcurrentPage] = useState(1);
+
+  const movePage = (page) => {
+    if (page < 1 || page > totalPages) return;
+    setcurrentPage(page);
+  };
 
   return (
     <ul className="text-body1 weight-regular text-grayscale-40 flex items-center justify-center pt-40">
-      <ArrowLeft className="cursor-pointer" />
+      <ArrowLeft
+        className="cursor-pointer"
+        onClick={() => movePage(currentPage - 1)}
+      />
       {[...Array(totalPages)].map((value, index) => {
         const page = index + 1;
         return (
@@ -21,7 +30,10 @@ function Pagenation() {
           </li>
         );
       })}
-      <ArrowRight className="cursor-pointer" />
+      <ArrowRight
+        className="cursor-pointer"
+        onClick={() => movePage(currentPage + 1)}
+      />
     </ul>
   );
 }
