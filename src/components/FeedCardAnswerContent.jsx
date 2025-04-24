@@ -30,6 +30,7 @@ function FeedCardAnswerInput({
       );
     }
     setState("sent");
+    setDisabled(false);
   };
 
   const handleChange = () => {
