@@ -1,4 +1,4 @@
-function InputTextarea({ name, className, placeholder, value, setValue }) {
+function InputTextarea({ name, className, placeholder, defaultValue, ref }) {
   return (
     <textarea
       id={name}
@@ -8,8 +8,8 @@ function InputTextarea({ name, className, placeholder, value, setValue }) {
         className
       }
       placeholder={placeholder}
-      value={value}
-      onChange={(e) => setValue(e.target.value)}
+      defaultValue={defaultValue}
+      ref={ref}
     />
   );
 }
