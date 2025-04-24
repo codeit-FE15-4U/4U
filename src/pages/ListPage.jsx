@@ -14,7 +14,7 @@ function ListPage() {
   const [sort, setSort] = useState("createdAt");
   const [totalUsers, setTotalUsers] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
-  const [itemsPerPage, setItemsPerPage] = useState(4);
+  const [itemsPerPage, setItemsPerPage] = useState(1);
   const [currentPage, setCurrentPage] = useState(1);
   const handleLatestClick = () => {
     setSort("createdAt");
@@ -67,7 +67,7 @@ function ListPage() {
   }, [handleResize]);
 
   return (
-    <div className="bg-grayscale-20">
+    <div className="bg-grayscale-2 h-screen">
       <div className="tablet:flex-row tablet:justify-between flex flex-col items-center justify-center gap-24 px-50 pt-40 pb-60">
         <Link to="/">
           <img className="h-57 w-146" src={logo}></img>
