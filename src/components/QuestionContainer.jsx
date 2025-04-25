@@ -2,6 +2,7 @@ import { Link } from "react-router";
 import LogoImg from "../assets/images/logo.png";
 import UrlShareButton from "./UrlShareButton";
 import FacebookShareButton from "./FacebookShareButton";
+import KakaoShareButton from "./KakaoShareButton";
 
 const QuestionContainer = ({ children, subject }) => {
   return (
@@ -25,7 +26,9 @@ const QuestionContainer = ({ children, subject }) => {
             <li>
               <UrlShareButton />
             </li>
-            <li className="size-40 rounded-full bg-yellow-50"></li>
+            <li>
+              <KakaoShareButton />
+            </li>
             <li>
               <FacebookShareButton />
             </li>
