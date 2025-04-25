@@ -1,5 +1,5 @@
 import { useCallback, useState } from "react";
-import { useLocation, useNavigate, useParams } from "react-router";
+import { useNavigate, useParams } from "react-router";
 import QuestionBox from "../components/QuestionBox";
 import FeedCard from "../components/FeedCard";
 import { deleteSubject } from "../api/subjects";
@@ -13,18 +13,12 @@ import QuestionContainer from "../components/QuestionContainer";
 const AnswerPage = () => {
   const [questionList, setQuestionList] = useState([]);
   const { id } = useParams();
-  const location = useLocation();
   const [offset, setOffset] = useState(0);
   const [isMoreQuestion, setIsMoreQuestion] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [isDeleting, setIsDeleting] = useState(false);
   const navigate = useNavigate();
-
-  const { name, imageSource, questionCount } = useSubject({
-    id,
-    subject: location.state,
-  });
-  const subject = { name, imageSource };
+  const { subject, questionCount } = useSubject(id);
 
   const { isInitialLoading } = useInitialQuestion({
     id,
