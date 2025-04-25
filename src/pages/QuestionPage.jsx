@@ -1,5 +1,5 @@
 import { useCallback, useState } from "react";
-import { useLocation, useParams } from "react-router";
+import { useParams } from "react-router";
 import QuestionBox from "../components/QuestionBox";
 import FeedCard from "../components/FeedCard";
 import QuestionButton from "../components/QuestionButton";
@@ -12,7 +12,7 @@ import QuestionContainer from "../components/QuestionContainer";
 const QuestionPage = () => {
   const [questionList, setQuestionList] = useState([]);
   const { id } = useParams();
-  const location = useLocation();
+
   const [offset, setOffset] = useState(0);
   const [isMoreQuestion, setIsMoreQuestion] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
