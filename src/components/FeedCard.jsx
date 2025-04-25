@@ -10,7 +10,7 @@ import DropdownTrigger from "./DropdownTrigger";
 function FeedCard({ isAnswerPage, subject, question }) {
   const options = [
     { label: "최신순", value: "createdAt" },
-    { label: "가운데", value: "middle" },
+    { label: "가운데dmd", value: "middle" },
     { label: "이름순", value: "name" },
   ];
 
