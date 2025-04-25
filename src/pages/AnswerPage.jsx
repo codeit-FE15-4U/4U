@@ -9,6 +9,7 @@ import useSubject from "../hooks/useSubject";
 import useInitialQuestion from "../hooks/useInitialQuestion";
 import { getQuestionList } from "../api/questions";
 import QuestionContainer from "../components/QuestionContainer";
+import SkeletonFeedCard from "../components/SkeletonFeedCard";
 
 const AnswerPage = () => {
   const [questionList, setQuestionList] = useState([]);
@@ -68,17 +69,29 @@ const AnswerPage = () => {
         </Button>
         <QuestionBox count={questionCount}>
           <ul className="tablet:gap-20 mt-16 flex w-full flex-col gap-16">
-            {questionList.map((question) => {
-              return (
-                <li key={question.id}>
-                  <FeedCard
-                    isAnswerPage={true}
-                    subject={subject}
-                    question={question}
-                  />
+            {isInitialLoading
+              ? [1, 2, 3].map((key) => (
+                  <li key={key}>
+                    <SkeletonFeedCard />
+                  </li>
+                ))
+              : questionList.map((question) => {
+                  return (
+                    <li key={question.id}>
+                      <FeedCard
+                        isAnswerPage={true}
+                        subject={subject}
+                        question={question}
+                      />
+                    </li>
+                  );
+                })}
+            {isLoading &&
+              [1, 2, 3].map((key) => (
+                <li key={key}>
+                  <SkeletonFeedCard />
                 </li>
-              );
-            })}
+              ))}
           </ul>
           <div ref={ref}></div>
         </QuestionBox>

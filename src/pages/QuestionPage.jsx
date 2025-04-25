@@ -8,6 +8,7 @@ import useSubject from "../hooks/useSubject";
 import useInitialQuestion from "../hooks/useInitialQuestion";
 import useInfiniteScroll from "../hooks/useInfiniteScroll";
 import { getQuestionList } from "../api/questions";
+import SkeletonFeedCard from "../components/SkeletonFeedCard";
 
 const QuestionPage = () => {
   const [questionList, setQuestionList] = useState([]);
@@ -42,17 +43,29 @@ const QuestionPage = () => {
     <QuestionContainer subject={subject}>
       <QuestionBox count={questionCount}>
         <ul className="tablet:gap-20 mt-16 flex w-full flex-col gap-16">
-          {questionList.map((question) => {
-            return (
-              <li key={question.id}>
-                <FeedCard
-                  isAnswerPage={false}
-                  subject={subject}
-                  question={question}
-                />
+          {isInitialLoading
+            ? [1, 2, 3].map((key) => (
+                <li key={key}>
+                  <SkeletonFeedCard />
+                </li>
+              ))
+            : questionList.map((question) => {
+                return (
+                  <li key={question.id}>
+                    <FeedCard
+                      isAnswerPage={false}
+                      subject={subject}
+                      question={question}
+                    />
+                  </li>
+                );
+              })}
+          {isLoading &&
+            [1, 2, 3].map((key) => (
+              <li key={key}>
+                <SkeletonFeedCard />
               </li>
-            );
-          })}
+            ))}
         </ul>
         <div ref={ref}></div>
       </QuestionBox>
