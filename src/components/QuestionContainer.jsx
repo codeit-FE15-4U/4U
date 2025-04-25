@@ -3,6 +3,7 @@ import LogoImg from "../assets/images/logo.png";
 import UrlShareButton from "./UrlShareButton";
 import FacebookShareButton from "./FacebookShareButton";
 import KakaoShareButton from "./KakaoShareButton";
+import SkeletonSubject from "./SkeletonSubject";
 
 const QuestionContainer = ({ children, subject }) => {
   return (
@@ -17,11 +18,20 @@ const QuestionContainer = ({ children, subject }) => {
               alt="로고 이미지"
             />
           </Link>
-          <div
-            className="tablet:size-136 size-104 rounded-full bg-cover bg-center"
-            style={{ backgroundImage: `url(${subject.imageSource})` }}
-          />
-          <p className="tablet:text-h2 text-h3 font-regular">{subject.name}</p>
+          {subject.isSubject ? (
+            <>
+              <div
+                className="tablet:size-136 size-104 rounded-full bg-cover bg-center"
+                style={{ backgroundImage: `url(${subject.imageSource})` }}
+              />
+              <p className="tablet:text-h2 text-h3 font-regular">
+                {subject.name}
+              </p>
+            </>
+          ) : (
+            <SkeletonSubject />
+          )}
+
           <ul className="flex gap-12">
             <li>
               <UrlShareButton />
