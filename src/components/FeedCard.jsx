@@ -6,6 +6,8 @@ import FeedCardAnswer from "./FeedCardAnswer";
 import FeedCardAnswerInput from "./FeedCardAnswerInput";
 import DropdownTrigger from "./DropdownTrigger";
 import { deleteQuestion } from "../api/questions";
+import IconEdit from "../assets/icons/edit.svg?react";
+import IconClose from "../assets/icons/close.svg?react";
 
 function FeedCard({ isAnswerPage, subject, question }) {
   const [isQuestion, setIsQuestion] = useState(!!question);
@@ -22,14 +24,24 @@ function FeedCard({ isAnswerPage, subject, question }) {
   const dropdownOptions = useMemo(
     () => [
       {
-        label: "수정하기",
+        label: (
+          <div className="text-grayscale-50 hover:text-grayscale-60 flex items-center gap-8 active:text-blue-50">
+            <IconEdit className="size-14" />
+            수정하기
+          </div>
+        ),
         value: "edit",
         click() {
           setState("empty");
         },
       },
       {
-        label: "삭제하기",
+        label: (
+          <div className="text-grayscale-50 hover:text-grayscale-60 flex items-center gap-8 active:text-blue-50">
+            <IconClose className="size-14" />
+            삭제하기
+          </div>
+        ),
         value: "delete",
         click: async () => {
           await deleteQuestion({ id: question.id });
