@@ -1,20 +1,29 @@
 import { useCallback, useEffect, useState } from "react";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import { getSubjectList } from "../api/subjects";
 import logo from "../assets/images/logo.png";
 import Arrow from "../assets/icons/arrow.svg?react";
 import Button from "../components/Button";
 import UserList from "../components/UserList";
-import { useNavigate } from "react-router";
 import DropdownTrigger from "../components/DropdownTrigger";
+import Pagenation from "../components/Pagenation";
 
 function ListPage() {
   const navigate = useNavigate();
   const [users, setUsers] = useState([]);
   const [sort, setSort] = useState("createdAt");
-
-  const handleLatestClick = () => setSort("createdAt");
-  const handleNameClick = () => setSort("name");
+  const [totalUsers, setTotalUsers] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
+  const [itemsPerPage, setItemsPerPage] = useState(1);
+  const [currentPage, setCurrentPage] = useState(1);
+  const handleLatestClick = () => {
+    setSort("createdAt");
+    setCurrentPage(1);
+  };
+  const handleNameClick = () => {
+    setSort("name");
+    setCurrentPage(1);
+  };
 
   const options = [
     { label: "최신순", value: "createdAt", click: handleLatestClick },
@@ -34,17 +43,28 @@ function ListPage() {
       : navigate("/");
   };
 
-  const getUser = useCallback(async (options) => {
-    const user = await getSubjectList(options);
-    setUsers(user.data.results);
+  const handleResize = useCallback(() => {
+    window.innerWidth > 891 ? setItemsPerPage(8) : setItemsPerPage(6);
   }, []);
 
   useEffect(() => {
-    getUser({ limit: 6, offset: 0, sort });
-  }, [getUser, sort]);
+    const getUser = async () => {
+      const offset = (currentPage - 1) * itemsPerPage;
+      const user = await getSubjectList({ limit: 8, offset, sort });
+      setUsers(user.data.results);
+      setTotalUsers(user.data.count);
+      setTotalPages(Math.ceil(totalUsers / itemsPerPage));
+    };
+    getUser();
+  }, [totalUsers, itemsPerPage, currentPage, sort]);
+
+  useEffect(() => {
+    handleResize();
+    window.addEventListener("resize", handleResize);
+  }, [handleResize]);
 
   return (
-    <div className="bg-grayscale-20">
+    <div className="bg-grayscale-20 h-screen">
       <div className="tablet:flex-row tablet:justify-between flex flex-col items-center justify-center gap-24 px-50 pt-40 pb-60">
         <Link to="/">
           <img className="h-57 w-146" src={logo}></img>
@@ -62,11 +82,14 @@ function ListPage() {
           <DropdownTrigger options={options} type="user" />
         </div>
         <div className="tablet:gap-20 flex flex-wrap items-center justify-center gap-16">
-          <UserList users={users} />
+          <UserList users={users.slice(0, itemsPerPage)} />
         </div>
       </div>
-      {/* Pagenation 컴포넌트로 수정 예정*/}
-      <div className="flex items-center justify-center">1 2 3 4 5</div>
+      <Pagenation
+        totalPages={totalPages}
+        currentPage={currentPage}
+        onPageChange={setCurrentPage}
+      />
     </div>
   );
 }
