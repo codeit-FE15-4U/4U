@@ -24,13 +24,7 @@ const MainPage = () => {
       );
       console.log(localStorage);
 
-      navigate(`/post/${subjectId}`, {
-        state: {
-          name: response.name,
-          questionCount: response.questionCount,
-          imageSource: response.imageSource,
-        },
-      });
+      navigate(`/post/${subjectId}`);
     } catch (error) {
       console.error("이름 등록 실패:", error);
     }
