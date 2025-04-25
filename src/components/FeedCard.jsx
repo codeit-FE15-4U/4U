@@ -10,6 +10,7 @@ import DropdownTrigger from "./DropdownTrigger";
 function FeedCard({ isAnswerPage, subject, question }) {
   const options = [
     { label: "최신순", value: "createdAt" },
+    { label: "가운데", value: "middle" },
     { label: "이름순", value: "name" },
   ];
 
@@ -32,6 +33,7 @@ function FeedCard({ isAnswerPage, subject, question }) {
       <div className="tablet:gap-32 tablet:p-32 shadow-1pt font-regular text-grayscale-60 bg-grayscale-10 flex flex-col gap-24 rounded-2xl p-24">
         <div className="flex justify-between">
           {/* <Badge /> */}
+          <span>Badge</span>
           {isAnswerPage && <DropdownTrigger options={options} type="answer" />}
         </div>
         <FeedCardQuestion
