@@ -39,7 +39,7 @@ const QuestionPage = () => {
 
   const { ref } = useInfiniteScroll({ callback: getMoreData, isMoreQuestion });
   return (
-    <QuestionContainer subject={subjectData}>
+    <QuestionContainer subject={subject}>
       <QuestionBox count={questionCount}>
         <ul className="tablet:gap-20 mt-16 flex w-full flex-col gap-16">
           {questionList.map((question) => {
@@ -47,7 +47,7 @@ const QuestionPage = () => {
               <li key={question.id}>
                 <FeedCard
                   isAnswerPage={false}
-                  subject={subjectData}
+                  subject={subject}
                   question={question}
                 />
               </li>
@@ -59,7 +59,7 @@ const QuestionPage = () => {
       <QuestionButton
         setQuestionList={setQuestionList}
         setQuestionCount={setQuestionCount}
-        subject={subjectData}
+        subject={subject}
       />
     </QuestionContainer>
   );
