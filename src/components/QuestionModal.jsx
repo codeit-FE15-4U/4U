@@ -1,8 +1,6 @@
 import { useState } from "react";
 import { useParams, useLocation } from "react-router";
-
 import { postQuestion } from "../api/questions.js";
-
 import Button from "./Button";
 import Close from "../assets/icons/close.svg?react";
 import MessageImg from "../assets/icons/messages.svg?react";
@@ -39,7 +37,7 @@ const QuestionModal = ({ onClose, setQuestionList }) => {
       <div className="absolute inset-0 bg-black opacity-56" onClick={onClose} />
       <div className="bg-grayscale-10 tablet:min-h-454 tablet:max-w-612 tablet:max-h-454 tablet:px-40 shadow-3pt z-10 min-h-568 w-full min-w-327 flex-col rounded-[24px] p-24">
         <div className="flex items-center justify-between">
-          <div className="text-grayscale-60 flex gap-8 text-[20px] leading-25">
+          <div className="text-grayscale-60 text-body1 flex gap-8">
             <MessageImg className="size-28" />
             질문을 작성하세요
           </div>
@@ -48,7 +46,7 @@ const QuestionModal = ({ onClose, setQuestionList }) => {
           </button>
         </div>
         <div className="mt-40 flex items-center gap-4">
-          <span className="text-[18px] leading-25">To.</span>
+          <span className="body2">To.</span>
           <div
             className="size-28 rounded-full bg-cover bg-center"
             style={{ backgroundImage: `url(${imageSource})` }}
@@ -64,7 +62,7 @@ const QuestionModal = ({ onClose, setQuestionList }) => {
         <Button
           className="mt-8 w-full border-none"
           type="fill"
-          disabled={!message.trim()}
+          disabled={!message}
           onClick={handleSendMessage}
         >
           질문 보내기
