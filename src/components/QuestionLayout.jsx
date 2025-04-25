@@ -6,6 +6,7 @@ import useInitialQuestion from "../hooks/useInitialQuestion";
 import useInfiniteScroll from "../hooks/useInfiniteScroll";
 import LogoImg from "../assets/images/logo.png";
 import UrlShareButton from "./UrlShareButton";
+import FacebookShareButton from "./FacebookShareButton";
 
 const QuestionLayout = () => {
   const [questionList, setQuestionList] = useState([]);
@@ -64,7 +65,9 @@ const QuestionLayout = () => {
               <UrlShareButton />
             </li>
             <li className="size-40 rounded-full bg-yellow-50"></li>
-            <li className="size-40 rounded-full bg-blue-50"></li>
+            <li>
+              <FacebookShareButton />
+            </li>
           </ul>
         </header>
 
