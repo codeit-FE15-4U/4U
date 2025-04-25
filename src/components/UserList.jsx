@@ -5,7 +5,7 @@ function UserList({ users }) {
   const navigate = useNavigate();
 
   const handleCardClick = (user) => {
-    navigate(`/post/${user.id}`, { state: user });
+    navigate(`/post/${user.id}`);
     console.log(user);
   };
 
