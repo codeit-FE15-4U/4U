@@ -39,7 +39,7 @@ function ListPage() {
     const { id } = JSON.parse(data);
     const selectedUser = users.find((user) => user.id === id);
     id
-      ? navigate(`/post/${id}/answer`, { state: { selectedUser } })
+      ? navigate(`/post/${id}/answer`, { state: selectedUser })
       : navigate("/");
   };
 
