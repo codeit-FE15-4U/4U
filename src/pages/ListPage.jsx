@@ -37,10 +37,7 @@ function ListPage() {
       return;
     }
     const { id } = JSON.parse(data);
-    const selectedUser = users.find((user) => user.id === id);
-    id
-      ? navigate(`/post/${id}/answer`, { state: selectedUser })
-      : navigate("/");
+    id ? navigate(`/post/${id}/answer`) : navigate("/");
   };
 
   const handleResize = useCallback(() => {
