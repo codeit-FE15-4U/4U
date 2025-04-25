@@ -1,5 +1,5 @@
 import { useState } from "react";
-// import Badge from "./Badge";
+import Badge from "./Badge";
 // import Reaction from "./Reaction";
 import FeedCardQuestion from "./FeedCardQuestion";
 import FeedCardAnswer from "./FeedCardAnswer";
@@ -25,7 +25,7 @@ function FeedCard({ isAnswerPage, subject, question }) {
     return (
       <div className="tablet:gap-32 tablet:p-32 shadow-1pt font-regular text-grayscale-60 bg-grayscale-10 flex flex-col gap-24 rounded-2xl p-24">
         <div className="flex justify-between">
-          {/* <Badge /> */}
+          <Badge completed={!!answer} />
           {isAnswerPage && <IconMore className="size-26" />}
         </div>
         <FeedCardQuestion
