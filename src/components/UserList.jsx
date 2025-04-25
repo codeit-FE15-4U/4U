@@ -4,8 +4,9 @@ import UserCard from "./UserCard";
 function UserList({ users }) {
   const navigate = useNavigate();
 
-  const handleCardClick = (id) => {
-    navigate(`/post/${id}`);
+  const handleCardClick = (user) => {
+    navigate(`/post/${user.id}`, { state: user });
+    console.log(user);
   };
 
   return (
@@ -15,10 +16,10 @@ function UserList({ users }) {
 
         return (
           // 카드 너비 반응형 구현 필요
-          <li key={user.id}>
+          <li key={id}>
             <UserCard
               className="cursor-pointer"
-              onClick={() => handleCardClick(id)}
+              onClick={() => handleCardClick(user)}
               imageSource={imageSource}
               name={name}
               questionCount={questionCount}
