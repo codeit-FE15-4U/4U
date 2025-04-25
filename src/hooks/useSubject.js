@@ -5,9 +5,9 @@ const useSubject = ({ id, subject }) => {
   const [subjectData, setSubjectData] = useState({
     name: subject?.name,
     imageSource: subject?.imageSource,
-    questionCount: subject?.questionCount,
     isSubject: !!subject,
   });
+  const [questionCount, setQuestionCount] = useState(subject?.questionCount);
   useEffect(() => {
     if (!subject) {
       const getSubjectData = async () => {
@@ -17,13 +17,13 @@ const useSubject = ({ id, subject }) => {
         setSubjectData({
           name,
           imageSource,
-          questionCount,
           isSubject: true,
         });
+        setQuestionCount(questionCount);
       };
       getSubjectData();
     }
   }, [subject, id]);
-  return subjectData;
+  return { subjectData, questionCount, setQuestionCount };
 };
 export default useSubject;

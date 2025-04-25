@@ -17,11 +17,10 @@ const QuestionPage = () => {
   const [isMoreQuestion, setIsMoreQuestion] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
-  const { name, imageSource, questionCount } = useSubject({
+  const { subjectData, questionCount, setQuestionCount } = useSubject({
     id,
     subject: location.state,
   });
-  const subject = { name, imageSource };
 
   const { isInitialLoading } = useInitialQuestion({
     id,
@@ -45,7 +44,7 @@ const QuestionPage = () => {
 
   const { ref } = useInfiniteScroll({ callback: getMoreData, isMoreQuestion });
   return (
-    <QuestionContainer subject={subject}>
+    <QuestionContainer subject={subjectData}>
       <QuestionBox count={questionCount}>
         <ul className="tablet:gap-20 mt-16 flex w-full flex-col gap-16">
           {questionList.map((question) => {
@@ -53,7 +52,7 @@ const QuestionPage = () => {
               <li key={question.id}>
                 <FeedCard
                   isAnswerPage={false}
-                  subject={subject}
+                  subject={subjectData}
                   question={question}
                 />
               </li>
@@ -62,7 +61,11 @@ const QuestionPage = () => {
         </ul>
         <div ref={ref}></div>
       </QuestionBox>
-      <QuestionButton />
+      <QuestionButton
+        setQuestionList={setQuestionList}
+        setQuestionCount={setQuestionCount}
+        subject={subjectData}
+      />
     </QuestionContainer>
   );
 };

@@ -1,15 +1,21 @@
 import { useState } from "react";
-import { useParams, useLocation } from "react-router";
+import { useParams } from "react-router";
 import { postQuestion } from "../api/questions.js";
 import Button from "./Button";
 import Close from "../assets/icons/close.svg?react";
 import MessageImg from "../assets/icons/messages.svg?react";
 
-const QuestionModal = ({ onClose, setQuestionList }) => {
+const QuestionModal = ({
+  onClose,
+  setQuestionList,
+  subject,
+  setQuestionCount,
+}) => {
   const [message, setMessage] = useState("");
   const { id } = useParams();
-  const { state } = useLocation();
-  const { name, imageSource } = state;
+  const name = subject.name;
+  const imageSource = subject.imageSource;
+
   const handleSendMessage = async () => {
     try {
       const response = await postQuestion({ subjectId: id, content: message });
@@ -19,12 +25,8 @@ const QuestionModal = ({ onClose, setQuestionList }) => {
           const newList = Array.isArray(prev) ? prev : [];
           return [response, ...newList];
         });
-      } else {
-        console.warn(
-          "setQuestionList가 함수가 아닙니다, 리스트 업데이트를 스킵합니다.",
-        );
-      } // 머지 전에 모달확인+디버깅체크
-
+      }
+      setQuestionCount((prev) => prev + 1);
       onClose();
     } catch (error) {
       console.error("질문 보내기 실패:", error);

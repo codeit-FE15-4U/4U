@@ -2,7 +2,7 @@ import { useState } from "react";
 import QuestionModal from "./QuestionModal";
 import Button from "./Button";
 
-const QuestionButton = ({ setQuestionList }) => {
+const QuestionButton = ({ setQuestionList, subject, setQuestionCount }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const handleOpen = () => setIsModalOpen(true);
   const handleClose = () => setIsModalOpen(false);
@@ -22,6 +22,8 @@ const QuestionButton = ({ setQuestionList }) => {
         <QuestionModal
           onClose={handleClose}
           setQuestionList={setQuestionList}
+          subject={subject}
+          setQuestionCount={setQuestionCount}
         />
       )}
     </>
