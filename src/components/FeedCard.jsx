@@ -52,8 +52,9 @@ function FeedCard({ isAnswerPage, subject, question }) {
     [question],
   );
 
+  if (!isQuestion) return;
+
   try {
-    if (!isQuestion) throw Error("Question does not exist");
     if (!subject) throw Error("Subject does not exist");
 
     return (
