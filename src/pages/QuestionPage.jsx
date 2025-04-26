@@ -56,7 +56,11 @@ const QuestionPage = () => {
         </ul>
         <div ref={ref}></div>
       </QuestionBox>
-      <QuestionButton />
+      <QuestionButton
+        setQuestionList={setQuestionList}
+        setQuestionCount={setQuestionCount}
+        subject={subject}
+      />
     </QuestionContainer>
   );
 };
