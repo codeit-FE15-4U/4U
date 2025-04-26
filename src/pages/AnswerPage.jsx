@@ -1,14 +1,14 @@
 import { useCallback, useState } from "react";
 import { useNavigate, useParams } from "react-router";
-import QuestionBox from "../components/QuestionBox";
-import FeedCard from "../components/FeedCard";
 import { deleteSubject } from "../api/subjects";
+import { getQuestionList } from "../api/questions";
+import QuestionBox from "../components/QuestionBox";
 import Button from "../components/Button";
+import QuestionContainer from "../components/QuestionContainer";
+import QuestionList from "./../components/QuestionList";
 import useInfiniteScroll from "../hooks/useInfiniteScroll";
 import useSubject from "../hooks/useSubject";
 import useInitialQuestion from "../hooks/useInitialQuestion";
-import { getQuestionList } from "../api/questions";
-import QuestionContainer from "../components/QuestionContainer";
 
 const AnswerPage = () => {
   const [questionList, setQuestionList] = useState([]);
@@ -67,19 +67,13 @@ const AnswerPage = () => {
           {isDeleting ? "삭제중" : "삭제하기"}
         </Button>
         <QuestionBox count={questionCount}>
-          <ul className="tablet:gap-20 mt-16 flex w-full flex-col gap-16">
-            {questionList.map((question) => {
-              return (
-                <li key={question.id}>
-                  <FeedCard
-                    isAnswerPage={true}
-                    subject={subject}
-                    question={question}
-                  />
-                </li>
-              );
-            })}
-          </ul>
+          <QuestionList
+            isInitialLoading={isInitialLoading}
+            isLoading={isLoading}
+            questionList={questionList}
+            subject={subject}
+            isAnswerPage={true}
+          />
           <div ref={ref}></div>
         </QuestionBox>
       </div>
