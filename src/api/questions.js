@@ -7,6 +7,12 @@ export const getQuestionList = async ({ subjectId, limit = 8, offset = 0 }) => {
   return response.data;
 };
 
+export const deleteQuestion = async ({ id }) => {
+  if (!id) throw Error("Id does not exist");
+  const response = await axios.delete(`questions/${id}/`);
+  return response;
+};
+
 export const postQuestion = async ({ subjectId, content }) => {
   const response = await axios.post(`subjects/${subjectId}/questions/`, {
     content,
