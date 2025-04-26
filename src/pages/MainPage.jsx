@@ -17,12 +17,11 @@ const MainPage = () => {
     try {
       const response = await createSubject({ name });
       const subjectId = response.id;
-
-      localStorage.setItem(
-        "subject",
-        JSON.stringify({ id: subjectId, name: response.name }),
-      );
-      console.log(localStorage);
+      const newSubject = { id: subjectId, name: response.name };
+      const subjects = JSON.parse(localStorage.getItem("subjects") || "[]");
+      subjects.push(newSubject);
+      localStorage.setItem("subjects", JSON.stringify(subjects));
+      localStorage.setItem("selectedSubject", JSON.stringify(newSubject));
 
       navigate(`/post/${subjectId}`);
     } catch (error) {

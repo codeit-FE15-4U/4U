@@ -19,3 +19,10 @@ export const postQuestion = async ({ subjectId, content }) => {
   });
   return response.data;
 };
+
+export const postReaction = async ({ id, type }) => {
+  const response = await axios.post(`questions/${id}/reaction/`, {
+    type,
+  });
+  return response.data;
+};
