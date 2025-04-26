@@ -7,6 +7,7 @@ import Button from "../components/Button";
 import UserList from "../components/UserList";
 import DropdownTrigger from "../components/DropdownTrigger";
 import Pagenation from "../components/Pagenation";
+import UserModal from "../components/UserModal";
 
 function ListPage() {
   const navigate = useNavigate();
@@ -16,6 +17,7 @@ function ListPage() {
   const [totalPages, setTotalPages] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(1);
   const [currentPage, setCurrentPage] = useState(1);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const handleLatestClick = () => {
     setSort("createdAt");
     setCurrentPage(1);
@@ -30,6 +32,16 @@ function ListPage() {
     { label: "이름순", value: "name", click: handleNameClick },
   ];
 
+  // const handleButtonClick = () => {
+  //   const data = localStorage.getItem("selectedSubject");
+  //   if (!data) {
+  //     navigate("/");
+  //     return;
+  //   }
+  //   const { id } = JSON.parse(data);
+  //   id ? navigate(`/post/${id}/answer`) : navigate("/");
+  // };
+
   const handleButtonClick = () => {
     const data = localStorage.getItem("selectedSubject");
     if (!data) {
@@ -37,7 +49,7 @@ function ListPage() {
       return;
     }
     const { id } = JSON.parse(data);
-    id ? navigate(`/post/${id}/answer`) : navigate("/");
+    id ? setIsModalOpen(true) : navigate("/");
   };
 
   const handleResize = useCallback(() => {
@@ -70,6 +82,7 @@ function ListPage() {
           답변하러 가기
           <Arrow className="text-brown-40 size-18" />
         </Button>
+        {isModalOpen && <UserModal />}
       </div>
       <div className="tablet:gap-32 tablet:px-50 flex flex-col gap-20 px-24">
         <div className="tablet:flex-col tablet:gap-20 flex items-center justify-between">
