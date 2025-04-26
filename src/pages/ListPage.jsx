@@ -18,9 +18,9 @@ function ListPage() {
   const [itemsPerPage, setItemsPerPage] = useState(1);
   const [currentPage, setCurrentPage] = useState(1);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [subjects, setSubjects] = useState([]);
 
   const handleClose = () => setIsModalOpen(false);
-  const handleOpen = () => setIsModalOpen(true);
 
   const handleLatestClick = () => {
     setSort("createdAt");
@@ -47,13 +47,14 @@ function ListPage() {
   // };
 
   const handleButtonClick = () => {
-    const data = localStorage.getItem("selectedSubject");
-    if (!data) {
+    const data = localStorage.getItem("subjects");
+    if (data) {
+      const subjects = JSON.parse(data);
+      setSubjects(subjects);
+      setIsModalOpen(true);
+    } else {
       navigate("/");
-      return;
     }
-    const { id } = JSON.parse(data);
-    id ? setIsModalOpen(true) : navigate("/");
   };
 
   const handleResize = useCallback(() => {
@@ -86,7 +87,7 @@ function ListPage() {
           답변하러 가기
           <Arrow className="text-brown-40 size-18" />
         </Button>
-        {isModalOpen && <UserModal onClose={handleClose} />}
+        {isModalOpen && <UserModal onClose={handleClose} subjects={subjects} />}
       </div>
       <div className="tablet:gap-32 tablet:px-50 flex flex-col gap-20 px-24">
         <div className="tablet:flex-col tablet:gap-20 flex items-center justify-between">
