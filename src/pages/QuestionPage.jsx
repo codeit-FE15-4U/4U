@@ -1,13 +1,13 @@
 import { useCallback, useState } from "react";
 import { useParams } from "react-router";
+import { getQuestionList } from "../api/questions";
 import QuestionBox from "../components/QuestionBox";
-import FeedCard from "../components/FeedCard";
 import QuestionButton from "../components/QuestionButton";
 import QuestionContainer from "../components/QuestionContainer";
+import QuestionList from "../components/QuestionList";
 import useSubject from "../hooks/useSubject";
 import useInitialQuestion from "../hooks/useInitialQuestion";
 import useInfiniteScroll from "../hooks/useInfiniteScroll";
-import { getQuestionList } from "../api/questions";
 
 const QuestionPage = () => {
   const [questionList, setQuestionList] = useState([]);
@@ -41,19 +41,13 @@ const QuestionPage = () => {
   return (
     <QuestionContainer subject={subject}>
       <QuestionBox count={questionCount}>
-        <ul className="tablet:gap-20 mt-16 flex w-full flex-col gap-16">
-          {questionList.map((question) => {
-            return (
-              <li key={question.id}>
-                <FeedCard
-                  isAnswerPage={false}
-                  subject={subject}
-                  question={question}
-                />
-              </li>
-            );
-          })}
-        </ul>
+        <QuestionList
+          isInitialLoading={isInitialLoading}
+          questionList={questionList}
+          subject={subject}
+          isLoading={isLoading}
+          isAnswerPage={false}
+        />
         <div ref={ref}></div>
       </QuestionBox>
       <QuestionButton
