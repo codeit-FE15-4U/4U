@@ -34,7 +34,7 @@ const Reaction = ({ question }) => {
   };
 
   return (
-    <ul className="text-caption1 text-grayscale-40 flex items-center justify-center gap-32">
+    <ul className="text-caption1 text-grayscale-40 flex items-center gap-32">
       <li
         className={`flex items-center gap-6 ${
           reactionType === "LIKE"
