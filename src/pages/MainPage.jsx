@@ -17,7 +17,11 @@ const MainPage = () => {
     try {
       const response = await createSubject({ name });
       const subjectId = response.id;
-      const newSubject = { id: subjectId, name: response.name };
+      const newSubject = {
+        id: subjectId,
+        name: response.name,
+        profile: response.imageSource,
+      };
       const subjects = JSON.parse(localStorage.getItem("subjects") || "[]");
       subjects.unshift(newSubject);
       localStorage.setItem("subjects", JSON.stringify(subjects));

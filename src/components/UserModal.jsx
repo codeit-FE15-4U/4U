@@ -27,12 +27,10 @@ function UserModal({ onClose, subjects }) {
               <li
                 key={subject.id}
                 onClick={handleUserClick}
-                className="border-grayscale-30 bg-brown-10 hover:bg-brown-20 flex cursor-pointer rounded-lg border px-12 py-8"
+                className="border-grayscale-30 bg-brown-10 hover:bg-brown-20 flex cursor-pointer items-center gap-20 rounded-lg border px-12 py-8"
               >
-                <div className="flex">
-                  <div>{subject.id}</div>
-                  <div>{subject.name}</div>
-                </div>
+                <img className="h-48 w-48 rounded-full" src={subject.profile} />
+                <div className="text-body1">{subject.name}</div>
               </li>
             );
           })}
