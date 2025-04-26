@@ -20,6 +20,7 @@ const QuestionModal = ({
 
   const handleSendMessage = async () => {
     try {
+      setDisabled(true);
       const response = await postQuestion({
         subjectId: id,
         content: message.current.value,
@@ -36,6 +37,7 @@ const QuestionModal = ({
     } catch (error) {
       console.error("질문 보내기 실패:", error);
       alert("질문 보내기 실패");
+      setDisabled(false);
     }
   };
 
