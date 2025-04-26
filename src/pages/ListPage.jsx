@@ -31,7 +31,7 @@ function ListPage() {
   ];
 
   const handleButtonClick = () => {
-    const data = localStorage.getItem("subject");
+    const data = localStorage.getItem("selectedSubject");
     if (!data) {
       navigate("/");
       return;
