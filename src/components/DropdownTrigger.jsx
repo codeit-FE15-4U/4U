@@ -68,6 +68,7 @@ function DropdownTrigger({ options, type }) {
       </div>
       {isOpen && (
         <DropdownMenu
+          type={type}
           options={options}
           selected={selected}
           onSelect={handleOptionClick}
