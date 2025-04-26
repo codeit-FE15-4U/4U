@@ -14,13 +14,8 @@ export const deleteQuestion = async ({ id }) => {
 };
 
 export const postQuestion = async ({ subjectId, content }) => {
-  try {
-    const response = await axios.post(`subjects/${subjectId}/questions/`, {
-      content,
-    });
-    return response.data;
-  } catch (error) {
-    console.error(error.message);
-    throw error;
-  }
+  const response = await axios.post(`subjects/${subjectId}/questions/`, {
+    content,
+  });
+  return response.data;
 };
