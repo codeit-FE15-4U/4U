@@ -19,18 +19,26 @@ const Reaction = ({ question }) => {
 
   const handleLike = async () => {
     if (reactionType) return;
-    await postReaction({ id: question.id, type: "like" });
-    setLikeCounts((prev) => prev + 1);
     setReactionType("LIKE");
+    setLikeCounts((prev) => prev + 1);
     localStorage.setItem(storageKey, "LIKE");
+    try {
+      await postReaction({ id: question.id, type: "like" });
+    } catch (error) {
+      console.error("좋아요 요청 실패:", error);
+    }
   };
 
   const handleDislike = async () => {
     if (reactionType) return;
-    await postReaction({ id: question.id, type: "dislike" });
-    setDislikeCounts((prev) => prev + 1);
     setReactionType("DISLIKE");
+    setDislikeCounts((prev) => prev + 1);
     localStorage.setItem(storageKey, "DISLIKE");
+    try {
+      await postReaction({ id: question.id, type: "dislike" });
+    } catch (error) {
+      console.error("싫어요 요청 실패:", error);
+    }
   };
 
   return (
