@@ -19,7 +19,7 @@ const MainPage = () => {
       const subjectId = response.id;
       const newSubject = { id: subjectId, name: response.name };
       const subjects = JSON.parse(localStorage.getItem("subjects") || "[]");
-      subjects.push(newSubject);
+      subjects.unshift(newSubject);
       localStorage.setItem("subjects", JSON.stringify(subjects));
       localStorage.setItem("selectedSubject", JSON.stringify(newSubject));
 
