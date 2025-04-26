@@ -40,7 +40,7 @@ const Reaction = ({ question }) => {
           reactionType === "LIKE"
             ? "cursor-default text-blue-50"
             : reactionType === "DISLIKE"
-              ? "text-grayscale-40 cursor-not-allowed opacity-50"
+              ? "text-grayscale-40 disabled"
               : "text-grayscale-40 cursor-pointer"
         }`}
         onClick={handleLike}
@@ -51,9 +51,9 @@ const Reaction = ({ question }) => {
       <li
         className={`flex items-center gap-6 ${
           reactionType === "DISLIKE"
-            ? "cursor-default text-blue-50"
+            ? "text-grayscale-60 cursor-default"
             : reactionType === "LIKE"
-              ? "text-grayscale-40 cursor-not-allowed opacity-50"
+              ? "text-grayscale-40 disabled"
               : "text-grayscale-40 cursor-pointer"
         }`}
         onClick={handleDislike}
