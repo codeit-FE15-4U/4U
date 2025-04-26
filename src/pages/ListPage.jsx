@@ -36,16 +36,6 @@ function ListPage() {
     { label: "이름순", value: "name", click: handleNameClick },
   ];
 
-  // const handleButtonClick = () => {
-  //   const data = localStorage.getItem("selectedSubject");
-  //   if (!data) {
-  //     navigate("/");
-  //     return;
-  //   }
-  //   const { id } = JSON.parse(data);
-  //   id ? navigate(`/post/${id}/answer`) : navigate("/");
-  // };
-
   const handleButtonClick = () => {
     const data = localStorage.getItem("subjects");
     if (data) {
