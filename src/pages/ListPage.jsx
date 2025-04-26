@@ -18,6 +18,10 @@ function ListPage() {
   const [itemsPerPage, setItemsPerPage] = useState(1);
   const [currentPage, setCurrentPage] = useState(1);
   const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleClose = () => setIsModalOpen(false);
+  const handleOpen = () => setIsModalOpen(true);
+
   const handleLatestClick = () => {
     setSort("createdAt");
     setCurrentPage(1);
@@ -82,7 +86,7 @@ function ListPage() {
           답변하러 가기
           <Arrow className="text-brown-40 size-18" />
         </Button>
-        {isModalOpen && <UserModal />}
+        {isModalOpen && <UserModal onClose={handleClose} />}
       </div>
       <div className="tablet:gap-32 tablet:px-50 flex flex-col gap-20 px-24">
         <div className="tablet:flex-col tablet:gap-20 flex items-center justify-between">
