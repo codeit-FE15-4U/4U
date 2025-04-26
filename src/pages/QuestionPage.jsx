@@ -1,4 +1,4 @@
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useParams } from "react-router";
 import { getQuestionList } from "../api/questions";
 import QuestionBox from "../components/QuestionBox";
@@ -38,6 +38,9 @@ const QuestionPage = () => {
   }, [id, offset, questionCount, isLoading, isInitialLoading]);
 
   const { ref } = useInfiniteScroll({ callback: getMoreData, isMoreQuestion });
+
+  useEffect(() => window.scrollTo(0, 0), []);
+
   return (
     <QuestionContainer subject={subject}>
       <QuestionBox count={questionCount}>
