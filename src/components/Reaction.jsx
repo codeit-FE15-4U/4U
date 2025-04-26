@@ -46,7 +46,7 @@ const Reaction = ({ question }) => {
         onClick={handleLike}
       >
         <Thumbsup className="size-16" />
-        좋아요 {likeCounts}
+        좋아요 {likeCounts > 0 ? likeCounts : ""}
       </li>
       <li
         className={`flex items-center gap-6 ${
@@ -59,7 +59,7 @@ const Reaction = ({ question }) => {
         onClick={handleDislike}
       >
         <Thumbsdown className="size-16" />
-        싫어요 {dislikeCounts}
+        싫어요 {dislikeCounts > 0 ? dislikeCounts : ""}
       </li>
     </ul>
   );
