@@ -69,9 +69,9 @@ const AnswerPage = () => {
         <QuestionBox count={questionCount}>
           <QuestionList
             isInitialLoading={isInitialLoading}
+            isLoading={isLoading}
             questionList={questionList}
             subject={subject}
-            isLoading={isLoading}
             isAnswerPage={true}
           />
           <div ref={ref}></div>
