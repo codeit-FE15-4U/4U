@@ -1,4 +1,4 @@
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router";
 import { deleteSubject } from "../api/subjects";
 import { getQuestionList } from "../api/questions";
@@ -55,6 +55,9 @@ const AnswerPage = () => {
       setIsDeleting(false);
     }
   };
+
+  useEffect(() => window.scrollTo(0, 0), []);
+
   return (
     <QuestionContainer subject={subject}>
       <div className="relative w-full max-w-716">
