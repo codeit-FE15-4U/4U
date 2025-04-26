@@ -8,7 +8,7 @@ function DropdownMenu({ options, selected, onSelect, isOpen, type }) {
       {options.map((option) => (
         <li
           key={option.value}
-          className={`${selected === option.label ? "text-blue-50" : "text-grayscale-50"} hover:bg-grayscale-20 px-16 py-6 first:rounded-t-lg first:pt-10 last:rounded-b-lg last:pb-10`}
+          className={`${selected === option.label ? "text-blue-50" : "text-grayscale-50"} hover:bg-grayscale-20 px-15 py-6 first:rounded-t-lg first:pt-10 last:rounded-b-lg last:pb-10`}
           onClick={() => onSelect(option)}
         >
           {option.label}
