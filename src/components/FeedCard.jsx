@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Badge from "./Badge";
-// import Reaction from "./Reaction";
+import Reaction from "./Reaction";
 import FeedCardQuestion from "./FeedCardQuestion";
 import FeedCardAnswer from "./FeedCardAnswer";
 import FeedCardAnswerInput from "./FeedCardAnswerInput";
@@ -50,8 +50,8 @@ function FeedCard({ isAnswerPage, subject, question }) {
             )}
           </FeedCardAnswer>
         )}
-        <div className="border-grayscale-30 h-43 border-t border-solid">
-          {/* <Reaction like={question.like} dislike={question.dislike} /> */}
+        <div className="border-grayscale-30 flex h-43 border-t border-solid">
+          <Reaction question={question} />
         </div>
       </div>
     );
