@@ -87,7 +87,7 @@ function FeedCard({ isAnswerPage, subject, question }) {
             )}
           </FeedCardAnswer>
         )}
-        <div className="border-grayscale-30 flex h-43 border-t border-solid">
+        <div className="border-grayscale-30 h-43 border-t border-solid pt-24">
           <Reaction question={question} />
         </div>
       </div>
