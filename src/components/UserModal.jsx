@@ -1,9 +1,10 @@
+import { useNavigate } from "react-router";
 import Person from "../assets/icons/person.svg?react";
 import Close from "../assets/icons/close.svg?react";
 
 function UserModal({ onClose, subjects }) {
-  const numbers = [1, 2, 3, 4, 5];
   console.log(subjects);
+  const navigate = useNavigate();
 
   return (
     <div className="tablet:px-78 fixed inset-0 flex items-center justify-center p-24">
@@ -16,11 +17,22 @@ function UserModal({ onClose, subjects }) {
             <Close className="size-28 cursor-pointer" />
           </button>
         </div>
-        <ul className="flex flex-col gap-16">
-          {numbers.map((num) => {
+        <ul className="flex flex-col gap-16 overflow-scroll">
+          {subjects.map((subject) => {
+            const handleUserClick = () => {
+              navigate(`/post/${subject.id}/answer`);
+            };
+
             return (
-              <li className="border-grayscale-30 bg-brown-10 hover:bg-brown-20 flex cursor-pointer rounded-lg border px-12 py-8">
-                {num}
+              <li
+                key={subject.id}
+                onClick={handleUserClick}
+                className="border-grayscale-30 bg-brown-10 hover:bg-brown-20 flex cursor-pointer rounded-lg border px-12 py-8"
+              >
+                <div className="flex">
+                  <div>{subject.id}</div>
+                  <div>{subject.name}</div>
+                </div>
               </li>
             );
           })}
