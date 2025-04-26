@@ -15,24 +15,16 @@ const MainPage = () => {
 
   const handleQuestionClick = async () => {
     try {
-      console.log(localStorage);
-      console.log(localStorage.subjects);
       const response = await createSubject({ name });
       const subjectId = response.id;
       const newSubject = { id: subjectId, name: response.name };
-      const existingSubjects = JSON.parse(
-        localStorage.getItem("subjects") || "[]",
-      );
-      const isSame = existingSubjects.some(
-        (subject) => subject.id === newSubject.id,
-      );
+      const subjects = JSON.parse(localStorage.getItem("subjects") || "[]");
+      const isSame = subjects.some((subject) => subject.id === newSubject.id);
       if (!isSame) {
-        existingSubjects.push(newSubject);
+        subjects.push(newSubject);
       }
-      localStorage.setItem("subjects", JSON.stringify(existingSubjects));
+      localStorage.setItem("subjects", JSON.stringify(subjects));
       localStorage.setItem("selectedSubject", JSON.stringify(newSubject));
-
-      console.log(localStorage);
 
       navigate(`/post/${subjectId}`);
     } catch (error) {
