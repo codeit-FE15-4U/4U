@@ -19,10 +19,7 @@ const MainPage = () => {
       const subjectId = response.id;
       const newSubject = { id: subjectId, name: response.name };
       const subjects = JSON.parse(localStorage.getItem("subjects") || "[]");
-      const isSame = subjects.some((subject) => subject.id === newSubject.id);
-      if (!isSame) {
-        subjects.push(newSubject);
-      }
+      subjects.push(newSubject);
       localStorage.setItem("subjects", JSON.stringify(subjects));
       localStorage.setItem("selectedSubject", JSON.stringify(newSubject));
 
