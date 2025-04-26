@@ -43,6 +43,11 @@ const AnswerPage = () => {
   const { ref } = useInfiniteScroll({ callback: getMoreData, isMoreQuestion });
 
   const handleDelete = async () => {
+    const subjects = JSON.parse(localStorage.getItem("subjects") || "[]");
+    const updatedSubjects = subjects.filter(
+      (subject) => String(subject.id) !== String(id),
+    );
+    localStorage.setItem("subjects", JSON.stringify(updatedSubjects));
     if (isDeleting) return;
     setIsDeleting(true);
     try {

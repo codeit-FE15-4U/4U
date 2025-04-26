@@ -6,7 +6,7 @@ function UserModal({ onClose, subjects }) {
   const navigate = useNavigate();
 
   return (
-    <div className="tablet:px-78 fixed inset-0 flex items-center justify-center p-24">
+    <div className="tablet:px-78 fixed inset-0 z-50 flex items-center justify-center p-24">
       <div className="absolute inset-0 bg-black opacity-56" onClick={onClose} />
       <div className="bg-grayscale-10 tablet:min-h-454 tablet:max-w-612 tablet:max-h-454 tablet:p-40 shadow-3pt z-10 flex min-h-568 w-full min-w-327 flex-col gap-24 rounded-3xl p-24">
         <div className="text-grayscale-60 text-body1 flex items-center justify-between gap-8">

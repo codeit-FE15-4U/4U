@@ -40,8 +40,12 @@ function ListPage() {
     const data = localStorage.getItem("subjects");
     if (data) {
       const subjects = JSON.parse(data);
-      setSubjects(subjects);
-      setIsModalOpen(true);
+      if (subjects.length === 0) {
+        navigate("/");
+      } else {
+        setSubjects(subjects);
+        setIsModalOpen(true);
+      }
     } else {
       navigate("/");
     }
