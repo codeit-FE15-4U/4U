@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router";
+import { Navigate, useNavigate, useParams } from "react-router";
 import { deleteSubject } from "../api/subjects";
 import { getQuestionList } from "../api/questions";
 import QuestionBox from "../components/QuestionBox";
@@ -61,6 +61,12 @@ const AnswerPage = () => {
   };
 
   useEffect(() => window.scrollTo(0, 0), []);
+
+  const localSubjects = JSON.parse(localStorage.getItem("subjects") || "[]");
+  const isId = localSubjects.some((subject) => subject.id === +id);
+  if (!isId) {
+    return <Navigate to={`/post/${id}`} replace />;
+  }
 
   return (
     <QuestionContainer subject={subject}>
