@@ -4,6 +4,7 @@ import MainPage from "./pages/MainPage";
 import ListPage from "./pages/ListPage";
 import QuestionPage from "./pages/QuestionPage";
 import AnswerPage from "./pages/AnswerPage";
+import NotFoundPage from "./pages/NotFoundPage";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Route path="/list" element={<ListPage />} />
         <Route path="/post/:id" element={<QuestionPage />} />
         <Route path="/post/:id/answer" element={<AnswerPage />} />
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </BrowserRouter>
   );
