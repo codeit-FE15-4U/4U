@@ -32,13 +32,14 @@ function FeedCardAnswerInput({ setState, questionId, answer, setAnswer }) {
   };
 
   return (
-    <form onChange={handleChange}>
+    <form>
       <InputTextarea
         name="answer"
         className="h-186 w-full"
         placeholder="답변을 입력해주세요"
         defaultValue={answer?.content}
         ref={content}
+        onChange={handleChange}
       />
       <Button
         className="w-full"

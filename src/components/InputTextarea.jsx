@@ -1,4 +1,11 @@
-function InputTextarea({ name, className, placeholder, defaultValue, ref }) {
+function InputTextarea({
+  name,
+  className,
+  placeholder,
+  onChange,
+  defaultValue,
+  ref,
+}) {
   return (
     <textarea
       id={name}
@@ -10,6 +17,7 @@ function InputTextarea({ name, className, placeholder, defaultValue, ref }) {
       placeholder={placeholder}
       defaultValue={defaultValue}
       ref={ref}
+      onChange={onChange}
     />
   );
 }
