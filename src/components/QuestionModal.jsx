@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { useParams } from "react-router";
 import { postQuestion } from "../api/questions.js";
+import InputTextarea from "./InputTextarea.jsx";
 import Button from "./Button";
 import Close from "../assets/icons/close.svg?react";
 import MessageImg from "../assets/icons/messages.svg?react";
@@ -11,14 +12,19 @@ const QuestionModal = ({
   subject,
   setQuestionCount,
 }) => {
-  const [message, setMessage] = useState("");
+  const message = useRef();
+  const [disabled, setDisabled] = useState(true);
   const { id } = useParams();
   const name = subject.name;
   const imageSource = subject.imageSource;
 
   const handleSendMessage = async () => {
     try {
-      const response = await postQuestion({ subjectId: id, content: message });
+      setDisabled(true);
+      const response = await postQuestion({
+        subjectId: id,
+        content: message.current.value,
+      });
       console.log(response);
       if (typeof setQuestionList === "function") {
         setQuestionList((prev) => {
@@ -31,7 +37,12 @@ const QuestionModal = ({
     } catch (error) {
       console.error("질문 보내기 실패:", error);
       alert("질문 보내기 실패");
+      setDisabled(false);
     }
+  };
+
+  const handleChange = () => {
+    setDisabled(message.current.value ? false : true);
   };
 
   return (
@@ -55,16 +66,16 @@ const QuestionModal = ({
           />
           <p>{name}</p>
         </div>
-        <textarea
-          value={message}
-          className="tablet:min-h-180 bg-grayscale-20 text-body3 font-regular border-brown-40 placeholder:text-grayscale-40 mt-12 flex min-h-358 w-full resize-none rounded-lg border-solid p-16 focus:border focus:p-15 focus:outline-none"
+        <InputTextarea
+          ref={message}
+          className="tablet:min-h-180 mt-12 flex min-h-358 w-full"
           placeholder="질문을 입력해주세요"
-          onChange={(e) => setMessage(e.target.value)}
+          onChange={handleChange}
         />
         <Button
           className="mt-8 w-full border-none"
           type="fill"
-          disabled={!message}
+          disabled={disabled}
           onClick={handleSendMessage}
         >
           질문 보내기
