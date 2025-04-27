@@ -2,15 +2,15 @@ import { useState } from "react";
 import { useNavigate } from "react-router";
 import { deleteSubject } from "../api/subjects";
 import Button from "./Button";
+import DeleteModal from "./DeleteModal";
 
 const DeleteButton = ({ id }) => {
   const [isDeleting, setIsDeleting] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const navigate = useNavigate();
 
   const handleDelete = async () => {
     if (isDeleting) return;
-    const confirmed = window.confirm("정말 삭제하시겠습니까?");
-    if (!confirmed) return;
     setIsDeleting(true);
     try {
       await deleteSubject({ subjectId: id });
@@ -28,14 +28,25 @@ const DeleteButton = ({ id }) => {
   };
 
   return (
-    <Button
-      disabled={isDeleting}
-      type="round"
-      onClick={handleDelete}
-      className="pc:top-10 tablet:top-0 tablet:w-100 tablet:h-35 tablet:text-[15px] absolute top-23 right-0 w-70 text-[10px]/25 font-extralight"
-    >
-      {isDeleting ? "삭제중" : "삭제하기"}
-    </Button>
+    <>
+      <Button
+        disabled={isDeleting}
+        type="round"
+        onClick={() => setIsModalOpen(true)}
+        className="pc:top-10 tablet:top-0 tablet:w-100 tablet:h-35 tablet:text-[15px] absolute top-23 right-0 w-70 text-[10px]/25 font-extralight"
+      >
+        {isDeleting ? "삭제중" : "삭제하기"}
+      </Button>
+      {isModalOpen && (
+        <DeleteModal
+          onCancel={() => setIsModalOpen(false)}
+          onConfirm={() => {
+            setIsModalOpen(false);
+            handleDelete();
+          }}
+        />
+      )}
+    </>
   );
 };
 export default DeleteButton;
