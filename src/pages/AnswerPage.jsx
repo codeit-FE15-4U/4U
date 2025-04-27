@@ -4,10 +4,10 @@ import { getQuestionList } from "../api/questions";
 import QuestionBox from "../components/QuestionBox";
 import QuestionContainer from "../components/QuestionContainer";
 import QuestionList from "./../components/QuestionList";
+import DeleteButton from "../components/DeleteButton";
 import useInfiniteScroll from "../hooks/useInfiniteScroll";
 import useSubject from "../hooks/useSubject";
 import useInitialQuestion from "../hooks/useInitialQuestion";
-import DeleteButton from "../components/DeleteButton";
 
 const AnswerPage = () => {
   const [questionList, setQuestionList] = useState([]);
