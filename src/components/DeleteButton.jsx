@@ -6,8 +6,11 @@ import Button from "./Button";
 const DeleteButton = ({ id }) => {
   const [isDeleting, setIsDeleting] = useState(false);
   const navigate = useNavigate();
+
   const handleDelete = async () => {
     if (isDeleting) return;
+    const confirmed = window.confirm("정말 삭제하시겠습니까?");
+    if (!confirmed) return;
     setIsDeleting(true);
     try {
       await deleteSubject({ subjectId: id });
