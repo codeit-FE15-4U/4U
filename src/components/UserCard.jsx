@@ -7,8 +7,6 @@ function UserCard({ imageSource, name, questionCount, className, onClick }) {
       onClick={onClick}
     >
       <div className="flex flex-col gap-12">
-        {/* <div className="tablet:min-w-[186px] w-full max-w-[220px] min-w-[155px]"> */}
-
         <img className="h-48 w-48 rounded-full" src={imageSource} />
         <p className="text-body2 font-regular">{name}</p>
       </div>
