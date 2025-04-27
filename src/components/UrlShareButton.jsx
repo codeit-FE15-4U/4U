@@ -18,7 +18,7 @@ const UrlShareButton = () => {
         <LinkIcon className="text-grayscale-10 size-18" />
       </button>
       {toast && (
-        <Toast timer={5000} setToast={setToast}>
+        <Toast timer={4600} setToast={setToast}>
           URL이 복사되었습니다
         </Toast>
       )}

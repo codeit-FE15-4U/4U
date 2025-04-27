@@ -45,4 +45,29 @@
   --breakpoint-tablet: 48rem;
   --breakpoint-pc: 75rem;
   --spacing: 0.0625rem;
+
+  --animate-toastin: toastin 0.5s;
+  --animate-toastout: toastout 0.5s;
+
+  @keyframes toastin {
+    0% {
+      opacity: 0.5;
+      transform: translateY(10px);
+    }
+    100% {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  @keyframes toastout {
+    0% {
+      opacity: 1;
+      transform: none;
+    }
+    100% {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+  }
 }
