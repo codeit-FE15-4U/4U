@@ -28,7 +28,7 @@ function UserModal({ onClose, subjects }) {
                 onClick={handleUserClick}
                 className="border-grayscale-30 bg-brown-10 hover:bg-brown-20 flex cursor-pointer items-center gap-20 rounded-lg border px-12 py-8"
               >
-                <img className="h-48 w-48 rounded-full" src={subject.profile} />
+                <img className="size-48 rounded-full" src={subject.profile} />
                 <div className="text-body1">{subject.name}</div>
               </li>
             );
