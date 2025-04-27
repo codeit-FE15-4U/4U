@@ -5,14 +5,14 @@ function SkeletonUserCard(className) {
     >
       <div className="flex flex-col gap-12">
         <div className="bg-grayscale-30 h-48 w-48 rounded-full"></div>
-        <p className="bg-grayscale-30 h-24 w-full rounded-full"></p>
+        <div className="bg-grayscale-30 h-24 w-full rounded-full"></div>
       </div>
       <div className="flex items-center justify-between">
         <div className="flex items-center justify-center gap-4">
-          <span className="bg-grayscale-30 tablet:size-18 size-16 rounded-full"></span>
-          <span className="bg-grayscale-30 tablet:w-60 h-18 w-52 rounded-full"></span>
+          <div className="bg-grayscale-30 tablet:size-18 size-16 rounded-full"></div>
+          <div className="bg-grayscale-30 tablet:w-60 h-18 w-52 rounded-full"></div>
         </div>
-        <p className="bg-grayscale-30 h-18 w-24 rounded-full"></p>
+        <div className="bg-grayscale-30 h-18 w-24 rounded-full"></div>
       </div>
     </div>
   );
