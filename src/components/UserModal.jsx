@@ -16,7 +16,7 @@ function UserModal({ onClose, subjects }) {
             <Close className="size-28 cursor-pointer" />
           </button>
         </div>
-        <ul className="flex flex-col gap-16 overflow-scroll">
+        <ul className="flex flex-col gap-16 overflow-auto">
           {subjects.map((subject) => {
             const handleUserClick = () => {
               navigate(`/post/${subject.id}/answer`);
