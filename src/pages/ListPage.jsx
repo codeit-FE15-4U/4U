@@ -86,7 +86,11 @@ function ListPage() {
           <p className="tablet:text-h1 text-h3 font-regular">
             누구에게 질문할까요?
           </p>
-          <DropdownTrigger options={options} type="user" />
+          <DropdownTrigger
+            options={options}
+            type="user"
+            className="top-40 w-79"
+          />
         </div>
         <div className="tablet:gap-20 flex flex-wrap items-center justify-center gap-16">
           <UserList users={users.slice(0, itemsPerPage)} />

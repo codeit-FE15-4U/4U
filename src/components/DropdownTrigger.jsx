@@ -4,7 +4,7 @@ import ArrowUp from "../assets/icons/arrow-up.svg?react";
 import More from "../assets/icons/more.svg?react";
 import DropdownMenu from "./DropdownMenu";
 
-function DropdownTrigger({ options, type }) {
+function DropdownTrigger({ options, type, className }) {
   // options: label, value 값을 가진 객체로 받아오기
   // const options = [
   //   { label: "최신순", value: "latest", click:"" },
@@ -68,11 +68,11 @@ function DropdownTrigger({ options, type }) {
       </div>
       {isOpen && (
         <DropdownMenu
-          type={type}
           options={options}
           selected={selected}
           onSelect={handleOptionClick}
           isOpen={isOpen}
+          className={className}
         />
       )}
     </div>

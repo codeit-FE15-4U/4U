@@ -62,7 +62,11 @@ function FeedCard({ isAnswerPage, subject, question }) {
         <div className="flex justify-between">
           <Badge completed={!!answer} />
           {isAnswerPage && (
-            <DropdownTrigger type="answer" options={dropdownOptions} />
+            <DropdownTrigger
+              type="answer"
+              options={dropdownOptions}
+              className="top-28 w-103"
+            />
           )}
         </div>
         <FeedCardQuestion
