@@ -13,7 +13,7 @@ const NotFoundPage = () => {
 
         <div className="flex flex-col items-center justify-center">
           <p className="tablet:text-h1 text-h2 text-grayscale-60 font-bold">
-            404 - 페이지를 찾을 수 없어요
+            페이지를 찾을 수 없어요
           </p>
           <p className="text-grayscale-40 tablet:text-body1 text-body2 mt-4">
             존재하지 않는 경로로 이동하셨습니다.
