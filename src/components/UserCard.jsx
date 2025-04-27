@@ -14,7 +14,7 @@ function UserCard({ imageSource, name, questionCount, className, onClick }) {
       </div>
       <div className="text-caption1 font-regular text-grayscale-40 flex items-center justify-between">
         <div className="flex items-center justify-center gap-4">
-          <Messages className="size-16" />
+          <Messages className="tablet:size-18 size-16" />
           <span>받은 질문</span>
         </div>
         <p>{questionCount}개</p>
