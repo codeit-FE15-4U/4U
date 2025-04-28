@@ -1,5 +1,7 @@
 import ArrowLeft from "../assets/icons/arrow-left.svg?react";
+import ArrowStart from "../assets/icons/arrow-left-end.svg?react";
 import ArrowRight from "../assets/icons/arrow-right.svg?react";
+import ArrowEnd from "../assets/icons/arrow-right-end.svg?react";
 
 function Pagenation({ totalPages, currentPage, onPageChange }) {
   const movePage = (page) => {
@@ -14,7 +16,7 @@ function Pagenation({ totalPages, currentPage, onPageChange }) {
 
   return (
     <ul className="text-body1 weight-regular text-grayscale-40 tablet:pt-50 flex items-center justify-center pt-40">
-      <ArrowLeft className="cursor-pointer" onClick={() => movePage(1)} />
+      <ArrowStart className="cursor-pointer" onClick={() => movePage(1)} />
       <ArrowLeft
         className="cursor-pointer"
         onClick={() => movePage(currentPage - 1)}
@@ -35,7 +37,7 @@ function Pagenation({ totalPages, currentPage, onPageChange }) {
         className="cursor-pointer"
         onClick={() => movePage(currentPage + 1)}
       />
-      <ArrowRight
+      <ArrowEnd
         className="cursor-pointer"
         onClick={() => movePage(totalPages)}
       />
