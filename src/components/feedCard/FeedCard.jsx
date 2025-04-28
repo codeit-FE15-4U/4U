@@ -33,6 +33,8 @@ function FeedCard({ isAnswerPage, subject, question }) {
               setState={setState}
               question={question}
               setIsQuestion={setIsQuestion}
+              answer={answer}
+              setAnswer={setAnswer}
             />
           )}
         </div>

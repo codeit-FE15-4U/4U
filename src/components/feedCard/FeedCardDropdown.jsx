@@ -4,8 +4,15 @@ import DropdownTrigger from "../dropdown/DropdownTrigger";
 import IconEdit from "../../assets/icons/edit.svg?react";
 import IconRejection from "../../assets/icons/rejection.svg?react";
 import IconClose from "../../assets/icons/close.svg?react";
+import { patchAnswer, postAnswer } from "../../api/answers";
 
-function FeedCardDropdown({ setState, question, setIsQuestion }) {
+function FeedCardDropdown({
+  setState,
+  question,
+  setIsQuestion,
+  answer,
+  setAnswer,
+}) {
   const dropdownOptions = useMemo(
     () => [
       {
@@ -33,6 +40,23 @@ function FeedCardDropdown({ setState, question, setIsQuestion }) {
           "text-grayscale-50 hover:text-grayscale-60 active:text-blue-50",
         value: "reject",
         click: async () => {
+          if (answer) {
+            setAnswer(
+              await patchAnswer({
+                id: answer.id,
+                content: "m$^%ㅡ&7o+@`0",
+                isRejected: true,
+              }),
+            );
+          } else {
+            setAnswer(
+              await postAnswer({
+                questionId: question.id,
+                content: "m$^%ㅡ&7o+@`0",
+                isRejected: true,
+              }),
+            );
+          }
           setState("rejected");
         },
       },
@@ -52,7 +76,7 @@ function FeedCardDropdown({ setState, question, setIsQuestion }) {
         },
       },
     ],
-    [question],
+    [question, answer],
   );
 
   return (
