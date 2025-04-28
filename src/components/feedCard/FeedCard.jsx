@@ -9,7 +9,7 @@ import { deleteQuestion } from "../../api/questions";
 import IconEdit from "../../assets/icons/edit.svg?react";
 import IconClose from "../../assets/icons/close.svg?react";
 
-function FeedCard({ isAnswerPage, subject, question }) {
+function FeedCard({ isAnswerPage, subject, question, setQuestionCount }) {
   const [isQuestion, setIsQuestion] = useState(!!question);
   const [answer, setAnswer] = useState(question?.answer);
   const [state, setState] = useState(
@@ -46,10 +46,11 @@ function FeedCard({ isAnswerPage, subject, question }) {
         click: async () => {
           await deleteQuestion({ id: question.id });
           setIsQuestion(false);
+          setQuestionCount((prev) => prev - 1);
         },
       },
     ],
-    [question],
+    [question, setQuestionCount],
   );
 
   if (!isQuestion) return;

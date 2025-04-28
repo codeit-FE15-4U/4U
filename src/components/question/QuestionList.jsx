@@ -3,9 +3,10 @@ import SkeletonFeedCard from "../skeletonUi/SkeletonFeedCard";
 
 const QuestionList = ({
   isInitialLoading,
-  questionList,
-  subject,
   isLoading,
+  questionList,
+  setQuestionCount,
+  subject,
   isAnswerPage,
 }) => {
   return (
@@ -23,6 +24,7 @@ const QuestionList = ({
                   isAnswerPage={isAnswerPage}
                   subject={subject}
                   question={question}
+                  setQuestionCount={setQuestionCount}
                 />
               </li>
             );
