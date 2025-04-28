@@ -12,7 +12,11 @@ function FeedCardAnswerInput({ setState, questionId, answer, setAnswer }) {
     setDisabled(true);
     if (answer) {
       setAnswer(
-        await patchAnswer({ ...answer, content: content.current.value }),
+        await patchAnswer({
+          ...answer,
+          content: content.current.value,
+          isRejected: false,
+        }),
       );
     } else {
       setAnswer(
