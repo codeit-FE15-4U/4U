@@ -4,7 +4,7 @@ import ArrowUp from "../assets/icons/arrow-up.svg?react";
 import More from "../assets/icons/more.svg?react";
 import DropdownMenu from "./DropdownMenu";
 
-function DropdownTrigger({ options, type }) {
+function DropdownTrigger({ options, type, className }) {
   // options: label, value 값을 가진 객체로 받아오기
   // const options = [
   //   { label: "최신순", value: "latest", click:"" },
@@ -17,7 +17,7 @@ function DropdownTrigger({ options, type }) {
     if (type === "user") {
       return (
         <>
-          <button>{selected}</button>
+          <button className="cursor-pointer">{selected}</button>
           {isOpen ? (
             <ArrowUp
               className={`${isOpen ? "border-black text-black" : "border-grayscale-40 text-grayscale-40"} size-14`}
@@ -55,8 +55,8 @@ function DropdownTrigger({ options, type }) {
       onBlur={handleBlur}
       className={
         type === "user"
-          ? `${isOpen ? "border-black text-black" : "border-grayscale-40 text-grayscale-40"} bg-grayscale-10 text-caption1 relative rounded-lg border px-12 py-8 font-medium`
-          : "text-caption1 relative font-medium"
+          ? `${isOpen ? "border-black text-black" : "border-grayscale-40 text-grayscale-40"} bg-grayscale-10 text-caption1 relative cursor-pointer rounded-lg border px-12 py-8 font-medium`
+          : "text-caption1 relative cursor-pointer font-medium"
       }
       ref={dropdownRef}
     >
@@ -68,11 +68,11 @@ function DropdownTrigger({ options, type }) {
       </div>
       {isOpen && (
         <DropdownMenu
-          type={type}
           options={options}
           selected={selected}
           onSelect={handleOptionClick}
           isOpen={isOpen}
+          className={className}
         />
       )}
     </div>
