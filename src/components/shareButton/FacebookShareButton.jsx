@@ -1,4 +1,4 @@
-import Facebook from "../assets/icons/facebook.svg?react";
+import Facebook from "../../assets/icons/facebook.svg?react";
 
 const FacebookShareButton = () => {
   const shareToFacebook = () => {

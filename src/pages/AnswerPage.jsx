@@ -1,10 +1,10 @@
 import { useCallback, useEffect, useState } from "react";
-import { useParams } from "react-router";
+import { Navigate, useParams } from "react-router";
 import { getQuestionList } from "../api/questions";
-import QuestionBox from "../components/QuestionBox";
-import QuestionContainer from "../components/QuestionContainer";
-import QuestionList from "./../components/QuestionList";
-import DeleteButton from "../components/DeleteButton";
+import QuestionBox from "../components/question/QuestionBox";
+import QuestionContainer from "../components/question/QuestionContainer";
+import QuestionList from "./../components/question/QuestionList";
+import DeleteButton from "../components/delete/DeleteButton";
 import useInfiniteScroll from "../hooks/useInfiniteScroll";
 import useSubject from "../hooks/useSubject";
 import useInitialQuestion from "../hooks/useInitialQuestion";
@@ -40,6 +40,12 @@ const AnswerPage = () => {
   const { ref } = useInfiniteScroll({ callback: getMoreData, isMoreQuestion });
 
   useEffect(() => window.scrollTo(0, 0), []);
+
+  const localSubjects = JSON.parse(localStorage.getItem("subjects") || "[]");
+  const isId = localSubjects.some((subject) => subject.id === +id);
+  if (!isId) {
+    return <Navigate to={`/post/${id}`} replace />;
+  }
 
   return (
     <QuestionContainer subject={subject}>

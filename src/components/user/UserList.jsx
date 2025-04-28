@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router";
 import UserCard from "./UserCard";
-import SkeletonUserCard from "./SkeletonUserCard";
+import SkeletonUserCard from "../skeletonUi/SkeletonUserCard";
 
 function UserList({ users, itemsPerPage }) {
   const navigate = useNavigate();

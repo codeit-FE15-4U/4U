@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router";
-import { deleteSubject } from "../api/subjects";
-import Button from "./Button";
+import { deleteSubject } from "../../api/subjects";
+import Button from "../Button";
 import DeleteModal from "./DeleteModal";
 
 const DeleteButton = ({ id }) => {
