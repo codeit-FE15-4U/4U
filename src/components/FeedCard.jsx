@@ -25,11 +25,13 @@ function FeedCard({ isAnswerPage, subject, question }) {
     () => [
       {
         label: (
-          <div className="text-grayscale-50 hover:text-grayscale-60 flex items-center gap-8 active:text-blue-50">
+          <div className="flex items-center gap-8">
             <IconEdit className="size-14" />
             수정하기
           </div>
         ),
+        className:
+          "text-grayscale-50 hover:text-grayscale-60 active:text-blue-50",
         value: "edit",
         click() {
           setState("empty");
@@ -37,11 +39,13 @@ function FeedCard({ isAnswerPage, subject, question }) {
       },
       {
         label: (
-          <div className="text-grayscale-50 hover:text-grayscale-60 flex items-center gap-8 active:text-blue-50">
+          <div className="flex items-center gap-8">
             <IconClose className="size-14" />
             삭제하기
           </div>
         ),
+        className:
+          "text-grayscale-50 hover:text-grayscale-60 active:text-blue-50",
         value: "delete",
         click: async () => {
           await deleteQuestion({ id: question.id });
