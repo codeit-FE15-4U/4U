@@ -1,6 +1,6 @@
 import { useState } from "react";
 import QuestionModal from "./QuestionModal";
-import Button from "./Button";
+import Button from "../Button";
 
 const QuestionButton = ({ setQuestionList, subject, setQuestionCount }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
