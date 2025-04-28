@@ -1,8 +1,9 @@
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css");
 @import "tailwindcss";
 
 @layer base {
   html {
-    font-family: "Pretendard", sans-serif;
+    font-family: Pretendard, sans-serif;
   }
 }
 
@@ -21,9 +22,9 @@
   --color-blue-50: #1877f2;
   --color-yellow-50: #fee500;
   --color-red-50: #b93333;
-  --shadow-1px: 0px 4px 4px 0px rgba(140, 140, 140, 0.25);
-  --shadow-2px: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-  --shadow-3px: 0px 16px 20px 0px rgba(48, 48, 48, 0.62);
+  --shadow-1pt: 0px 4px 4px 0px rgba(140, 140, 140, 0.25);
+  --shadow-2pt: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  --shadow-3pt: 0px 16px 20px 0px rgba(48, 48, 48, 0.62);
   --font-weight-regular: 400;
   --font-weight-medium: 500;
   --font-weight-bold: 700;
@@ -41,4 +42,29 @@
   --text-body3--line-height: 1.375rem;
   --text-caption1: 0.875rem;
   --text-caption1--line-height: 1.125rem;
+  --breakpoint-tablet: 48rem;
+  --breakpoint-pc: 75rem;
+  --spacing: 0.0625rem;
+}
+
+@keyframes toastin {
+  0% {
+    opacity: 0.5;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes toastout {
+  0% {
+    opacity: 1;
+    transform: none;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
 }
