@@ -93,7 +93,7 @@ function ListPage() {
           />
         </div>
         <div className="tablet:gap-20 flex flex-wrap items-center justify-center gap-16">
-          <UserList users={users.slice(0, itemsPerPage)} />
+          <UserList users={users} itemsPerPage={itemsPerPage} />
         </div>
       </div>
       <Pagenation
