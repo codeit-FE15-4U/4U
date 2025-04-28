@@ -14,6 +14,7 @@ function Pagenation({ totalPages, currentPage, onPageChange }) {
 
   return (
     <ul className="text-body1 weight-regular text-grayscale-40 tablet:pt-50 flex items-center justify-center pt-40">
+      <ArrowLeft className="cursor-pointer" onClick={() => movePage(1)} />
       <ArrowLeft
         className="cursor-pointer"
         onClick={() => movePage(currentPage - 1)}
@@ -33,6 +34,10 @@ function Pagenation({ totalPages, currentPage, onPageChange }) {
       <ArrowRight
         className="cursor-pointer"
         onClick={() => movePage(currentPage + 1)}
+      />
+      <ArrowRight
+        className="cursor-pointer"
+        onClick={() => movePage(totalPages)}
       />
     </ul>
   );
