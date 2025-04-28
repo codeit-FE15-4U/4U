@@ -8,11 +8,9 @@ function Pagenation({ totalPages, currentPage, onPageChange }) {
   };
 
   const range = 5;
-  let startPage = Math.max(currentPage - Math.floor(range / 2), 1);
+  const currentBlock = Math.ceil(currentPage / range);
+  let startPage = (currentBlock - 1) * range + 1;
   let endPage = Math.min(startPage + range - 1, totalPages);
-  if (endPage - startPage + 1 < range) {
-    startPage = Math.max(endPage - range + 1, 1);
-  }
 
   return (
     <ul className="text-body1 weight-regular text-grayscale-40 tablet:pt-50 flex items-center justify-center pt-40">
