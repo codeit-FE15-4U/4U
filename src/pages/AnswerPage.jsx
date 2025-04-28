@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
-import { useParams } from "react-router";
+import { Navigate, useParams } from "react-router";
 import { getQuestionList } from "../api/questions";
 import QuestionBox from "../components/QuestionBox";
 import QuestionContainer from "../components/QuestionContainer";
