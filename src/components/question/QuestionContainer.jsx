@@ -1,9 +1,9 @@
 import { Link } from "react-router";
-import LogoImg from "../assets/images/logo.png";
-import UrlShareButton from "./UrlShareButton";
-import FacebookShareButton from "./FacebookShareButton";
-import KakaoShareButton from "./KakaoShareButton";
-import SkeletonSubject from "./SkeletonSubject";
+import LogoImg from "../../assets/images/logo.png";
+import UrlShareButton from "../shareButton/UrlShareButton";
+import FacebookShareButton from "../shareButton/FacebookShareButton";
+import KakaoShareButton from "../shareButton/KakaoShareButton";
+import SkeletonSubject from "../skeletonUi/SkeletonSubject";
 
 const QuestionContainer = ({ children, subject }) => {
   return (

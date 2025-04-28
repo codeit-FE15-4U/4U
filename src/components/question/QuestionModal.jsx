@@ -1,10 +1,10 @@
 import { useRef, useState } from "react";
 import { useParams } from "react-router";
-import { postQuestion } from "../api/questions.js";
-import InputTextarea from "./InputTextarea.jsx";
-import Button from "./Button";
-import Close from "../assets/icons/close.svg?react";
-import MessageImg from "../assets/icons/messages.svg?react";
+import { postQuestion } from "../../api/questions.js";
+import InputTextarea from "../InputTextarea.jsx";
+import Button from "../Button";
+import Close from "../../assets/icons/close.svg?react";
+import MessageImg from "../../assets/icons/messages.svg?react";
 
 const QuestionModal = ({
   onClose,

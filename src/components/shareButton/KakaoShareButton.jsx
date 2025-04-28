@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import Kakao from "../assets/icons/kakaotalk.svg?react";
+import Kakao from "../../assets/icons/kakaotalk.svg?react";
 
 const KakaoShareButton = () => {
   useEffect(() => {

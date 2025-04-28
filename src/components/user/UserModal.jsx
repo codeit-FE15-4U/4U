@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router";
-import Person from "../assets/icons/person.svg?react";
-import Close from "../assets/icons/close.svg?react";
+import Person from "../../assets/icons/person.svg?react";
+import Close from "../../assets/icons/close.svg?react";
 
 function UserModal({ onClose, subjects }) {
   const navigate = useNavigate();

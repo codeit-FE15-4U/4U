@@ -1,7 +1,7 @@
 import { useRef, useState } from "react";
-import Button from "./Button";
-import InputTextarea from "./InputTextarea";
-import { patchAnswer, postAnswer } from "../api/answers";
+import Button from "../Button";
+import InputTextarea from "../InputTextarea";
+import { patchAnswer, postAnswer } from "../../api/answers";
 
 function FeedCardAnswerInput({ setState, questionId, answer, setAnswer }) {
   const content = useRef();

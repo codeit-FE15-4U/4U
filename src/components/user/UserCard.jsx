@@ -1,4 +1,4 @@
-import Messages from "../assets/icons/messages.svg?react";
+import Messages from "../../assets/icons/messages.svg?react";
 
 function UserCard({ imageSource, name, questionCount, className, onClick }) {
   return (

@@ -1,6 +1,6 @@
 import { useState } from "react";
-import Toast from "./Toast";
-import LinkIcon from "../assets/icons/link.svg?react";
+import Toast from "../Toast";
+import LinkIcon from "../../assets/icons/link.svg?react";
 const UrlShareButton = () => {
   const [toast, setToast] = useState(false);
 
