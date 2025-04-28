@@ -1,5 +1,5 @@
 import FeedCard from "../feedCard/FeedCard";
-import SkeletonFeedCard from "../SkeletonUi/SkeletonFeedCard";
+import SkeletonFeedCard from "../skeletonUi/SkeletonFeedCard";
 
 const QuestionList = ({
   isInitialLoading,
