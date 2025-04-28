@@ -2,6 +2,7 @@ import { useMemo } from "react";
 import { deleteQuestion } from "../../api/questions";
 import DropdownTrigger from "../dropdown/DropdownTrigger";
 import IconEdit from "../../assets/icons/edit.svg?react";
+import IconRejection from "../../assets/icons/rejection.svg?react";
 import IconClose from "../../assets/icons/close.svg?react";
 
 function FeedCardDropdown({ setState, question, setIsQuestion }) {
@@ -19,6 +20,20 @@ function FeedCardDropdown({ setState, question, setIsQuestion }) {
         value: "edit",
         click() {
           setState("empty");
+        },
+      },
+      {
+        label: (
+          <div className="flex items-center gap-8">
+            <IconRejection className="size-14" />
+            거절하기
+          </div>
+        ),
+        className:
+          "text-grayscale-50 hover:text-grayscale-60 active:text-blue-50",
+        value: "reject",
+        click: async () => {
+          setState("rejected");
         },
       },
       {
