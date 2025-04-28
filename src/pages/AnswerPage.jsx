@@ -47,7 +47,11 @@ const AnswerPage = () => {
     setIsDeleting(true);
     try {
       await deleteSubject({ subjectId: id });
-      localStorage.removeItem("subject");
+      const subjects = JSON.parse(localStorage.getItem("subjects") || "[]");
+      const updatedSubjects = subjects.filter(
+        (subject) => String(subject.id) !== String(id),
+      );
+      localStorage.setItem("subjects", JSON.stringify(updatedSubjects));
       navigate("/list");
     } catch {
       alert("삭제를 실패했습니다.");
