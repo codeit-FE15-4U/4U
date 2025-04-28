@@ -23,8 +23,8 @@ const DeleteModal = ({ onCancel, onConfirm }) => {
             취소
           </Button>
           <Button
-            type="empty"
-            className="text-grayscale-10 tablet:w-100 tablet:h-40 w-full bg-red-50 active:bg-red-200"
+            type="fill"
+            className="tablet:w-100 tablet:h-40 w-full bg-red-50 active:bg-red-200"
             onClick={onConfirm}
           >
             삭제
