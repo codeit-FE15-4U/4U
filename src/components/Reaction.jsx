@@ -21,11 +21,13 @@ const Reaction = ({ question }) => {
     if (reactionType) return;
     setReactionType("LIKE");
     setLikeCounts((prev) => prev + 1);
-    localStorage.setItem(storageKey, "LIKE");
     try {
       await postReaction({ id: question.id, type: "like" });
+      localStorage.setItem(storageKey, "LIKE");
     } catch (error) {
       console.error("좋아요 요청 실패:", error);
+      setReactionType("");
+      setLikeCounts((prev) => prev - 1);
     }
   };
 
@@ -33,11 +35,14 @@ const Reaction = ({ question }) => {
     if (reactionType) return;
     setReactionType("DISLIKE");
     setDislikeCounts((prev) => prev + 1);
-    localStorage.setItem(storageKey, "DISLIKE");
+
     try {
       await postReaction({ id: question.id, type: "dislike" });
+      localStorage.setItem(storageKey, "DISLIKE");
     } catch (error) {
       console.error("싫어요 요청 실패:", error);
+      setReactionType("");
+      setDislikeCounts((prev) => prev - 1);
     }
   };
 
