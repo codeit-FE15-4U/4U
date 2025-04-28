@@ -19,18 +19,31 @@ const Reaction = ({ question }) => {
 
   const handleLike = async () => {
     if (reactionType) return;
-    await postReaction({ id: question.id, type: "like" });
-    setLikeCounts((prev) => prev + 1);
     setReactionType("LIKE");
-    localStorage.setItem(storageKey, "LIKE");
+    setLikeCounts((prev) => prev + 1);
+    try {
+      await postReaction({ id: question.id, type: "like" });
+      localStorage.setItem(storageKey, "LIKE");
+    } catch (error) {
+      console.error("좋아요 요청 실패:", error);
+      setReactionType("");
+      setLikeCounts((prev) => prev - 1);
+    }
   };
 
   const handleDislike = async () => {
     if (reactionType) return;
-    await postReaction({ id: question.id, type: "dislike" });
-    setDislikeCounts((prev) => prev + 1);
     setReactionType("DISLIKE");
-    localStorage.setItem(storageKey, "DISLIKE");
+    setDislikeCounts((prev) => prev + 1);
+
+    try {
+      await postReaction({ id: question.id, type: "dislike" });
+      localStorage.setItem(storageKey, "DISLIKE");
+    } catch (error) {
+      console.error("싫어요 요청 실패:", error);
+      setReactionType("");
+      setDislikeCounts((prev) => prev - 1);
+    }
   };
 
   return (
