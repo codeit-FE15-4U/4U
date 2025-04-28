@@ -70,7 +70,7 @@ function ListPage() {
   }, [handleResize]);
 
   return (
-    <div className="bg-grayscale-20 h-screen">
+    <div className="bg-grayscale-20 min-h-screen">
       <div className="tablet:flex-row tablet:justify-between flex flex-col items-center justify-center gap-24 px-50 pt-40 pb-60">
         <Link to="/">
           <img className="h-57 w-146" src={logo}></img>
