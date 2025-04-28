@@ -4,10 +4,10 @@ import { getSubjectList } from "../api/subjects";
 import logo from "../assets/images/logo.png";
 import Arrow from "../assets/icons/arrow.svg?react";
 import Button from "../components/Button";
-import UserList from "../components/UserList";
-import DropdownTrigger from "../components/DropdownTrigger";
+import UserList from "../components/user/UserList";
+import DropdownTrigger from "../components/dropdown/DropdownTrigger";
 import Pagenation from "../components/Pagenation";
-import UserModal from "../components/UserModal";
+import UserModal from "../components/user/UserModal";
 
 function ListPage() {
   const navigate = useNavigate();

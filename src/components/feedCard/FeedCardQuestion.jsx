@@ -1,4 +1,4 @@
-import getDurationString from "../utils/getDurationString";
+import getDurationString from "../../utils/getDurationString";
 
 function FeedCardQuestion({ content, createdAt }) {
   return (

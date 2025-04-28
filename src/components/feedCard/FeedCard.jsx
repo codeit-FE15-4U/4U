@@ -1,13 +1,13 @@
 import { useMemo, useState } from "react";
-import Badge from "./Badge";
-import Reaction from "./Reaction";
+import Badge from "../Badge";
+import Reaction from "../Reaction";
 import FeedCardQuestion from "./FeedCardQuestion";
 import FeedCardAnswer from "./FeedCardAnswer";
 import FeedCardAnswerInput from "./FeedCardAnswerInput";
-import DropdownTrigger from "./DropdownTrigger";
-import { deleteQuestion } from "../api/questions";
-import IconEdit from "../assets/icons/edit.svg?react";
-import IconClose from "../assets/icons/close.svg?react";
+import DropdownTrigger from "../dropdown/DropdownTrigger";
+import { deleteQuestion } from "../../api/questions";
+import IconEdit from "../../assets/icons/edit.svg?react";
+import IconClose from "../../assets/icons/close.svg?react";
 
 function FeedCard({ isAnswerPage, subject, question }) {
   const [isQuestion, setIsQuestion] = useState(!!question);

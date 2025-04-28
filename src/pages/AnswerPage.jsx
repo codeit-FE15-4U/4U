@@ -1,10 +1,10 @@
 import { useCallback, useEffect, useState } from "react";
 import { useParams } from "react-router";
 import { getQuestionList } from "../api/questions";
-import QuestionBox from "../components/QuestionBox";
-import QuestionContainer from "../components/QuestionContainer";
-import QuestionList from "./../components/QuestionList";
-import DeleteButton from "../components/DeleteButton";
+import QuestionBox from "../components/question/QuestionBox";
+import QuestionContainer from "../components/question/QuestionContainer";
+import QuestionList from "./../components/question/QuestionList";
+import DeleteButton from "../components/delete/DeleteButton";
 import useInfiniteScroll from "../hooks/useInfiniteScroll";
 import useSubject from "../hooks/useSubject";
 import useInitialQuestion from "../hooks/useInitialQuestion";

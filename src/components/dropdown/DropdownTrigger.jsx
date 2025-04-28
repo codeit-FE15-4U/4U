@@ -1,7 +1,7 @@
 import { useState, useRef } from "react";
-import ArrowDown from "../assets/icons/arrow-down.svg?react";
-import ArrowUp from "../assets/icons/arrow-up.svg?react";
-import More from "../assets/icons/more.svg?react";
+import ArrowDown from "../../assets/icons/arrow-down.svg?react";
+import ArrowUp from "../../assets/icons/arrow-up.svg?react";
+import More from "../../assets/icons/more.svg?react";
 import DropdownMenu from "./DropdownMenu";
 
 function DropdownTrigger({ options, type, className }) {

@@ -1,5 +1,5 @@
-import MessageIcon from "../assets/icons/messages.svg?react";
-import EmptyBox from "../assets/images/empty-box.svg";
+import MessageIcon from "../../assets/icons/messages.svg?react";
+import EmptyBox from "../../assets/images/empty-box.svg";
 
 const QuestionBox = ({ children, count }) => {
   const text = count ? `${count}개의 질문이 있습니다.` : "아직 질문이 없습니다";
