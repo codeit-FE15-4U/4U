@@ -41,6 +41,8 @@ function FeedCard({
               setIsQuestion={setIsQuestion}
               answer={answer}
               setAnswer={setAnswer}
+              setQuestionCount={setQuestionCount}
+              setDeletedQuestionList={setDeletedQuestionList}
             />
           )}
         </div>
