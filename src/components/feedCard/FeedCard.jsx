@@ -53,7 +53,7 @@ function FeedCard({
         {state === "none" || (
           <FeedCardAnswer state={state} subject={subject} answer={answer}>
             {state === "sent" && (
-              <div className="text-body3 whitespace-pre-wrap">
+              <div className="text-body3 break-all whitespace-pre-wrap">
                 {answer?.content}
               </div>
             )}
