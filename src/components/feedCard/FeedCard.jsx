@@ -76,7 +76,9 @@ function FeedCard({ isAnswerPage, subject, question }) {
         {state === "none" || (
           <FeedCardAnswer state={state} subject={subject} answer={answer}>
             {state === "sent" && (
-              <div className="text-body3">{answer?.content}</div>
+              <div className="text-body3 whitespace-pre-wrap">
+                {answer?.content}
+              </div>
             )}
             {state === "rejected" && (
               <div className="text-body3 text-red-50">답변 거절</div>
