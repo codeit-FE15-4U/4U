@@ -1,13 +1,10 @@
-import { useMemo, useState } from "react";
+import { useState } from "react";
 import Badge from "../Badge";
 import Reaction from "../Reaction";
 import FeedCardQuestion from "./FeedCardQuestion";
 import FeedCardAnswer from "./FeedCardAnswer";
 import FeedCardAnswerInput from "./FeedCardAnswerInput";
-import DropdownTrigger from "../dropdown/DropdownTrigger";
-import { deleteQuestion } from "../../api/questions";
-import IconEdit from "../../assets/icons/edit.svg?react";
-import IconClose from "../../assets/icons/close.svg?react";
+import FeedCardDropdown from "./FeedCardDropdown";
 
 function FeedCard({ isAnswerPage, subject, question }) {
   const [isQuestion, setIsQuestion] = useState(!!question);
@@ -21,36 +18,6 @@ function FeedCard({ isAnswerPage, subject, question }) {
       }
     })(),
   );
-  const dropdownOptions = useMemo(
-    () => [
-      {
-        label: (
-          <div className="text-grayscale-50 hover:text-grayscale-60 flex items-center gap-8 active:text-blue-50">
-            <IconEdit className="size-14" />
-            수정하기
-          </div>
-        ),
-        value: "edit",
-        click() {
-          setState("empty");
-        },
-      },
-      {
-        label: (
-          <div className="text-grayscale-50 hover:text-grayscale-60 flex items-center gap-8 active:text-blue-50">
-            <IconClose className="size-14" />
-            삭제하기
-          </div>
-        ),
-        value: "delete",
-        click: async () => {
-          await deleteQuestion({ id: question.id });
-          setIsQuestion(false);
-        },
-      },
-    ],
-    [question],
-  );
 
   if (!isQuestion) return;
 
@@ -62,10 +29,12 @@ function FeedCard({ isAnswerPage, subject, question }) {
         <div className="flex justify-between">
           <Badge completed={!!answer} />
           {isAnswerPage && (
-            <DropdownTrigger
-              type="answer"
-              options={dropdownOptions}
-              className="top-28 w-103"
+            <FeedCardDropdown
+              setState={setState}
+              question={question}
+              setIsQuestion={setIsQuestion}
+              answer={answer}
+              setAnswer={setAnswer}
             />
           )}
         </div>
