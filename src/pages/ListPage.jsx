@@ -50,7 +50,7 @@ function ListPage() {
   };
 
   const handleResize = useCallback(() => {
-    window.innerWidth > 891 ? setItemsPerPage(8) : setItemsPerPage(6);
+    window.innerWidth > 903 ? setItemsPerPage(8) : setItemsPerPage(6);
   }, []);
 
   useEffect(() => {
