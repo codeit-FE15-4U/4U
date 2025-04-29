@@ -37,7 +37,7 @@ function FeedCardAnswerInput({ setState, questionId, answer, setAnswer }) {
   };
 
   const handleChange = () => {
-    setDisabled(content.current.value ? false : true);
+    setDisabled(content.current.value.trim() ? false : true);
   };
 
   return (
