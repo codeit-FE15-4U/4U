@@ -12,6 +12,8 @@ function FeedCardDropdown({
   setIsQuestion,
   answer,
   setAnswer,
+  setQuestionCount,
+  setDeletedQuestionList,
 }) {
   const dropdownOptions = useMemo(
     () => [
@@ -73,6 +75,8 @@ function FeedCardDropdown({
         click: async () => {
           await deleteQuestion({ id: question.id });
           setIsQuestion(false);
+          setQuestionCount((prev) => prev - 1);
+          setDeletedQuestionList((prev) => [...prev, question.id]);
         },
       },
     ],

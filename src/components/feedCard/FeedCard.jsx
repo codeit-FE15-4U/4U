@@ -6,7 +6,13 @@ import FeedCardAnswer from "./FeedCardAnswer";
 import FeedCardAnswerInput from "./FeedCardAnswerInput";
 import FeedCardDropdown from "./FeedCardDropdown";
 
-function FeedCard({ isAnswerPage, subject, question }) {
+function FeedCard({
+  isAnswerPage,
+  subject,
+  question,
+  setQuestionCount,
+  setDeletedQuestionList,
+}) {
   const [isQuestion, setIsQuestion] = useState(!!question);
   const [answer, setAnswer] = useState(question?.answer);
   const [state, setState] = useState(
@@ -35,6 +41,8 @@ function FeedCard({ isAnswerPage, subject, question }) {
               setIsQuestion={setIsQuestion}
               answer={answer}
               setAnswer={setAnswer}
+              setQuestionCount={setQuestionCount}
+              setDeletedQuestionList={setDeletedQuestionList}
             />
           )}
         </div>
