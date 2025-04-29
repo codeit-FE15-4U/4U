@@ -10,7 +10,7 @@ const InputField = ({ name, setName, placeholder }) => {
         value={name}
         onChange={(e) => setName(e.target.value)}
         maxLength={15}
-        className="border-grayscale-40 bg-grayscale-10 focus:border-brown-40 tablet:w-336 w-full rounded-lg border-1 py-13 pr-13 pl-40 focus:outline-none"
+        className="border-grayscale-40 bg-grayscale-10 focus:border-brown-40 tablet:w-336 w-257 rounded-lg border-1 py-13 pr-13 pl-40 focus:outline-none"
       />
     </div>
   );
