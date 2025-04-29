@@ -17,6 +17,7 @@ const KakaoShareButton = () => {
         link: {
           // [내 애플리케이션] > [플랫폼] 에서 등록한 사이트 도메인과 일치해야 함
           webUrl: "https://codeit-openmind-4u.vercel.app/",
+          mobileWebUrl: "https://codeit-openmind-4u.vercel.app/",
         },
       },
       buttons: [
@@ -24,6 +25,7 @@ const KakaoShareButton = () => {
           title: "자세히 보기",
           link: {
             webUrl: window.location.href,
+            mobileWebUrl: window.location.href,
           },
         },
       ],
