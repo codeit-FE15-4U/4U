@@ -12,25 +12,28 @@ function FeedCardAnswerInput({ setState, questionId, answer, setAnswer }) {
   const handleClick = async (e) => {
     e.preventDefault();
     setDisabled(true);
-    if (answer) {
-      setAnswer(
-        await patchAnswer({
-          ...answer,
-          content: content.current.value,
-          isRejected: false,
-        }),
-      );
-    } else {
-      setAnswer(
-        await postAnswer({
-          questionId,
-          content: content.current.value,
-          isRejected: false,
-        }),
-      );
+    try {
+      if (answer) {
+        setAnswer(
+          await patchAnswer({
+            ...answer,
+            content: content.current.value,
+            isRejected: false,
+          }),
+        );
+      } else {
+        setAnswer(
+          await postAnswer({
+            questionId,
+            content: content.current.value,
+            isRejected: false,
+          }),
+        );
+      }
+      setState("sent");
+    } finally {
+      setDisabled(false);
     }
-    setState("sent");
-    setDisabled(false);
   };
 
   const handleChange = () => {
