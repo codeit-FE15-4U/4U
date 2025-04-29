@@ -53,7 +53,7 @@ const MainPage = () => {
         <Button
           className="tablet:w-336"
           type="fill"
-          disabled={name.length === 0 || name.length > 15}
+          disabled={name.trim().length === 0 || name.trim().length > 15}
           onClick={handleQuestionClick}
         >
           질문 받기
