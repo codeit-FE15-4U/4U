@@ -7,7 +7,6 @@ function UserList({ users, itemsPerPage }) {
 
   const handleCardClick = (user) => {
     navigate(`/post/${user.id}`);
-    console.log(user);
   };
 
   return (

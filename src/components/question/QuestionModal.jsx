@@ -25,7 +25,6 @@ const QuestionModal = ({
         subjectId: id,
         content: message.current.value,
       });
-      console.log(response);
       if (typeof setQuestionList === "function") {
         setQuestionList((prev) => {
           const newList = Array.isArray(prev) ? prev : [];
