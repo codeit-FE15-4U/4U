@@ -50,7 +50,9 @@ function ListPage() {
   };
 
   const handleResize = useCallback(() => {
-    window.innerWidth > 891 ? setItemsPerPage(8) : setItemsPerPage(6);
+    document.documentElement.clientWidth > 903
+      ? setItemsPerPage(8)
+      : setItemsPerPage(6);
   }, []);
 
   useEffect(() => {
@@ -70,7 +72,7 @@ function ListPage() {
   }, [handleResize]);
 
   return (
-    <div className="bg-grayscale-20 h-screen">
+    <div className="bg-grayscale-20 min-h-screen">
       <div className="tablet:flex-row tablet:justify-between flex flex-col items-center justify-center gap-24 px-50 pt-40 pb-60">
         <Link to="/">
           <img className="h-57 w-146" src={logo}></img>

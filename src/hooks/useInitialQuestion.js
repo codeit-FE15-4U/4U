@@ -9,20 +9,21 @@ const useInitialQuestion = ({
   setIsMoreQuestion,
 }) => {
   const [isInitialLoading, setIsInitialLoading] = useState(false);
+  const isCount = !!questionCount;
   useEffect(() => {
-    if (!questionCount) return;
+    if (!isCount) return;
     const getInitialData = async () => {
       setIsInitialLoading(true);
-      const { results } = await getQuestionList({ subjectId: id });
+      const { results, count } = await getQuestionList({ subjectId: id });
       setQuestionList(results);
       setOffset(results.length);
-      if (results.length < questionCount) {
+      if (results.length < count) {
         setIsMoreQuestion(true);
       }
       setIsInitialLoading(false);
     };
     getInitialData();
-  }, [id, questionCount, setQuestionList, setOffset, setIsMoreQuestion]);
+  }, [id, isCount, setQuestionList, setOffset, setIsMoreQuestion]);
   return { isInitialLoading };
 };
 export default useInitialQuestion;

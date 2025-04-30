@@ -5,30 +5,39 @@ import { patchAnswer, postAnswer } from "../../api/answers";
 
 function FeedCardAnswerInput({ setState, questionId, answer, setAnswer }) {
   const content = useRef();
-  const [disabled, setDisabled] = useState(!answer);
+  const [disabled, setDisabled] = useState(
+    !answer || answer?.content === "m$^%ㅡ&7o+@`0",
+  );
 
   const handleClick = async (e) => {
     e.preventDefault();
     setDisabled(true);
-    if (answer) {
-      setAnswer(
-        await patchAnswer({ ...answer, content: content.current.value }),
-      );
-    } else {
-      setAnswer(
-        await postAnswer({
-          questionId,
-          content: content.current.value,
-          isRejected: false,
-        }),
-      );
+    try {
+      if (answer) {
+        setAnswer(
+          await patchAnswer({
+            ...answer,
+            content: content.current.value,
+            isRejected: false,
+          }),
+        );
+      } else {
+        setAnswer(
+          await postAnswer({
+            questionId,
+            content: content.current.value,
+            isRejected: false,
+          }),
+        );
+      }
+      setState("sent");
+    } finally {
+      setDisabled(false);
     }
-    setState("sent");
-    setDisabled(false);
   };
 
   const handleChange = () => {
-    setDisabled(content.current.value ? false : true);
+    setDisabled(content.current.value.trim() ? false : true);
   };
 
   return (
@@ -37,7 +46,9 @@ function FeedCardAnswerInput({ setState, questionId, answer, setAnswer }) {
         name="answer"
         className="h-186 w-full"
         placeholder="답변을 입력해주세요"
-        defaultValue={answer?.content}
+        defaultValue={
+          answer?.content === "m$^%ㅡ&7o+@`0" ? null : answer?.content
+        }
         ref={content}
         onChange={handleChange}
       />

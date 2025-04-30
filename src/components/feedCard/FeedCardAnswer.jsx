@@ -7,7 +7,7 @@ function FeedCardAnswer({ state, subject, answer, children }) {
         className="tablet:size-48 bg-grayscale-30 size-32 rounded-full bg-cover bg-center"
         style={{ backgroundImage: `url(${subject.imageSource})` }}
       />
-      <section className="grow">
+      <section className="flex-1">
         <div className="mb-4 flex flex-row items-center gap-8">
           <div className="text-caption1 tablet:text-body2">{subject.name}</div>
           <div className="text-caption1 text-grayscale-40 font-medium">

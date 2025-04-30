@@ -15,7 +15,7 @@ const AnswerPage = () => {
   const [offset, setOffset] = useState(0);
   const [isMoreQuestion, setIsMoreQuestion] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const { subject, questionCount } = useSubject(id);
+  const { subject, questionCount, setQuestionCount } = useSubject(id);
 
   const { isInitialLoading } = useInitialQuestion({
     id,
@@ -56,6 +56,7 @@ const AnswerPage = () => {
             isInitialLoading={isInitialLoading}
             isLoading={isLoading}
             questionList={questionList}
+            setQuestionCount={setQuestionCount}
             subject={subject}
             isAnswerPage={true}
           />
