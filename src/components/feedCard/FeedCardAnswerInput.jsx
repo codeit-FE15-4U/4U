@@ -46,6 +46,7 @@ function FeedCardAnswerInput({ setState, questionId, answer, setAnswer }) {
         name="answer"
         className="h-186 w-full"
         placeholder="답변을 입력해주세요"
+        maxLength={10000}
         defaultValue={
           answer?.content === "m$^%ㅡ&7o+@`0" ? null : answer?.content
         }
