@@ -2,6 +2,7 @@ function InputTextarea({
   name,
   className,
   placeholder,
+  maxLength,
   onChange,
   defaultValue,
   ref,
@@ -15,6 +16,7 @@ function InputTextarea({
         className
       }
       placeholder={placeholder}
+      maxLength={maxLength}
       defaultValue={defaultValue}
       ref={ref}
       onChange={onChange}
